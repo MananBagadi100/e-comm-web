@@ -1,0 +1,26 @@
+.navbar {                               /*Class of the <nav> tag*/
+    background-color: var(--nav-bg);
+    display: flex;
+    text-decoration: none;
+    margin: 0px;
+    padding: 10px 4px;
+    line-height: 1;
+    align-items: center;
+    
+}
+.toggle-theme {             /*Theme toggle button in nav */
+    border-radius: 20px;
+    margin-left: auto;
+}
+.nav-list {                 /* List containing all nav items */
+    display: flex; 
+    text-decoration: none;
+    gap: 18px;
+    list-style: none;
+}
+.nav-item a{                 /* Each item in navigation bar */
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--btn-txt);
+
+}

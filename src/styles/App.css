@@ -1,0 +1,37 @@
+:root {
+    --bg-color: #F5BABB;
+    --text-color: black;
+    --nav-bg: #064232;
+    --btn-bg: #568F87;
+    --btn-txt: #FFF5F2;
+    --tab-filter-btn-active: yellow;  /*for all the filter buttons*/
+    --product-bg-color: #fcfcfd;  /* Card bg */
+    --card-border: #d2e7d3;
+    --card-shadow: rgba(21,92,54,0.09);
+    --card-shadow-hover: rgba(21,92,54,0.16);
+    --card-img-bg: #f7fcf9;
+    --card-img-border: #e0ece4;
+}
+/* body.dark {
+    --bg-color: rgb(62, 62, 62);
+    --text-color: rgb(255, 255, 255);
+    --nav-bg: #0000009a;
+    --btn-bg: #fd0303;
+    --btn-txt: rgb(255, 255, 255);
+    /* This are for the filter buttons on each route   */
+    /* --tab-filter-btn-active: rgb(238,232,170);   */
+    /*Imp 😇we have to check and change some variables because we changed class nmaes of products*/
+
+    /* --tab-filter-btn-active: rgb(34, 11, 183); */
+/*}*/
+html,body,:root {
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--bg-color);
+}
+.page-contents {
+    padding: 10px 5px;
+}
+.page-contents h1,.page-contents h2,.page-contents h3 { 
+    margin-top: 0px;            /*so that big headings dont eat space on the top*/
+}
