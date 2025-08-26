@@ -1,28 +1,18 @@
 import { useEffect , useState} from "react";
 import '../styles/NewlyLaunchStyles.css'
 import { getNewlyLaunchedProducts } from "../services/GetService";
-// my approach 2
-// const NewlyLaunched = () => {
-    // const [productInfo,setProductInfo]= useState({products:[]})
-    // useEffect(()=>{
-    //     const fetchData = async() => {
-    //         const response =await fetch('https://dummyjson.com/products')
-    //         const data=await response.json()
-    //         console.log(data)
-    //         setProductInfo(data)
 
-    //     }
-    //     fetchData()   
-    // },[])
 const NewlyLaunched = () => {
-    const [productInfo,setProductInfo] = useState([])
+    const [productInfo,setProductInfo] = useState({products:[]})
     useEffect(() => {
         getNewlyLaunchedProducts()
             .then(response => {
-                setProductInfo(response.data)
+                setProductInfo({products:response.data.products
+
+                })
             })
     },[])
-
+    console.log('this is newly launched products',productInfo)
     return (
         <div>
             <h3>Newly Launched Products</h3>
