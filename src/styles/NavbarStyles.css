@@ -15,7 +15,7 @@
 .nav-list {                 /* List containing all nav items */
     display: flex; 
     text-decoration: none;
-    gap: 18px;
+    gap: 30px;
     list-style: none;
 }
 .nav-item a{                 /* Each item in navigation bar */

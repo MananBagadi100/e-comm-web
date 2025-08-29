@@ -12,18 +12,6 @@
     --card-img-bg: #f7fcf9;
     --card-img-border: #e0ece4;
 }
-/* body.dark {
-    --bg-color: rgb(62, 62, 62);
-    --text-color: rgb(255, 255, 255);
-    --nav-bg: #0000009a;
-    --btn-bg: #fd0303;
-    --btn-txt: rgb(255, 255, 255);
-    /* This are for the filter buttons on each route   */
-    /* --tab-filter-btn-active: rgb(238,232,170);   */
-    /*Imp 😇we have to check and change some variables because we changed class nmaes of products*/
-
-    /* --tab-filter-btn-active: rgb(34, 11, 183); */
-/*}*/
 html,body,:root {
     margin: 0px;
     padding: 0px;
@@ -34,4 +22,8 @@ html,body,:root {
 }
 .page-contents h1,.page-contents h2,.page-contents h3 { 
     margin-top: 0px;            /*so that big headings dont eat space on the top*/
+}
+.dark-theme {
+    --bg-color: white;
+    --product-bg-color: purple;
 }

@@ -15,7 +15,7 @@ const OutofStock= () => {
 
     return (
         <div>
-            <h3>Out of Stock Products</h3>
+            <h3 className='product-headings'>Out of Stock Products</h3>
             <div className="product-grid">
                 {
                     outProducts.products && outProducts.products.map(item => (

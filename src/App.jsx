@@ -14,6 +14,7 @@ import Admin from './components/Admin'
 import Cart from './components/Cart'
 
 function App() {
+  
 	
 	
   return (
@@ -24,7 +25,7 @@ function App() {
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/products' element={<Products />}>
-                    <Route path='newly-launched' element={<NewlyLaunched />} />
+                    <Route path='newly-launched' index element={<NewlyLaunched />} />
                     <Route path='out-of-stock' element={<OutofStock />} />
                     <Route index element={<NewlyLaunched />} />
                 </Route>

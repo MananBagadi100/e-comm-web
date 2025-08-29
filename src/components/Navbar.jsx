@@ -1,5 +1,6 @@
 import '../styles/NavbarStyles.css'
 import { NavLink } from 'react-router-dom'
+import { useState,useContext } from 'react'
 const Navbar = ()=> {
     const navItems = [
         {path: '/' , label:'Home'},
@@ -8,8 +9,23 @@ const Navbar = ()=> {
         {path: '/contact-us' , label: 'Contact Us'},
         {path: '/cart' , label:'Cart'},
         {path: '/login' , label: 'Login'},
-        
-    ]
+        ]
+        const [themeBtnTxt , setThemeBtnTxt] = useState('☀️')
+        const [theme , setTheme] = useState('light')
+        const toggleTheme = () => {
+            if (theme == 'light') {
+                document.body.classList.add('dark-theme')
+                setTheme('dark')
+                setThemeBtnTxt('🌙')
+            }
+            else {
+                document.body.classList.remove('dark-theme')
+                setTheme('light')
+                setThemeBtnTxt('☀️')
+            }
+
+    }
+  
     return (
         <nav className='navbar'>
             <ul className='nav-list'>
@@ -19,7 +35,7 @@ const Navbar = ()=> {
                     </li>
                 ))}
             </ul>
-            <button className='toggle-theme'>Toggle Theme</button>
+            <button className='toggle-theme' onClick={toggleTheme}>{themeBtnTxt}</button>
         </nav>
     )
 }
