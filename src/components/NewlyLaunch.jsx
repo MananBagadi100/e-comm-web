@@ -15,7 +15,7 @@ const NewlyLaunched = () => {
         console.log('hello')      
     }
     function handleAddToCart (item) {
-        console.log('hiiiii this is add to cart feature', item)
+        console.log('hiiiii ')
         
     }
 
