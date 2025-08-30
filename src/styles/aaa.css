@@ -1,0 +1,38 @@
+/* layout */
+.container { max-width:1100px; margin:0 auto; padding:16px; }
+.row { display:flex; align-items:center; gap:12px; }
+.cols-4 { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; }
+.split { display:grid; grid-template-columns:1.2fr 1fr; gap:24px; }
+
+/* tokens */
+:root{
+  --primary:#2563eb; --primary-600:#1d4ed8;
+  --text:#111827; --muted:#6b7280; --border:#e5e7eb; --bg:#ffffff;
+  --radius:14px;
+}
+
+/* card & surfaces */
+.card{ background:var(--bg); border:1px solid var(--border);
+  border-radius:var(--radius); padding:16px; box-shadow:0 4px 12px rgba(0,0,0,.06); }
+
+/* buttons */
+.btn{ display:inline-flex; align-items:center; gap:8px; padding:10px 14px;
+  border-radius:10px; border:1px solid transparent; cursor:pointer; }
+.btn-primary{ background:var(--primary); color:#fff; }
+.btn-primary:hover{ background:var(--primary-600); }
+.btn-outline{ background:#fff; color:var(--text); border-color:var(--border); }
+.btn-outline:hover{ border-color:#cbd5e1 }
+
+/* inputs */
+.input{ width:100%; padding:10px 12px; border:1px solid var(--border);
+  border-radius:10px; }
+.input:focus{ outline:none; border-color:var(--primary); box-shadow:0 0 0 3px rgba(37,99,235,.15); }
+.help{ color:var(--muted); font-size:12px; }
+
+/* images */
+.thumb{ width:100%; height:180px; object-fit:cover; border-radius:10px; }
+
+/* cart badge */
+.badge-wrap{ position:relative; display:inline-block; }
+.badge{ position:absolute; top:-6px; right:-8px; background:#ef4444; color:#fff;
+  font-size:12px; padding:2px 6px; border-radius:999px; }

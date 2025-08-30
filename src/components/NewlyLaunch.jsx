@@ -1,7 +1,7 @@
-import { useEffect , useState } from "react";
+import { useEffect , useState , useContext} from "react";
 import '../styles/NewlyLaunchStyles.css'
 import { getNewlyLaunchedProducts } from "../services/GetService";
-import Cart from "./Cart";
+import { cartContext } from "../context/CartContext";   //name of portal
 
 const NewlyLaunched = () => {
     const [productInfo,setProductInfo] = useState({products:[]})
@@ -15,11 +15,10 @@ const NewlyLaunched = () => {
         console.log('hello')      
     }
     function handleAddToCart (item) {
-        console.log('hiiiii ')
-        
+        console.log('hiiiii ') 
     }
-
-    console.log('this is newly launched products',productInfo)
+    //portal open
+    const cartHandler=useContext(cartContext)
 
     return (
         <div>
@@ -34,7 +33,7 @@ const NewlyLaunched = () => {
                             <div>Price : {item.price}</div>
                             <div>Rating : {item.rating}</div>
                             <div>Brand : {item.brand}</div>
-                            <button className="cart-btn" onClick={handleAddToCart(item)}>Add to cart</button>
+                            <button className="cart-btn" onClick={()=>{cartHandler.addToCart(item)} }>Add to cart</button>
                         </div>
 
                     ))
