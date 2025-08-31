@@ -50,8 +50,16 @@ export const CartProvider = ({children}) => {
     const deleteFromCart = (id) => {
         setCart((prevCart) => prevCart.filter((prod) => prod.id !== id))
     }
+    //calculate total price
+    const calculateTotal = (cartList) => {
+        let total=0
+        cartList.map((prod) => (
+            total += prod.price * prod.quantity
+        ))
+        return total.toFixed(2)
+    }
     return (
-        <cartContext.Provider value={{cart,setCart,addToCart,removeFromCart}}>
+        <cartContext.Provider value={{cart,setCart,addToCart,removeFromCart,deleteFromCart,calculateTotal}}>
             {children}
         </cartContext.Provider>
     )

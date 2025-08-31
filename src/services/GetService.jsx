@@ -2,7 +2,7 @@ import axios from "axios";
 const client = axios.create({
     baseURL:'https://dummyjson.com/products'
     })
-export const getNewlyLaunchedProducts = () => {
+export const getAvailableProducts = () => {
     return client.get('')
 }
 export const getOutOfStockProducts = () => {
