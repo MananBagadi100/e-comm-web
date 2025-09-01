@@ -5,12 +5,15 @@
     --btn-bg: #568F87;
     --btn-txt: #FFF5F2;
     --tab-filter-btn-active: yellow;  /*for all the filter buttons*/
+    --primary-btn-hover-color: 1px solid blue;
     --product-bg-color: #fcfcfd;  /* Each Product or Card bg */
     --card-border: #d2e7d3;
     --card-shadow: rgba(21,92,54,0.09);
     --card-shadow-hover: rgba(21,92,54,0.16);
     --card-img-bg: #f7fcf9;
     --card-img-border: #e0ece4;
+    --login-page-bg: #095440;
+    --login-page-bg-secondnary:#8FBC8B;
 }
 html,body,:root {
     margin: 0px;

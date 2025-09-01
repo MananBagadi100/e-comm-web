@@ -1,7 +1,65 @@
-.login-container {
-    color: var(--text-color);
+.login-container-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    
 }
-button {
+.login-container {
+    background-color: var(--login-page-bg);
+    color: var(--text-color);
+    height: 350px;
+    width: 350px;
+    margin-top: 70px;
+    border: 1px solid black;
+    border-radius: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+}
+.heading-container {
+    font-weight: bold;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: larger;
+    height: 20vh;
+}
+.details-container {
+    /* height: 200px; */
+    height: 80vh;
+    width: 325px;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+
+}
+.submit-btn {
     background-color: var(--btn-bg);
     color: var(--btn-txt);
+    border-radius: 25px;
+    padding: 5px 12px;
+    display: inline-block;
+
+}
+.name-container , .password-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+.new-user-btn {
+    display: inline-flex;
+
+}
+.registration-link {
+    align-self: center;
+    font-size: medium;
 }

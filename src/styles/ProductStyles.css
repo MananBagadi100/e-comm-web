@@ -48,4 +48,9 @@
   padding: 5px;
   border-radius: 10px;
   margin-top: 5px;
+  background-color: var(--btn-bg);
+  color: var(--btn-txt);
+}
+.cart-btn:hover {
+  border: var(--primary-btn-hover-color);
 }

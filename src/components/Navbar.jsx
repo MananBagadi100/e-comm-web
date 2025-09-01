@@ -8,7 +8,7 @@ const Navbar = ()=> {
         {path: '/about-us' , label: 'About-us'},
         {path: '/contact-us' , label: 'Contact Us'},
         {path: '/cart' , label:'Cart'},
-        {path: '/login' , label: 'Login'},
+        // {path: '/login' , label: 'Login'},
         ]
         const [themeBtnTxt , setThemeBtnTxt] = useState('☀️')
         const [theme , setTheme] = useState('light')
@@ -35,7 +35,15 @@ const Navbar = ()=> {
                     </li>
                 ))}
             </ul>
-            <button className='toggle-theme' onClick={toggleTheme}>{themeBtnTxt}</button>
+            <ul className='nav-btn-list'>
+                <li key='/login' className='nav-btn-item'>
+                    <NavLink to='/login'>Login</NavLink>
+                </li>
+                <li>
+                    <button className='nav-toggle-theme-btn' onClick={toggleTheme}>{themeBtnTxt}</button>
+                </li>
+            </ul>
+            
         </nav>
     )
 }
