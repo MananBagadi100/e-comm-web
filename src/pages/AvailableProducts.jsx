@@ -31,22 +31,21 @@ const AvailableProducts = () => {
                     </NavLink>
                 </div>
                 <div className="product-grid">
-                    <Link to='/:product_id' className="product-card-wrapper">
                     {    
                         productInfo && productInfo.products.map((item) => (
-                            <div key={item.id} className="product-card" onClick={() => (console.log("hi"))}>
-                                <img src={item.images[0]} alt="Image not given" />
-                                <div>ID : {item.id}</div>
-                                <div>Title: {item.title}</div>
-                                <div>Price : {item.price}</div>
-                                <div>Rating : {item.rating}</div>
-                                <div>Brand : {item.brand}</div>
-                                <button className="cart-btn" onClick={()=>{cartHandler.addToCart(item)} }>Add to cart</button>
-                            </div>
+                            <Link key={item.id} to={`/products/${item.id}`} className="product-card-wrapper">
+                                <div key={item.id} className="product-card">
+                                    <img src={item.images[0]} alt="Image not given" />
+                                    <div className="">ID : {item.id}</div>
+                                    <div className="product-id">Title: {item.title}</div>
+                                    <div className="product-title">Price : {item.price}</div>
+                                    <div className="product-rating">Rating : {item.rating}</div>
+                                    <div className="product-brand">Brand : {item.brand}</div>
+                                    <button className="cart-btn" onClick={()=>{cartHandler.addToCart(item)} }>Add to cart</button>
+                                </div>
+                            </Link>
                         ))
-                    }
-                    </Link>
-                    
+                    }  
                 </div>
             </div>
         </div>

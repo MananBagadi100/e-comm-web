@@ -23,10 +23,9 @@ function App() {
         <main className='page-contents'>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/products' element={<AvailableProducts />} >
-                    <Route path=':product_id' element={<ProductDetails />} />
-                    <Route path='out-of-stock' element={<OutofStock />} />
-                </Route>
+                <Route path='/products' element={<AvailableProducts />} />
+                <Route path='/products/:product_id' element={<ProductDetails />} />
+                <Route path='/products/out-of-stock' element={<OutofStock />} />
                 <Route path='/about-us' element={<About />} />
                 <Route path='/contact-us' element={<ContactUs />} />
                 <Route path='/cart' element={<Cart />} />

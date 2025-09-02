@@ -1,3 +1,4 @@
+
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -31,7 +32,7 @@
   border-radius: 11px;
   margin-bottom: 14px;
   border: 1px solid var(--card-img-border);
-  background: var(--card-img-bg);     /*for the background of products in the boxes */
+  background: var(--card-img-bg);     
 }
 
 .product-card div {
@@ -54,3 +55,4 @@
 .cart-btn:hover {
   border: var(--primary-btn-hover-color);
 }
+
