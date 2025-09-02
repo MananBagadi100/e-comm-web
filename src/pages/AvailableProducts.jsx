@@ -2,7 +2,7 @@ import { useEffect , useState , useContext} from "react";
 import '../styles/ProductStyles.css'
 import { getAvailableProducts } from "../services/GetService";
 import { cartContext } from "../context/CartContext";   //name of portal
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const AvailableProducts = () => {
     const [productInfo,setProductInfo] = useState({products:[]})
@@ -31,8 +31,9 @@ const AvailableProducts = () => {
                     </NavLink>
                 </div>
                 <div className="product-grid">
-                    {
-                        productInfo && productInfo.products.map((item)=> (
+                    <Link to='/:product_id' className="product-card-wrapper">
+                    {    
+                        productInfo && productInfo.products.map((item) => (
                             <div key={item.id} className="product-card" onClick={() => (console.log("hi"))}>
                                 <img src={item.images[0]} alt="Image not given" />
                                 <div>ID : {item.id}</div>
@@ -42,9 +43,10 @@ const AvailableProducts = () => {
                                 <div>Brand : {item.brand}</div>
                                 <button className="cart-btn" onClick={()=>{cartHandler.addToCart(item)} }>Add to cart</button>
                             </div>
-
                         ))
                     }
+                    </Link>
+                    
                 </div>
             </div>
         </div>

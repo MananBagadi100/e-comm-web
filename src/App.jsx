@@ -10,6 +10,7 @@ import Navbar from './components/Navbar'
 import UserDetails from './components/UserDetails'
 import Admin from './components/Admin'
 import Cart from './components/Cart'
+import ProductDetails from './components/ProductDetails.jsx'
 
 function App() {
   
@@ -22,7 +23,8 @@ function App() {
         <main className='page-contents'>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/products' element={<AvailableProducts />}>
+                <Route path='/products' element={<AvailableProducts />} >
+                    <Route path=':product_id' element={<ProductDetails />} />
                     <Route path='out-of-stock' element={<OutofStock />} />
                 </Route>
                 <Route path='/about-us' element={<About />} />
