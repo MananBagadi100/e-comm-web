@@ -80,10 +80,17 @@
     margin-right: 2px;
     border-radius: 50%;
     padding: 2px 7px;
+    color: var(--btn-txt);
+    background-color: var(--btn-bg);
 }
 .product-removal-btn {
   margin-left: auto;
   padding: 5px 2px;
+}
+.product-removal-btn button {
+  color: var(--btn-txt);
+  background-color: var(--btn-bg);
+  border-radius:5px ;
 }
 .cart-total {
   font-size: larger;
