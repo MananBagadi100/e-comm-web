@@ -30,7 +30,7 @@ const ProductDetails = () => {
                     <div id="prod_rating">Rating :{product_details.rating}</div>
                     <div id="prod_warranty">Warranty Information :{product_details.warrantyInformation}</div>
                     <div id="prod_shipInfo">Shipping Information :{product_details.shippingInformation}</div>
-                    <div id="prod_status">Availability Status{product_details.availabilityStatus}</div>
+                    <div id="prod_status">Availability Status :{product_details.availabilityStatus}</div>
                     <div id="prod_desc">Description :{product_details.description}</div>
                     
                 </div>
