@@ -29,8 +29,8 @@ const ProductDetails = () => {
                 !product_details ? (<p>Loading ...</p>) :
             (
             <>
-                <div className="product-title">
-                    <div>Home &gt; Products &gt; {product_details.tags[0]} </div>
+                <div className="product-breadcrum">
+                    <div className="breadcrum-inner">Home &gt; Products &gt; {product_details.tags[0]} </div>
                 </div>
                 <div className="product-wrapper">
                     <div className="product-image">
@@ -63,9 +63,24 @@ const ProductDetails = () => {
                                 </div>
                                 <button className="order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>add to cart</button>
                                 <button className="order-btn">buy now</button>
-                                
-                            </div>
+                            </div>       
                         </div>
+                    </div>
+                </div>
+                <div className="extraInfo">
+                    <div id="review-heading">Reviews </div>
+                    <div className="all-reviews">
+                        {
+                            product_details.reviews.map((eachReview) => (
+                                <div key={eachReview.reviewerName} className="review">
+                                    <div className="reviewer">{eachReview.reviewerName}</div>
+                                    <div className="rating">Rating : {eachReview.rating} ⭐️</div>
+                                    <div className="comment">{eachReview.comment}</div>
+                                    <div className="date">{new Date(eachReview.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
+                                    
+                                </div>
+                            ))
+                        }
                     </div>
                 </div>
             </>

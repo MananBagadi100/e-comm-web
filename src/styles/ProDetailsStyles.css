@@ -8,10 +8,33 @@
     --gap:24px
 }
 /* Title already full width */
-.product-title { 
-    margin-bottom: 16px; 
-    padding: 8px 12px;
+.product-breadcrum { 
+    /* margin-bottom: 16px;  */
+    max-width: var(--wrapper-max);
+    margin: 2px auto 16px;
+    align-items:flex-start;
 }
+.breadcrum-inner {
+  /* Inner container: handles the centering and max-width */
+  /* margin-inline: auto; */
+  padding: 12px 24px;
+
+}
+.product-breadcrumb,
+.product-wrapper,
+.extraInfo {
+  width: 100%;
+  max-width: var(--wrapper-max);
+  margin: 5px auto 10px;
+}
+
+.product-breadcrumb .inner,
+.product-wrapper .inner,
+.extraInfo .inner {
+  padding: 12px 24px;   /* the “purple” space */
+  box-sizing: border-box;
+}
+
 
 /* Row under the title */
 .product-wrapper {
@@ -23,6 +46,16 @@
   margin-inline: auto;
   box-sizing: border-box;
   align-items: stretch;
+}
+.extraInfo {
+  display: flex;
+  width: 100%;
+  max-width: var(--wrapper-max);
+  margin: 5px auto 10px;
+  box-sizing: border-box;
+  flex-direction: column;
+  padding: 0px;
+  align-items: flex-start;
 }
 
 /* Two equal columns that can shrink but won't exceed half of the cap */
@@ -69,6 +102,31 @@
     flex-direction: column;
     height: 100%;
 }
+.quantity-btn {
+  border-radius: 5px;
+  margin-left: 2px;
+  margin-right: 2px;
+  border-radius: 50%;
+  padding: 2px 7px;
+  color: var(--btn-txt);
+  background-color: var(--btn-bg); 
+}
+.order-btn {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  padding: 5px 8px;
+  background-color: var(--btn-bg);
+  color: var(--btn-txt);
+  margin: 5px;
+  cursor: pointer;
+}
+.order-btn button {
+  transition: background 0.2s ease , transform 0.1s ease;
+}
+.order-btn button:hover {
+  transform: translateY(-1px);
+}
 #prod_id {
     color: rgb(174, 174, 174);
 }
@@ -103,6 +161,34 @@
   margin: 5px 0px;
   font-weight: bold;
 }
+#review-heading {
+  font-weight: bold;
+  font-size: larger;
+  margin-left: 25px;
+  padding: 5px 5px;
+}
+.all-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-left: 25px;
+  padding: 5px 5px;
+}
+.reviewer {
+  font-size: large;
+  font-weight: bold;
+}
+.date {
+  font-size: 14px;
+}
+.review {
+  margin: 12px 0px 12px;
+  border-bottom: 1px solid #ddd;
+}
+.review:last-child {
+  border-bottom: none;
+}
+
 /* Responsive: stack on small screens */
 @media (max-width: 900px) {
   .product-wrapper { flex-direction: column; }
