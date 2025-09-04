@@ -1,48 +1,109 @@
+.product-shell {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
 .full-product-details-page {
-    margin: 10px;
-    display: flex;
-    gap: 15px;
-    box-sizing: border-box;
-    align-items: flex-start;
-    
+    margin: 5px 10px;
+    --wrapper-max:1000px;
+    --gap:24px
 }
-.product-content-left,
-.product-content-right {
-    box-sizing: border-box;
-    min-width: none;
-    padding: 10px;
+/* Title already full width */
+.product-title { 
+    margin-bottom: 16px; 
+    padding: 8px 12px;
 }
-.product-content-right {
-    flex: 1 1 60%;
-    height: 550px;
-    display: flex;
-    flex-direction: column;
-    padding: 10px 10px;
-    justify-content: center;
-    align-items: center;
+
+/* Row under the title */
+.product-wrapper {
+  display: flex;
+  gap: var(--gap);
+  /* grow until the cap, then stop and center */
+  width: 100%;
+  max-width: var(--wrapper-max);
+  margin-inline: auto;
+  box-sizing: border-box;
+  align-items: stretch;
 }
-.product-content-left {
-    flex: 1 1 40%;
-    height: 550px;
-    display: flex;
-    flex-direction: column;
-    
+
+/* Two equal columns that can shrink but won't exceed half of the cap */
+.product-image,
+.product-content-wrapper {
+  flex: 1 1 0;          /* 50/50 split */
+  min-width: 320px;         /* prevent overflow from long text */
+  box-sizing: border-box;
+  padding: 15px;
+  margin: 5px;
 }
-.product-title {
-    flex: 0 0 15%;
-    display: flex;
-    align-items: center;
+
+/* IMAGE column: keep media inside the box and stop growing after the cap */
+.product-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* optional height cap; remove if not needed */
+  max-height: 60vh;
+  max-width: 50vh;
+  padding: 15px;
+  margin: 5px;
 }
-.product-image  {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .product-image img {
-    width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: contain;   /* never overflow; no cropping */
+  background-color: var(--product-bg-color);
+  border-radius: 12px;
+}
+
+/* DETAILS column: scroll instead of overflowing if content is long */
+.product-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+.product-content-details {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
     height: 100%;
-    max-height: 100%;
-    object-fit: cover;
-    background-color: var(--product-bg-color);
+}
+#prod_id {
+    color: rgb(174, 174, 174);
+}
+#prod_title {
+    font-weight: bold;
+    font-size: 28px;
+}
+#prod_category {
+    font-size: 18px;
+}
+#prod_price {
+    font-size: 20px;
+    color: var(--btn-bg);
+    margin: 5px 0px 0px;
+}
+#prod_price_contd {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+#prod_rating span{
+    font-weight: bold;
+}
+
+#prod_warranty span{
+    color: var(--btn-bg);
+    font-weight: 500;
+}
+#prod_status {
+    color: rgb(134, 13, 13);
+}
+#prod_returnPolicy {
+  margin: 5px 0px;
+  font-weight: bold;
+}
+/* Responsive: stack on small screens */
+@media (max-width: 900px) {
+  .product-wrapper { flex-direction: column; }
 }

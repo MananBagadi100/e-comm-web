@@ -77,8 +77,38 @@ export const CartProvider = ({children}) => {
         ))
         return total.toFixed(2)
     }
+    // const searchInCart = (id) => {
+    //     const value=cart.find((prod) => prod.id===id)
+    //     return (value ? value : null)
+
+    // }
+    //Add multiple items to cart
+    const addManyProductsToCart = (item,quantityToAdd) => {
+        setCart((prevCart) => {
+            const exists = prevCart.find((prod) => prod.id===item.id)
+            if (exists) {       //if product exists we directly update the quantity
+                return prevCart.map((prod) => {
+                    return prod.id === item.id ? {...prod, quantity: prod.quantity + quantityToAdd } 
+                    : prod 
+                    
+                })
+            }
+            else {
+                return (
+                    [...prevCart, 
+                        { 
+                        id: item.id,
+                        title: item.title,
+                        price: item.price,
+                        quantity: quantityToAdd,
+                        image: item.images[0]
+                    }]
+            )}
+        })
+    }
+
     return (
-        <cartContext.Provider value={{cart,setCart,addToCart,removeFromCart,deleteFromCart,calculateTotal}}>
+        <cartContext.Provider value={{cart,setCart,addToCart,removeFromCart,deleteFromCart,calculateTotal,addManyProductsToCart}}>
             {children}
         </cartContext.Provider>
     )

@@ -12,12 +12,6 @@ const AvailableProducts = () => {
                 setProductInfo({products:response.data.products})
             })
     },[])
-    const handleProductOnClick = () => {
-        console.log('hello')      
-    }
-    function handleAddToCart (item) {
-        console.log('hiiiii ') 
-    }
     //portal open
     const cartHandler=useContext(cartContext)
 
@@ -41,7 +35,14 @@ const AvailableProducts = () => {
                                     <div className="product-title">Price : {item.price}</div>
                                     <div className="product-rating">Rating : {item.rating}</div>
                                     <div className="product-brand">Brand : {item.brand}</div>
-                                    <button className="cart-btn" onClick={()=>{cartHandler.addToCart(item)} }>Add to cart</button>
+                                    <button 
+                                        className="cart-btn" 
+                                        onClick={(e)=>{
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            cartHandler.addToCart(item)
+                                            }}>Add to cart
+                                    </button>
                                 </div>
                             </Link>
                         ))

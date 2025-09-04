@@ -1,42 +1,77 @@
 import { useParams } from "react-router-dom";
 import { getProductDetails } from "../services/GetService";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import '../styles/ProDetailsStyles.css'
+import { cartContext } from "../context/CartContext";
 const ProductDetails = () => {
+    const value=useContext(cartContext)
+    const [ product_quantity, setProductQuantity ] = useState(1)
     const [ product_details ,setProductDetails]= useState(null)
     const params = useParams()
     const prod_id = params.product_id
     useEffect (() => {
-        getProductDetails(prod_id)
-            .then( (res) => { if(product_details) setProductDetails(res.data) })
-        return () => {ignore = true}
-    },[prod_id])        //see here then 
+        const fetchData = async() => {
+            try {
+                const res = await getProductDetails(prod_id)
+                setProductDetails(res.data)
+            }
+            catch (error) {
+                console.log(error)
+            }
+        }
+        fetchData()     //calling the function
+    },[prod_id])
     console.log(product_details)
+
     return (
         <div className="full-product-details-page">
-            <div className="product-content-left">
-                <h2 className="product-title">{product_details.title}</h2>
-                <div className="product-image">
-                    <img src={product_details.images[0]} alt="Image not found" />
-                </div> 
-            </div>
-            <div className="product-content-right">
-                <div className="product-content-details">
-                    <div id="prod_id">Id : {product_details.id}</div>
-                    <div id="prod_title">{product_details.title}</div>
-                    <div id="prod_category">Category :{product_details.category}</div>
-                    <div id="prod_price">${product_details.price}</div>
-                    <div id="prod_price_contd">Inclusive of all taxes</div>
-                    <div id="prod_rating">Rating :{product_details.rating}</div>
-                    <div id="prod_warranty">Warranty Information :{product_details.warrantyInformation}</div>
-                    <div id="prod_shipInfo">Shipping Information :{product_details.shippingInformation}</div>
-                    <div id="prod_status">Availability Status :{product_details.availabilityStatus}</div>
-                    <div id="prod_desc">Description :{product_details.description}</div>
-                    
+            {
+                !product_details ? (<p>Loading ...</p>) :
+            (
+            <>
+                <div className="product-title">
+                    <div>Home &gt; Products &gt; {product_details.tags[0]} </div>
                 </div>
-                
-            </div>
+                <div className="product-wrapper">
+                    <div className="product-image">
+                        <img src={product_details.images[0]} alt="Image not found" />
+                    </div> 
+                    <div className="product-content-wrapper">
+                        <div className="product-content-details">
+                            <div id="prod_id">Id : {product_details.id}</div>
+                            <div id="prod_title">{product_details.title}</div>
+                            <div id="prod_category">Category : {product_details.category}</div>
+                            <div id="prod_price">Price : ${product_details.price}</div>
+                            <div id="prod_price_contd">Inclusive of all taxes</div>
+                            <div id="prod_rating">
+                                Ratings : 
+                                <span> {product_details.rating} ⭐️</span>
+                            </div>
+                            <div id="prod_warranty">
+                                Warranty Information : 
+                                <span> {product_details.warrantyInformation}</span>
+                            </div>
+                            <div id="prod_shipInfo">Shipping Information : {product_details.shippingInformation}</div>
+                            <div id="prod_status">Availability Status : {product_details.availabilityStatus}</div>
+                            <div id="prod_desc">Description : {product_details.description}</div>
+                            <div id="prod_returnPolicy"> {product_details.returnPolicy}</div>
+                            <div className="product-page-btn">
+                                <div className="quantity-selector">
+                                    <button className="quantity-btn" onClick={() => {setProductQuantity(qty => Math.max(1,qty-1))}}>-</button>
+                                        {product_quantity}
+                                    <button className="quantity-btn" onClick={() => {setProductQuantity(qty => qty+1)}}>+</button>
+                                </div>
+                                <button className="order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>add to cart</button>
+                                <button className="order-btn">buy now</button>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </>
+            )}
         </div>
+
         
     )
 }
