@@ -1,6 +1,7 @@
 import { useContext } from "react"
 import '../styles/CartStyle.css'
 import { cartContext } from "../context/CartContext"    //portal name
+import { Link } from "react-router-dom"
 const Cart = () => {
     const value=useContext(cartContext)
     console.log(value)
@@ -32,7 +33,10 @@ const Cart = () => {
                     }
                 </div>
                 <div className="cart-total-wrapper">
-                    <div className="cart-total">Total : {value.calculateTotal(value.cart)}</div>
+                    <div id="cart-total">Total : {value.calculateTotal(value.cart)}</div>
+                </div>
+                <div className="checkout-wrapper">
+                    <Link id="checkout-btn" to='/checkout'>Checkout</Link>
                 </div>
                 
 
