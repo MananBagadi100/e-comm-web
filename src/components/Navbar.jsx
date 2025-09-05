@@ -1,6 +1,7 @@
 import '../styles/NavbarStyles.css'
 import { NavLink } from 'react-router-dom'
-import { useState,useContext } from 'react'
+import { useState,useContext, useEffect } from 'react'
+import { LoginContext } from '../context/LoginContext'
 const Navbar = ()=> {
     const navItems = [
         {path: '/' , label:'Home'},
@@ -10,8 +11,10 @@ const Navbar = ()=> {
         {path: '/cart' , label:'Cart'},
         // {path: '/login' , label: 'Login'},
         ]
+        const [loginBTnValue , setLoginBtnValue] = useState("Login")
         const [themeBtnTxt , setThemeBtnTxt] = useState('☀️')
         const [theme , setTheme] = useState('light')
+        const value = useContext(LoginContext)
         const toggleTheme = () => {
             if (theme == 'light') {
                 document.body.classList.add('dark-theme')
@@ -23,9 +26,12 @@ const Navbar = ()=> {
                 setTheme('light')
                 setThemeBtnTxt('☀️')
             }
-
     }
-  
+    //set the login button value
+    useEffect (()=> {
+        value.loginState === true ? setLoginBtnValue("Logged IN !") : setLoginBtnValue("login")
+    },[value.loginState])
+    
     return (
         <nav className='navbar'>
             <ul className='nav-list'>
@@ -37,7 +43,7 @@ const Navbar = ()=> {
             </ul>
             <ul className='nav-btn-list'>
                 <li key='/login' className='nav-btn-item'>
-                    <NavLink to='/login'>Login</NavLink>
+                    <NavLink to='/login'>{loginBTnValue}</NavLink>
                 </li>
                 <li>
                     <button className='nav-toggle-theme-btn' onClick={toggleTheme}>{themeBtnTxt}</button>
