@@ -1,10 +1,12 @@
 import '../styles/LoginStyle.css'
 import { useContext, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate, useParams } from 'react-router-dom'
 import { LoginContext } from '../context/LoginContext'
 
 const Login= () => {
     const value = useContext(LoginContext)
+    const location = useLocation()
+    const navigate = useNavigate()
     const handleNameChange =(e) => {
         setUserName(e.target.value)
     }
@@ -16,14 +18,18 @@ const Login= () => {
             alert("Please enter both your username and password")
             return
         }
-        else {
+        else {      //user has logged in
             value.storeLoginState(true)
+            const urlParams = new URLSearchParams(location.search)
+            console.log(urlParams)
+            const redirectTo = urlParams.get('redirect') || '/'
+            navigate(redirectTo,{replace: true})
+
         }
-        navigate('/',{ state : {userName}})
     }
+    
     const [userName,setUserName] =useState('')
     const [password,setPassword] =useState('')
-    const navigate=useNavigate()
     if(value.loginState === false ) {
         return (
             <div className='login-container-wrapper'>

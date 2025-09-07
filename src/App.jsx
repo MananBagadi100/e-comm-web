@@ -11,6 +11,7 @@ import UserDetails from './components/UserDetails'
 import Admin from './components/Admin'
 import Cart from './components/Cart'
 import ProductDetails from './components/ProductDetails.jsx'
+import Checkout from './components/Checkout.jsx'
 
 function App() {
   
@@ -30,6 +31,7 @@ function App() {
                 <Route path='/contact-us' element={<ContactUs />} />
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/login' element={<Login />} />
+                <Route path='/checkout' element={<Checkout />} />
             </Routes>
         </main>
         </BrowserRouter>
