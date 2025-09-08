@@ -3,7 +3,7 @@ const client = axios.create({
     baseURL:'https://dummyjson.com/products'
     })
 export const getAvailableProducts = () => {         //gets the products
-    return client.get('')
+    return client.get('?limit=40')
 }
 export const getOutOfStockProducts = () => {
     return client.get('?limit=10&skip=30')
