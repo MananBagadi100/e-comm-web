@@ -1,12 +1,19 @@
 import '../styles/SidebarStyles.css'
 import { getProductCategories } from '../services/GetService'
 import { useEffect, useState } from 'react'
-const Sidebar = () => {
+const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
     const [ categories , setCategories] = useState([])
-    function handleChange (obj) {
-        console.log("the checked box name is ",obj.name )
-        console.log("the checked box slug is ",obj.slug )
-        console.log("the checked box url is ",obj.url )
+    function handleChange (categoryObject) {
+        const exists = filterProductsArray.find((item) => (item.slug === categoryObject.slug))
+        if(exists) {    //checkbox is  already checked
+
+        }
+        else {  //checkox is being checked now
+
+        }
+        console.log("the checked box name is ",categoryObject.name )
+        console.log("the checked box slug is ",categoryObject.slug )
+        console.log("the checked box url is ",categoryObject.url )
     }
     useEffect (() => {
         const fetchData = async () => {

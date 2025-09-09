@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { cartContext } from '../context/CartContext';
 import '../styles/RenderProductsStyles.css'
 import { useContext } from "react";
+//this file just does the rendering of products
 const RenderProducts = ({productInfo}) => {
     const cartHandler=useContext(cartContext)
     return(

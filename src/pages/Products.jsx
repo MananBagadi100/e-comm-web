@@ -7,6 +7,8 @@ import Sidebar from "../components/Sidebar";
 import RenderProducts from "../components/RenderProducts";
 
 const Products = () => {
+    //this state array contains all the product categories which have been checked filter checkboxes
+    const [filterProductsArray , setFilterProductsArray] = useState([]) 
     const [productInfo,setProductInfo] = useState({products:[]})
     useEffect(() => {
         getAvailableProducts()
@@ -14,13 +16,10 @@ const Products = () => {
                 setProductInfo({products:response.data.products})
             })
     },[])
-    //portal open
-    // const cartHandler=useContext(cartContext)
-
     return (
         <div id="full-products-page">
             <div id="product-filters">
-                <Sidebar />
+                <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray}/>
             </div>
             <div id="product-details-part">
                 <h3 className="product-headings">Available Products</h3>
