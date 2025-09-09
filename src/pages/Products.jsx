@@ -15,7 +15,7 @@ const Products = () => {
             })
     },[])
     //portal open
-    const cartHandler=useContext(cartContext)
+    // const cartHandler=useContext(cartContext)
 
     return (
         <div id="full-products-page">
@@ -30,7 +30,7 @@ const Products = () => {
                         Out of Stock
                         </NavLink>
                     </div>
-                    <RenderProducts />
+                    <RenderProducts productInfo={productInfo} />
 
                     {/* <div className="product-grid">
                         {    

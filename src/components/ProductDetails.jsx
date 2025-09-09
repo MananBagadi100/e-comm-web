@@ -71,7 +71,7 @@ const ProductDetails = () => {
                     <div className="all-reviews">
                         {
                             product_details.reviews.map((eachReview) => (
-                                <div key={eachReview.reviewerName} className="review">
+                                <div key={eachReview.comment} className="review">
                                     <div className="reviewer">{eachReview.reviewerName}</div>
                                     <div className="rating">Rating : {eachReview.rating} ⭐️</div>
                                     <div className="comment">{eachReview.comment}</div>

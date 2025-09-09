@@ -1,5 +1,9 @@
-import '../styles/RenderProductsStyle.css'
-const RenderProducts = () => {
+import { Link } from 'react-router-dom';
+import { cartContext } from '../context/CartContext';
+import '../styles/RenderProductsStyles.css'
+import { useContext } from "react";
+const RenderProducts = ({productInfo}) => {
+    const cartHandler=useContext(cartContext)
     return(
         <div className="product-grid">
             {    
