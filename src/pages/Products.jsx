@@ -4,6 +4,7 @@ import { getAvailableProducts } from "../services/GetService";
 import { cartContext } from "../context/CartContext";   //name of portal
 import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import RenderProducts from "../components/RenderProducts";
 
 const Products = () => {
     const [productInfo,setProductInfo] = useState({products:[]})
@@ -29,7 +30,9 @@ const Products = () => {
                         Out of Stock
                         </NavLink>
                     </div>
-                    <div className="product-grid">
+                    <RenderProducts />
+
+                    {/* <div className="product-grid">
                         {    
                             productInfo && productInfo.products.map((item) => (
                                 <Link key={item.id} to={`/products/${item.id}`} className="product-card-wrapper">
@@ -52,7 +55,7 @@ const Products = () => {
                                 </Link>
                             ))
                         }  
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
