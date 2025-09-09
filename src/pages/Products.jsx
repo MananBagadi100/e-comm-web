@@ -5,7 +5,7 @@ import { cartContext } from "../context/CartContext";   //name of portal
 import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
-const AvailableProducts = () => {
+const Products = () => {
     const [productInfo,setProductInfo] = useState({products:[]})
     useEffect(() => {
         getAvailableProducts()
@@ -58,4 +58,4 @@ const AvailableProducts = () => {
         </div>
     )
 }    
-export default AvailableProducts
+export default Products
