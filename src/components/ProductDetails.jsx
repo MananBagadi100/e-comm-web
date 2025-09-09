@@ -21,8 +21,7 @@ const ProductDetails = () => {
         }
         fetchData()     //calling the function
     },[prod_id])
-    console.log(product_details)
-
+    console.log("DEBUG :",product_details)
     return (
         <div className="full-product-details-page">
             {

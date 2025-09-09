@@ -1,4 +1,27 @@
-
+.page-contents {
+  margin: 0px;
+  padding: 0px;
+}
+#full-products-page {
+  height: 100vh;
+  width:  100%;
+  display: flex;
+  /* flex-direction: row; */
+}
+#product-filters {
+  top: 0px;
+  position: sticky;
+  flex: 0 0 240px;
+  overflow-y: auto;
+  align-self: flex-start;
+  background-color: aqua;
+  height: 100vh;
+}
+#product-details-part {
+  flex: 1;
+  height: 100vh;
+  overflow-y: auto;
+}
 .product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

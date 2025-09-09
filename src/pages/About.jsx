@@ -13,6 +13,7 @@ const About= () => {
             <button onClick={()=> (value.setCounter(value.counter+1))}>
                 Hey ({value.counter})
             </button>
+            <button onClick={(e) => console.log("this is event obj ",e)}>hi</button>
         </div>
     )
 }
