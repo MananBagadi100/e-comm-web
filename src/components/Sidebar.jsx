@@ -72,8 +72,9 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , 
                                 <label>
                                     <input
                                         type='radio'
-                                        value='4'                        
-                                        checked={minRating === 4}                name='rating-filter-options'
+                                        value='4'      
+                                        name='rating-filter-options'                  
+                                        checked={minRating === 4}                
                                         onChange={() =>setMinRating(4)}
                                     />⭐️⭐️⭐️⭐️ & up
                                 </label>
