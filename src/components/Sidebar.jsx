@@ -6,10 +6,18 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
     function handleChange (categoryObject) {
         const exists = filterProductsArray.find((item) => (item.slug === categoryObject.slug))
         if(exists) {    //checkbox is  already checked
-
+            setFilterProductsArray((prev) => {
+                return prev.filter((item) => item.slug !== categoryObject.slug)
+            })
         }
         else {  //checkox is being checked now
-
+            setFilterProductsArray((prev) => {
+                return [...prev, {
+                    slug : categoryObject.slug,
+                    name : categoryObject.name,
+                    url : categoryObject.url
+                }]
+            })
         }
         console.log("the checked box name is ",categoryObject.name )
         console.log("the checked box slug is ",categoryObject.slug )

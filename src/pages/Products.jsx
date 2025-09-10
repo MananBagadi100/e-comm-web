@@ -29,7 +29,7 @@ const Products = () => {
                         Out of Stock
                         </NavLink>
                     </div>
-                    <RenderProducts productInfo={productInfo} />
+                    <RenderProducts productInfo={productInfo} filterProductsArray={filterProductsArray}/>
 
                     {/* <div className="product-grid">
                         {    

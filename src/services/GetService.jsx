@@ -14,3 +14,6 @@ export const getProductDetails = (prod_id) => {
 export const getProductCategories = () => {
     return client.get('/categories')
 }
+export const getAllTheCategoryItems = (url) => {
+    return axios.get(url)
+}
