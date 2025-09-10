@@ -71,12 +71,11 @@ const ProductDetails = () => {
                     <div className="all-reviews">
                         {
                             product_details.reviews.map((eachReview) => (
-                                <div key={eachReview.comment} className="review">
+                                <div key={`${eachReview.reviewerName}-${eachReview.rating}-${eachReview.date}`} className="review">
                                     <div className="reviewer">{eachReview.reviewerName}</div>
                                     <div className="rating">Rating : {eachReview.rating} ⭐️</div>
                                     <div className="comment">{eachReview.comment}</div>
                                     <div className="date">{new Date(eachReview.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
-                                    
                                 </div>
                             ))
                         }
