@@ -1,5 +1,3 @@
-import { Link } from 'react-router-dom';
-import { cartContext } from '../context/CartContext';
 import '../styles/RenderProductsStyles.css'
 import { useContext, useEffect, useState } from "react";
 import { getAllTheCategoryItems } from '../services/GetService';
@@ -8,6 +6,7 @@ import FilteredProducts from './FilteredProducts';
 //this file just brings all the different components here for rendering , nothing else !
 const RenderProducts = ({productInfo , filterProductsArray}) => {
     const [categoryProducts , setCategoryProducts] = useState([])
+    console.log("productInfo is : ",productInfo)
     useEffect(() => {
         if(filterProductsArray.length===0) {
             setCategoryProducts([])
@@ -19,7 +18,7 @@ const RenderProducts = ({productInfo , filterProductsArray}) => {
                 getAllTheCategoryItems(item.url)
             )
         )
-        //then after promise resolves sets the array of responses to the cartegoryProducts state
+        //then after promise resolves it sets the array of responses to the cartegoryProducts 
         .then(setCategoryProducts)  
         .catch(error => console.log("fetch failed ", error))
     },[filterProductsArray])

@@ -1,8 +1,7 @@
 import '../styles/SidebarStyles.css'
 import { getProductCategories } from '../services/GetService'
 import { useEffect, useState } from 'react'
-const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
-    const [ minRating , setMinRating] = useState(null)
+const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , minRating}) => {
     const [ categories , setCategories] = useState([])
     function handleCategoryFilterChange (categoryObject) {
         const exists = filterProductsArray.find((item) => (item.slug === categoryObject.slug))
@@ -23,9 +22,6 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
         console.log("the checked box name is ",categoryObject.name )
         console.log("the checked box slug is ",categoryObject.slug )
         console.log("the checked box url is ",categoryObject.url )
-    }
-    function handleRatingFilterChange () {
-        console.log("rating checkbox has been checked")
     }
     useEffect (() => {
         const fetchData = async () => {
@@ -49,7 +45,6 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                     <label>
                                         <input
                                             type='checkbox'
-
                                             name={eachCategory.slug}
                                             onChange={() =>{handleCategoryFilterChange(eachCategory)}}
                                         />{eachCategory.name}
@@ -96,7 +91,7 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                         type='radio'
                                         value='2'         
                                         name='rating-filter-options'
-                                        checked={minRating ===2}
+                                        checked={minRating === 2}
                                         onChange={() =>setMinRating(2)}
                                     />⭐️⭐️ & up
                                 </label>

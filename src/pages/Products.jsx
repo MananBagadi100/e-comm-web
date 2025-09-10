@@ -10,6 +10,9 @@ const Products = () => {
     //this state array contains all the product categories which have been checked filter checkboxes
     const [filterProductsArray , setFilterProductsArray] = useState([]) 
     const [productInfo,setProductInfo] = useState({products:[]})
+    //this the Min Rating for rating filter in sidebar
+    const [ minRating , setMinRating] = useState(null)
+    console.log("The min rating currently is ",minRating)
     useEffect(() => {
         getAvailableProducts()
             .then(response => {
@@ -19,7 +22,7 @@ const Products = () => {
     return (
         <div id="full-products-page">
             <div id="product-filters">
-                <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray}/>
+                <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray}  minRating={minRating} setMinRating={setMinRating}/>
             </div>
             <div id="product-details-part">
                 <h3 className="product-headings">Available Products</h3>
