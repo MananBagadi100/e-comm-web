@@ -2,8 +2,9 @@ import '../styles/SidebarStyles.css'
 import { getProductCategories } from '../services/GetService'
 import { useEffect, useState } from 'react'
 const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
+    const [ minRating , setMinRating] = useState(null)
     const [ categories , setCategories] = useState([])
-    function handleChange (categoryObject) {
+    function handleCategoryFilterChange (categoryObject) {
         const exists = filterProductsArray.find((item) => (item.slug === categoryObject.slug))
         if(exists) {    //checkbox is  already checked
             setFilterProductsArray((prev) => {
@@ -23,6 +24,9 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
         console.log("the checked box slug is ",categoryObject.slug )
         console.log("the checked box url is ",categoryObject.url )
     }
+    function handleRatingFilterChange () {
+        console.log("rating checkbox has been checked")
+    }
     useEffect (() => {
         const fetchData = async () => {
             const response = await getProductCategories()
@@ -34,7 +38,7 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
     },[])
     return (
         <div id="main-content-area">
-            <div id='sidebar-title'>Filter by : </div>
+            <div id='sidebar-main-div'>Filter by : </div>
                 <div id='category-filter'>
                     <div id='category-title'>Category</div>
                     <div id='category-types'>
@@ -45,8 +49,9 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                     <label>
                                         <input
                                             type='checkbox'
+
                                             name={eachCategory.slug}
-                                            onChange={() =>{handleChange(eachCategory)}}
+                                            onChange={() =>{handleCategoryFilterChange(eachCategory)}}
                                         />{eachCategory.name}
                                     </label>
                                 </form>
@@ -55,6 +60,52 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                         }
                     </div>
                 </div>
+                <div id='rating-filter'>
+                    <div id="rating-title">Rating</div>
+                    <div id="rating-types">
+                        {
+                            <form>
+                                <label>
+                                    <input
+                                        type='radio'
+                                        value=''
+                                        name='rating-filter-options'
+                                        onChange={() =>setMinRating(null)}
+                                        checked={minRating === null}    //default value
+                                    />All Ratings
+                                </label><br />
+                                <label>
+                                    <input
+                                        type='radio'
+                                        value='4'                        
+                                        checked={minRating === 4}                name='rating-filter-options'
+                                        onChange={() =>setMinRating(4)}
+                                    />⭐️⭐️⭐️⭐️ & up
+                                </label>
+                                <label><br />
+                                    <input
+                                        type='radio'
+                                        value='3'
+                                        name='rating-filter-options'
+                                        checked={minRating === 3}
+                                        onChange={() =>setMinRating(3)}
+                                    />⭐️⭐️⭐️ & up
+                                </label><br />
+                                <label>
+                                    <input
+                                        type='radio'
+                                        value='2'         
+                                        name='rating-filter-options'
+                                        checked={minRating ===2}
+                                        onChange={() =>setMinRating(2)}
+                                    />⭐️⭐️ & up
+                                </label>
+                            </form>
+                        }
+                    </div>
+                </div>
+
+
                     
             <div>hey how are you </div>
         </div>

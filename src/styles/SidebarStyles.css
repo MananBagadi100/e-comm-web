@@ -2,7 +2,13 @@
     margin: 10px 5px;
     height: auto;
 }
-#sidebar-title {
+#sidebar-main-div {
     font-size: 20px;
+    font-weight: bold;
+    display: flex;
+    gap: 10px;
+}
+#rating-title {
+    font-size: 16px;
     font-weight: bold;
 }
