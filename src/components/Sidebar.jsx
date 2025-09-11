@@ -1,8 +1,10 @@
 import '../styles/SidebarStyles.css'
 import { getProductCategories } from '../services/GetService'
-import { useEffect, useState } from 'react'
-const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , minRating}) => {
+import { useContext, useEffect, useState } from 'react'
+import { ProductContext } from '../context/ProductContext'
+const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
     const [ categories , setCategories] = useState([])
+    const productValue = useContext(ProductContext)
     function handleCategoryFilterChange (categoryObject) {
         const exists = filterProductsArray.find((item) => (item.slug === categoryObject.slug))
         if(exists) {    //checkbox is  already checked
@@ -65,8 +67,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , 
                                         type='radio'
                                         value=''
                                         name='rating-filter-options'
-                                        onChange={() =>setMinRating(null)}
-                                        checked={minRating === null}    //default value
+                                        onChange={() =>productValue.setMinRating(null)}
+                                        checked={productValue.minRating === null}    //default value
                                     />All Ratings
                                 </label><br />
                                 <label>
@@ -74,8 +76,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , 
                                         type='radio'
                                         value='4'      
                                         name='rating-filter-options'                  
-                                        checked={minRating === 4}                
-                                        onChange={() =>setMinRating(4)}
+                                        checked={productValue.minRating === 4}                
+                                        onChange={() =>productValue.setMinRating(4)}
                                     />⭐️⭐️⭐️⭐️ & up
                                 </label>
                                 <label><br />
@@ -83,8 +85,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , 
                                         type='radio'
                                         value='3'
                                         name='rating-filter-options'
-                                        checked={minRating === 3}
-                                        onChange={() =>setMinRating(3)}
+                                        checked={productValue.minRating === 3}
+                                        onChange={() =>productValue.setMinRating(3)}
                                     />⭐️⭐️⭐️ & up
                                 </label><br />
                                 <label>
@@ -92,8 +94,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray , setMinRating , 
                                         type='radio'
                                         value='2'         
                                         name='rating-filter-options'
-                                        checked={minRating === 2}
-                                        onChange={() =>setMinRating(2)}
+                                        checked={productValue.minRating === 2}
+                                        onChange={() =>productValue.setMinRating(2)}
                                     />⭐️⭐️ & up
                                 </label>
                             </form>

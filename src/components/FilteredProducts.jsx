@@ -2,16 +2,23 @@ import { Link } from "react-router-dom"
 import { cartContext } from "../context/CartContext"
 import { useContext } from "react"
 import '../styles/AllProductsStyles.css'
+import { ProductContext } from "../context/ProductContext"
 const FilteredProducts = ({categoryProducts}) => {
     const cartHandler = useContext(cartContext)
-    console.log(categoryProducts)
+    const productValue = useContext(ProductContext)
+    console.log("the category products is ",categoryProducts)
+    //visibleProducts just contains all the products based on the condition
+    const visibleProducts = categoryProducts.map((item) => (
+        item.data.products.filter((prod) => (
+            productValue.minRating === null || prod.rating >= productValue.minRating
+        ))
+    ))
     return (
         <div>
             <div className="product-grid">
-                {   //category is each object
-                    categoryProducts.map((category) => (    
-                        //'prod' is each product in that category
-                        category.data.products.map((prod) =>(
+                {   
+                    visibleProducts.map((category) => (    
+                        category.map((prod) =>(
                             <Link key={prod.id} to={`/products/${prod.id}`} className="product-card-wrapper">
                                 <div key={prod.id} className="product-card">
                                     <img src={prod.images[0]} alt="Image not given" />

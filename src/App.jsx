@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import ContactUs from './pages/ContactUs'
 import Login from './pages/Login'
-import Products from './pages/Products.jsx'
+import {ProductProvider} from './context/ProductContext.jsx'
 import OutofStock from './components/OutofStock'
 import Navbar from './components/Navbar'
 import UserDetails from './components/UserDetails'
@@ -24,7 +24,7 @@ function App() {
         <main className='page-contents'>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/products' element={<Products />} />
+                <Route path='/products' element={<ProductProvider />} />
                 <Route path='/products/:product_id' element={<ProductDetails />} />
                 <Route path='/products/out-of-stock' element={<OutofStock />} />
                 <Route path='/about-us' element={<About />} />

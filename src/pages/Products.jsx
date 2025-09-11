@@ -4,15 +4,16 @@ import { getAvailableProducts } from "../services/GetService";
 import { cartContext } from "../context/CartContext";   //name of portal
 import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
+import { ProductContext } from "../context/ProductContext";
 import RenderProducts from "../components/RenderProducts";
 
 const Products = () => {
     //this state array contains all the product categories which have been checked filter checkboxes
     const [filterProductsArray , setFilterProductsArray] = useState([]) 
     const [productInfo,setProductInfo] = useState({products:[]})
+    const productValue = useContext(ProductContext)
     //this the Min Rating for rating filter in sidebar
-    const [ minRating , setMinRating] = useState(null)
-    console.log("The min rating currently is ",minRating)
+    console.log("The min rating currently is ",productValue.minRating)
     useEffect(() => {
         getAvailableProducts()
             .then(response => {
@@ -22,7 +23,7 @@ const Products = () => {
     return (
         <div id="full-products-page">
             <div id="product-filters">
-                <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray}  minRating={minRating} setMinRating={setMinRating}/>
+                <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray}/>
             </div>
             <div id="product-details-part">
                 <h3 className="product-headings">Available Products</h3>

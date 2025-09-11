@@ -6,7 +6,6 @@ import FilteredProducts from './FilteredProducts';
 //this file just brings all the different components here for rendering , nothing else !
 const RenderProducts = ({productInfo , filterProductsArray}) => {
     const [categoryProducts , setCategoryProducts] = useState([])
-    console.log("productInfo is : ",productInfo)
     useEffect(() => {
         if(filterProductsArray.length===0) {
             setCategoryProducts([])
@@ -35,3 +34,4 @@ const RenderProducts = ({productInfo , filterProductsArray}) => {
     }
 }
 export default RenderProducts
+//If filterProductsArray changes-> categoryProducts changes->Child re renders 
