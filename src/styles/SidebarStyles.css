@@ -8,7 +8,15 @@
     display: flex;
     gap: 10px;
 }
+#category-title {
+    font-size: 16px;
+    font-weight: bold;
+}
 #rating-title {
+    font-size: 16px;
+    font-weight: bold;
+}
+#price-filter-title {
     font-size: 16px;
     font-weight: bold;
 }

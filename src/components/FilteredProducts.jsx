@@ -1,23 +1,32 @@
 import { Link } from "react-router-dom"
 import { cartContext } from "../context/CartContext"
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import '../styles/AllProductsStyles.css'
 import { ProductContext } from "../context/ProductContext"
 const FilteredProducts = ({categoryProducts}) => {
     const cartHandler = useContext(cartContext)
-    const productValue = useContext(ProductContext)
+    const {minRating , calculateMinMax , selectedRange , minScaleValue , maxScaleValue} = useContext(ProductContext)
     console.log("the category products is ",categoryProducts)
     //visibleProducts just contains all the products based on the condition
     const visibleProducts = categoryProducts.map((item) => (
         item.data.products.filter((prod) => (
-            productValue.minRating === null || prod.rating >= productValue.minRating
+            minRating === null || prod.rating >= minRating
         ))
     ))
+    //visible products is an array of 'array of products'
+    const visibleProductsFinal = selectedRange[0] === minScaleValue && selectedRange[1] === maxScaleValue 
+        ? visibleProducts 
+        : visibleProducts.map((item) =>(
+            item.filter((prod) => (
+                selectedRange[0] <= prod.price && prod.price <= selectedRange[1]  
+            ))
+        ))
+    calculateMinMax(visibleProductsFinal)
     return (
         <div>
             <div className="product-grid">
                 {   
-                    visibleProducts.map((category) => (    
+                    visibleProductsFinal.map((category) => (    
                         category.map((prod) =>(
                             <Link key={prod.id} to={`/products/${prod.id}`} className="product-card-wrapper">
                                 <div key={prod.id} className="product-card">

@@ -2,6 +2,7 @@ import '../styles/SidebarStyles.css'
 import { getProductCategories } from '../services/GetService'
 import { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../context/ProductContext'
+import DoublePriceSlider from './DoublePriceSlider'
 const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
     const [ categories , setCategories] = useState([])
     const productValue = useContext(ProductContext)
@@ -102,7 +103,11 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                         }
                     </div>
                 </div>
-
+                <div id="price-filter">
+                    <div id="price-filter-title">Price</div>
+                    <DoublePriceSlider />
+                </div>
+                
 
                     
             <div>hey how are you </div>
