@@ -1,10 +1,10 @@
 import '../styles/RenderProductsStyles.css'
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { getAllTheCategoryItems } from '../services/GetService';
 import AllProducts from './AllProducts';
 import FilteredProducts from './FilteredProducts';
 //this file just brings all the different components here for rendering , nothing else !
-const RenderProducts = ({productInfo , filterProductsArray}) => {
+const RenderProducts = ({productInfo , filterProductsArray , selectedMinPrice , selectedMaxPrice , rangeError}) => {
     const [categoryProducts , setCategoryProducts] = useState([])
     useEffect(() => {
         if(filterProductsArray.length===0) {
@@ -21,15 +21,20 @@ const RenderProducts = ({productInfo , filterProductsArray}) => {
         .then(setCategoryProducts)  
         .catch(error => console.log("fetch failed ", error))
     },[filterProductsArray])
-
     if(filterProductsArray.length === 0) {  //then categoryProducts are empty
         return (
-            <AllProducts productInfo={productInfo} />
+            <AllProducts productInfo={productInfo} 
+                selectedMinPrice={selectedMinPrice} selectedMaxPrice={selectedMaxPrice}
+                rangeError={rangeError}
+            />
         )
     }
     else {
         return (
-            <FilteredProducts categoryProducts={categoryProducts}/>
+            <FilteredProducts categoryProducts={categoryProducts}  
+                selectedMinPrice={selectedMinPrice} selectedMaxPrice={selectedMaxPrice}
+                rangeError={rangeError}
+            />
         )
     }
 }

@@ -3,22 +3,18 @@ import '../styles/AllProductsStyles.css'
 import { cartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import { ProductContext } from '../context/ProductContext'
-const AllProducts = ({productInfo}) => {
+const AllProducts = ({productInfo , selectedMinPrice , selectedMaxPrice , rangeError}) => {
     const cartHandler=useContext(cartContext)
-    const {minRating , calculateMinMax , selectedRange , minScaleValue , maxScaleValue} = useContext(ProductContext)
+    const {minRating} = useContext(ProductContext)
     //const productValue = useContext(ProductContext)
     const visibleProducts = productInfo.products.filter ((item) => (
         minRating === null || item.rating >= minRating
     ))
-    //function will re calculate min max after every RenderProducts
-    console.log("DEBUG visible products is ",visibleProducts)
-    calculateMinMax(visibleProducts)
-    const visibleProductsFinal = selectedRange[0] === minScaleValue && selectedRange[1] === maxScaleValue
-        ? visibleProducts
-        : visibleProducts.filter(item =>
-            item.price >= selectedRange[0] && item.price <= selectedRange[1]
-        )
-
+    const visibleProductsFinal = rangeError !== '' ?
+        visibleProducts :   //no filtering
+        visibleProducts.filter((prod) => (
+            selectedMinPrice <= prod.price && prod.price <= selectedMaxPrice
+        ))
     return (
         <div className="product-grid">
             {    

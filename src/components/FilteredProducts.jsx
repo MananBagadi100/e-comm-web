@@ -3,9 +3,9 @@ import { cartContext } from "../context/CartContext"
 import { useContext, useEffect } from "react"
 import '../styles/AllProductsStyles.css'
 import { ProductContext } from "../context/ProductContext"
-const FilteredProducts = ({categoryProducts}) => {
+const FilteredProducts = ({categoryProducts , selectedMinPrice ,selectedMaxPrice ,rangeError}) => {
     const cartHandler = useContext(cartContext)
-    const {minRating , calculateMinMax , selectedRange , minScaleValue , maxScaleValue} = useContext(ProductContext)
+    const {minRating } = useContext(ProductContext)
     console.log("the category products is ",categoryProducts)
     //visibleProducts just contains all the products based on the condition
     const visibleProducts = categoryProducts.map((item) => (
@@ -14,14 +14,13 @@ const FilteredProducts = ({categoryProducts}) => {
         ))
     ))
     //visible products is an array of 'array of products'
-    const visibleProductsFinal = selectedRange[0] === minScaleValue && selectedRange[1] === maxScaleValue 
-        ? visibleProducts 
-        : visibleProducts.map((item) =>(
+    const visibleProductsFinal = rangeError !== '' ?    
+        visibleProducts :
+        visibleProducts.map((item) => (
             item.filter((prod) => (
-                selectedRange[0] <= prod.price && prod.price <= selectedRange[1]  
+                selectedMinPrice <= prod.price && prod.price <= selectedMaxPrice
             ))
         ))
-    calculateMinMax(visibleProductsFinal)
     return (
         <div>
             <div className="product-grid">

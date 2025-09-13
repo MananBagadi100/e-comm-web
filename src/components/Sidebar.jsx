@@ -2,10 +2,11 @@ import '../styles/SidebarStyles.css'
 import { getProductCategories } from '../services/GetService'
 import { useContext, useEffect, useState } from 'react'
 import { ProductContext } from '../context/ProductContext'
-import DoublePriceSlider from './DoublePriceSlider'
-const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
+// import DoublePriceSlider from './DoublePriceSlider'
+const Sidebar = ({filterProductsArray , setFilterProductsArray , updateMin , updateMax , rangeError , selectedMinPrice , selectedMaxPrice , handlePriceFilter , handleChange}) => {
     const [ categories , setCategories] = useState([])
-    const productValue = useContext(ProductContext)
+    const {minRating , setMinRating} = useContext(ProductContext)
+    // const productValue = useContext(ProductContext)
     function handleCategoryFilterChange (categoryObject) {
         const exists = filterProductsArray.find((item) => (item.slug === categoryObject.slug))
         if(exists) {    //checkbox is  already checked
@@ -68,8 +69,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                         type='radio'
                                         value=''
                                         name='rating-filter-options'
-                                        onChange={() =>productValue.setMinRating(null)}
-                                        checked={productValue.minRating === null}    //default value
+                                        onChange={() =>setMinRating(null)}
+                                        checked={minRating === null}    //default value
                                     />All Ratings
                                 </label><br />
                                 <label>
@@ -77,8 +78,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                         type='radio'
                                         value='4'      
                                         name='rating-filter-options'                  
-                                        checked={productValue.minRating === 4}                
-                                        onChange={() =>productValue.setMinRating(4)}
+                                        checked={minRating === 4}                
+                                        onChange={() =>setMinRating(4)}
                                     />⭐️⭐️⭐️⭐️ & up
                                 </label>
                                 <label><br />
@@ -86,8 +87,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                         type='radio'
                                         value='3'
                                         name='rating-filter-options'
-                                        checked={productValue.minRating === 3}
-                                        onChange={() =>productValue.setMinRating(3)}
+                                        checked={minRating === 3}
+                                        onChange={() =>setMinRating(3)}
                                     />⭐️⭐️⭐️ & up
                                 </label><br />
                                 <label>
@@ -95,8 +96,8 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                                         type='radio'
                                         value='2'         
                                         name='rating-filter-options'
-                                        checked={productValue.minRating === 2}
-                                        onChange={() =>productValue.setMinRating(2)}
+                                        checked={minRating === 2}
+                                        onChange={() =>setMinRating(2)}
                                     />⭐️⭐️ & up
                                 </label>
                             </form>
@@ -104,8 +105,32 @@ const Sidebar = ({filterProductsArray , setFilterProductsArray}) => {
                     </div>
                 </div>
                 <div id="price-filter">
-                    <div id="price-filter-title">Price</div>
-                    <DoublePriceSlider />
+                    <div id="price-filter-title">Price Range</div>
+                    <div id="price-filter-options">
+                        <form>
+                            <div id='price-filter-inputs'>
+                                <label>Min : 
+                                    <input
+                                        className='price-filter-box'
+                                        type='number'
+                                        value={selectedMinPrice}
+                                        name='price-range-to'
+                                        onChange={(e) => updateMin(e.target.value)}
+                                    />
+                                </label>
+                                <label>Max :
+                                    <input
+                                        className='price-filter-box'
+                                        type='number'
+                                        value={selectedMaxPrice}
+                                        name='price-range-from'
+                                        onChange={(e) => updateMax(e.target.value)}
+                                    />
+                                </label>
+                            </div>
+                            <div id='price-filter-warning'>{rangeError}</div>
+                        </form>
+                    </div>
                 </div>
                 
 
