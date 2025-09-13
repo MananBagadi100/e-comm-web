@@ -25,24 +25,6 @@ const Products = () => {
             setSelectedMaxPrice(maxDefaultPrice)
             return ([selectedMinPrice,selectedMaxPrice])
     }
-    // function handlePriceFilter () {
-
-        // console.log("I am inside the go onclick function starting")
-        // if(selectedMinPrice==='' || selectedMaxPrice==='') {   //user left empty values on both or either of them
-        //     //we will assign the stored default values of min and max for all products
-        //     setSelectedMinPrice(defaultPriceRangeValue[0])  
-        //     setSelectedMaxPrice(defaultPriceRangeValue[1])
-        //     setRangeError('Please fill both values for filtering')
-        // }
-        // else if(Number(selectedMinPrice) >= Number(selectedMaxPrice)) {  //lower value is given higher than upper value
-        //     setRangeError('From value must always be smaller than To value')
-        // }
-        // if(Number(selectedMinPrice) <= Number(selectedMaxPrice)) {   //ideal case
-        //     setRangeError('')
-        // }
-        // console.log("DEBUG I am in go onclick function")
-
-    
     function updateMin (value) {
         const newMin = value
         setSelectedMinPrice(value)
