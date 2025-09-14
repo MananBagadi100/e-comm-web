@@ -14,6 +14,7 @@
     --card-img-border: #e0ece4;
     --login-page-bg: #095440;
     --login-page-bg-secondnary:#8FBC8B;
+    --loading-animation-color:black;
 }
 html,body,:root {
     margin: 0px;

@@ -12,6 +12,7 @@ import Admin from './components/Admin'
 import Cart from './components/Cart'
 import ProductDetails from './components/ProductDetails.jsx'
 import Checkout from './components/Checkout.jsx'
+import Fallback from './pages/Fallback.jsx'
 
 function App() {
   
@@ -32,6 +33,7 @@ function App() {
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/checkout' element={<Checkout />} />
+                <Route path='*' element={<Fallback />} />  
             </Routes>
         </main>
         </BrowserRouter>

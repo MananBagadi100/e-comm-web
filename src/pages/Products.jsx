@@ -6,6 +6,8 @@ import { Link, NavLink } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import { ProductContext } from "../context/ProductContext";
 import RenderProducts from "../components/RenderProducts";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const Products = () => {
     //this state array contains all the product categories which have been checked filter checkboxes
@@ -77,36 +79,54 @@ const Products = () => {
         }
     },[productInfo.products])
 
-    
-    return (
-        <div id="full-products-page">
-            <div id="product-filters">
-                <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray} 
-                    updateMin={updateMin} 
-                    updateMax={updateMax} 
-                    // handlePriceFilter={handlePriceFilter}
-                    selectedMinPrice={selectedMinPrice}
-                    selectedMaxPrice={selectedMaxPrice}
-                    rangeError={rangeError}
-                    handleChange={handleChange}
+    if(productInfo.products.length === 0) {
+        return (
+            <Box
+                sx={{
+                    display: 'flex',
+                    justifyContent: 'center',   // center horizontally
+                    alignItems: 'center',       // center vertically
+                    height: '100vh'             // full viewport height
+                }}>
+                <CircularProgress 
+                    size="50px"
+                    sx={{color: 'var(--loading-animation-color)'}}    
                 />
-            </div>
-            <div id="product-details-part">
-                <h3 className="product-headings">Available Products</h3>
-                <div>
-                    <div className="product-filters-btn">
-                        <NavLink to="out-of-stock" className="tab-btn">
-                        Out of Stock
-                        </NavLink>
-                    </div>
-                    <RenderProducts productInfo={productInfo} filterProductsArray={filterProductsArray} 
-                        selectedMinPrice={selectedMinPrice} 
+            </Box>
+        )
+     }
+    else {
+        return (
+            <div id="full-products-page">
+                <div id="product-filters">
+                    <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray} 
+                        updateMin={updateMin} 
+                        updateMax={updateMax} 
+                        // handlePriceFilter={handlePriceFilter}
+                        selectedMinPrice={selectedMinPrice}
                         selectedMaxPrice={selectedMaxPrice}
                         rangeError={rangeError}
+                        handleChange={handleChange}
                     />
                 </div>
+                <div id="product-details-part">
+                    <h3 className="product-headings">Available Products</h3>
+                    <div>
+                        <div className="product-filters-btn">
+                            <NavLink to="out-of-stock" className="tab-btn">
+                            Out of Stock
+                            </NavLink>
+                        </div>
+                        <RenderProducts productInfo={productInfo} filterProductsArray={filterProductsArray} 
+                            selectedMinPrice={selectedMinPrice} 
+                            selectedMaxPrice={selectedMaxPrice}
+                            rangeError={rangeError}
+                        />
+                    </div>
+                </div>
             </div>
-        </div>
-    )
+        )
+    }
+    
 }
 export default Products
