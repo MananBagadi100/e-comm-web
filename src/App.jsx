@@ -4,7 +4,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import ContactUs from './pages/ContactUs'
 import Login from './pages/Login'
-import {ProductProvider} from './context/ProductContext.jsx'
+import Products from './pages/Products.jsx'
 import OutofStock from './components/OutofStock'
 import Navbar from './components/Navbar'
 import UserDetails from './components/UserDetails'
@@ -25,7 +25,7 @@ function App() {
         <main className='page-contents'>
             <Routes>
                 <Route path='/' element={<Home />} />
-                <Route path='/products' element={<ProductProvider />} />
+                <Route path='/products' element={<Products />} />
                 <Route path='/products/:product_id' element={<ProductDetails />} />
                 <Route path='/products/out-of-stock' element={<OutofStock />} />
                 <Route path='/about-us' element={<About />} />
@@ -33,7 +33,7 @@ function App() {
                 <Route path='/cart' element={<Cart />} />
                 <Route path='/login' element={<Login />} />
                 <Route path='/checkout' element={<Checkout />} />
-                <Route path='*' element={<Fallback />} />  
+                <Route path='/*' element={<Fallback />} />  
             </Routes>
         </main>
         </BrowserRouter>

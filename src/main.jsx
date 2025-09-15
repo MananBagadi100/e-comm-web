@@ -5,16 +5,19 @@ import App from './App.jsx'
 import { ContextProvider } from './context/context_pro.jsx'
 import { CartProvider } from './context/CartContext.jsx'
 import { LoginProvider } from './context/LoginContext.jsx'
+import { ProductProvider } from './context/ProductContext.jsx'
 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <LoginProvider>
-    <CartProvider>
-    <ContextProvider>
-      <App />
-    </ContextProvider>
-    </CartProvider>
+      <CartProvider>
+        <ProductProvider>
+          <ContextProvider>
+            <App />
+          </ContextProvider>
+        </ProductProvider>
+      </CartProvider>
     </LoginProvider>
   </StrictMode>,
 )
