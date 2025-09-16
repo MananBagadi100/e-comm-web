@@ -12,10 +12,13 @@
     --card-shadow-hover: rgba(21,92,54,0.16);
     --card-img-bg: #e5f2ea;
     --card-img-border: #e0ece4;
+    --product-prices-color:rgb(69, 98, 25);
     --login-page-bg: #095440;
     --login-page-bg-secondnary:#8FBC8B;
     --loading-animation-color:black;
     --top-categories-bg:peachpuff;
+    --featured-products-bg:rgb(255, 213, 117);
+    --cust-testimonials-bg:rgb(134, 134, 134);
 }
 html,body,:root {
     margin: 0px;
