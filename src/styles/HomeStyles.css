@@ -176,6 +176,12 @@
   align-items: center;
   text-align: left;
 }
+#home-contact-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 12px 0px;
+}
 @media (max-width: 600px) {
   .page-contents { padding: 0 !important; }
 
@@ -329,5 +335,16 @@
     display: flex;
     align-items: center;
     text-align: left;
+  }
+  #home-contact-section {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin: 12px 0px;
+  }
+  #home-contact-section-wrapper {
+    width: fit-content;
+    
   }
 }

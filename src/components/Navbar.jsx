@@ -54,7 +54,7 @@ const Navbar = ()=> {
             >
                 ⏹️
             </button>
-            <ul className={`nav-list${menuOpen ? 'open' : ''}`}>
+            <ul className={`nav-list ${menuOpen ? 'open' : ''}`}>
                 {navItems.map((items)=>(
                     <li key={items.path} className='nav-item'>
                         <NavLink to={items.path} onClick={() => setMenuOpen(false)}>
@@ -63,7 +63,7 @@ const Navbar = ()=> {
                     </li>
                 ))}
             </ul>
-            <ul className={`nav-btn-list${menuOpen ? 'open' : ''}`}>
+            <ul className={`nav-btn-list ${menuOpen ? 'open' : ''}`}>
                 <li key='/login' className='nav-btn-item'>
                     <NavLink to='/login' onClick={() => setMenuOpen(false)}>
                         {loginBTnValue}

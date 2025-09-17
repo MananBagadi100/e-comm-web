@@ -80,7 +80,6 @@ const Home= () => {
                             </div>
                         </div>
                     </div>
-                    //------------------------------------
                     <div id="home-customer-testimonials-main-title">
                         Customer Testimonials
                     </div>
@@ -114,8 +113,8 @@ const Home= () => {
                         </div>
                     </div>
                     <div id="home-contact-section">
-                        <div id="contact-section-wrapper">Any Questions ? Contact us at
-                            <Link>example@gmail.com</Link>
+                        <div id="contact-section-wrapper">Any Questions ? Contact us at 
+                            <Link> example@gmail.com</Link>
                         </div>
                     </div>
                 </div>
