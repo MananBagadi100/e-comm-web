@@ -5,7 +5,7 @@ import '../styles/AllProductsStyles.css'
 import { ProductContext } from "../context/ProductContext"
 const FilteredProducts = ({categoryProducts , selectedMinPrice ,selectedMaxPrice ,rangeError}) => {
     const cartHandler = useContext(cartContext)
-    const {minRating } = useContext(ProductContext)
+    const {minRating , SortProducts} = useContext(ProductContext)
     console.log("the category products is ",categoryProducts)
     //visibleProducts just contains all the products based on the condition
     const visibleProducts = categoryProducts.map((item) => (
@@ -21,45 +21,15 @@ const FilteredProducts = ({categoryProducts , selectedMinPrice ,selectedMaxPrice
                 selectedMinPrice <= prod.price && prod.price <= selectedMaxPrice
             ))
         ))
+        console.log("the flat visibleProductsFinal is ", visibleProductsFinal.flat())
+    const sortedVisibleProductsFinal = SortProducts(visibleProductsFinal.flat())
     return (
-        <div>
-            <div className="product-grid">
-                {   
-                    visibleProductsFinal.map((category) => (    
-                        category.map((prod) =>(
-                            <Link key={prod.id} to={`/products/${prod.id}`} className="product-card-wrapper">
-                                <div key={prod.id} className="product-card">
-                                    <img src={prod.images[0]} alt="Image not given" />
-                                    <div className="">ID : {prod.id}</div>
-                                    <div className="product-id">Title: {prod.title}</div>
-                                    <div className="product-title">Price : {prod.price}</div>
-                                    <div className="product-rating">Rating : {prod.rating}</div>
-                                    <div className="product-brand">Brand : {prod.brand}</div>
-                                    <button 
-                                        className="cart-btn" 
-                                            onClick={(e)=>{
-                                                e.preventDefault()
-                                                e.stopPropagation()
-                                                cartHandler.addToCart(prod)
-                                            }}>Add to cart
-                                    </button>
-                                </div>
-                            </Link>
-                        ))
-                    ))
-                }
-            </div>
-        </div>
-    )
-}
-export default FilteredProducts
-{/* <div className="product-grid">
-                {    
-                    
-                        
-                        <Link key={item.slug} to={`/products/${item.id}`} className="product-card-wrapper">
-                            <div key={item.id} className="product-card">
-                                <img src={item.images[0]} alt="Image not given" />
+        <div className="product-grid">
+            {    
+                sortedVisibleProductsFinal && sortedVisibleProductsFinal.map((item) => (
+                    <Link key={item.id} to={`/products/${item.id}`} className="product-card-wrapper">
+                        <div key={item.id} className="product-card">
+                            <img src={item.images[0]} alt="Image not given" />
                                 <div className="">ID : {item.id}</div>
                                 <div className="product-id">Title: {item.title}</div>
                                 <div className="product-title">Price : {item.price}</div>
@@ -67,14 +37,17 @@ export default FilteredProducts
                                 <div className="product-brand">Brand : {item.brand}</div>
                                 <button 
                                     className="cart-btn" 
-                                        onClick={(e)=>{
-                                            e.preventDefault()
-                                            e.stopPropagation()
-                                            cartHandler.addToCart(item)
+                                    onClick={(e)=>{
+                                        e.preventDefault()
+                                        e.stopPropagation()
+                                        cartHandler.addToCart(item)
                                         }}>Add to cart
                                 </button>
-                            </div>
-                        </Link>
-                    
-                }  
-           </div>  */}
+                        </div>
+                    </Link>
+                ))
+            }  
+        </div>
+    )
+}
+export default FilteredProducts

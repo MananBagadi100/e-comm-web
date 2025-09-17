@@ -12,6 +12,7 @@ import Box from '@mui/material/Box';
 const Products = () => {
     //this state array contains all the product categories which have been checked filter checkboxes
     const [filterProductsArray , setFilterProductsArray] = useState([]) 
+    //state for storing all the products
     const [productInfo,setProductInfo] = useState({products:[]})
     const productValue = useContext(ProductContext)
     //new code HERE !
@@ -19,6 +20,7 @@ const Products = () => {
     const [selectedMaxPrice , setSelectedMaxPrice] = useState(["1"])    //higher value of price filter
     const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"])
     const [rangeError , setRangeError] = useState('')
+    const {sort , setSort} = useContext(ProductContext)
     function calculateMinMaxAllProducts(products) {
         const productPrices = products.map((item) => item.price)
             const minDefaultPrice = Math.min(...productPrices)
@@ -113,9 +115,17 @@ const Products = () => {
                     <h3 className="product-headings">Available Products</h3>
                     <div>
                         <div className="product-filters-btn">
-                            <NavLink to="out-of-stock" className="tab-btn">
-                            Out of Stock
-                            </NavLink>
+                            <select 
+                                value={sort}
+                                onChange={(e) => {
+                                    setSort(e.target.value)
+                                }}>
+                                <option value=''>Relevance</option>
+                                <option value='price_asc'>Price : Low → High</option>
+                                <option value='price_desc'>Price : High → Low</option>
+                                <option value='rating_asc'>Rating : Low → High</option>
+                                <option value='rating_desc'>Rating : High → Low</option>
+                            </select>
                         </div>
                         <RenderProducts productInfo={productInfo} filterProductsArray={filterProductsArray} 
                             selectedMinPrice={selectedMinPrice} 

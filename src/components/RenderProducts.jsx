@@ -4,7 +4,7 @@ import { getAllTheCategoryItems } from '../services/GetService';
 import AllProducts from './AllProducts';
 import FilteredProducts from './FilteredProducts';
 //this file just brings all the different components here for rendering , nothing else !
-const RenderProducts = ({productInfo , filterProductsArray , selectedMinPrice , selectedMaxPrice , rangeError}) => {
+const RenderProducts = ({productInfo , filterProductsArray , selectedMinPrice , selectedMaxPrice , rangeError }) => {
     const [categoryProducts , setCategoryProducts] = useState([])
     useEffect(() => {
         if(filterProductsArray.length===0) {

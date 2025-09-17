@@ -3,9 +3,9 @@ import '../styles/AllProductsStyles.css'
 import { cartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import { ProductContext } from '../context/ProductContext'
-const AllProducts = ({productInfo , selectedMinPrice , selectedMaxPrice , rangeError}) => {
+const AllProducts = ({productInfo , selectedMinPrice , selectedMaxPrice , rangeError }) => {
     const cartHandler=useContext(cartContext)
-    const {minRating} = useContext(ProductContext)
+    const {minRating , SortProducts} = useContext(ProductContext)
     //const productValue = useContext(ProductContext)
     const visibleProducts = productInfo.products.filter ((item) => (
         minRating === null || item.rating >= minRating
@@ -15,10 +15,11 @@ const AllProducts = ({productInfo , selectedMinPrice , selectedMaxPrice , rangeE
         visibleProducts.filter((prod) => (
             selectedMinPrice <= prod.price && prod.price <= selectedMaxPrice
         ))
+    const sortedVisibleProductsFinal = SortProducts(visibleProductsFinal)
     return (
         <div className="product-grid">
             {    
-                visibleProductsFinal && visibleProductsFinal.map((item) => (
+                sortedVisibleProductsFinal && sortedVisibleProductsFinal.map((item) => (
                     <Link key={item.id} to={`/products/${item.id}`} className="product-card-wrapper">
                         <div key={item.id} className="product-card">
                             <img src={item.images[0]} alt="Image not given" />

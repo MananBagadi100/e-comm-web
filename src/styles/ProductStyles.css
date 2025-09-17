@@ -22,3 +22,8 @@
   height: 100vh;
   overflow-y: auto;
 }
+.product-filters-btn {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
