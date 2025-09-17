@@ -1,0 +1,4 @@
+#footer-full-container {
+    background-color: var(--nav-bg);
+    min-height: 50px;
+}
