@@ -16,49 +16,52 @@ const Products = () => {
     const [productInfo,setProductInfo] = useState({products:[]})
     const productValue = useContext(ProductContext)
     //new code HERE !
-    const [selectedMinPrice , setSelectedMinPrice] = useState(["0"])    //lower value of price filter
-    const [selectedMaxPrice , setSelectedMaxPrice] = useState(["1"])    //higher value of price filter
-    const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"])
+    const [selectedMinPrice , setSelectedMinPrice] = useState(["0"])    //lower value of price filter (string)
+    const [selectedMaxPrice , setSelectedMaxPrice] = useState(["1"])    //higher value of price filter (string)
+    const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"]) //string
     const [rangeError , setRangeError] = useState('')
     const {sort , setSort} = useContext(ProductContext)
+
     function calculateMinMaxAllProducts(products) {
         const productPrices = products.map((item) => item.price)
-            const minDefaultPrice = Math.min(...productPrices)
-            const maxDefaultPrice = Math.max(...productPrices)
-            setSelectedMinPrice(minDefaultPrice)
-            setSelectedMaxPrice(maxDefaultPrice)
-            return ([selectedMinPrice,selectedMaxPrice])
+        const minDefaultPrice = Math.min(...productPrices)
+        const maxDefaultPrice = Math.max(...productPrices)
+        setSelectedMinPrice(minDefaultPrice.toString())
+        setSelectedMaxPrice(maxDefaultPrice.toString())
+        return ([selectedMinPrice,selectedMaxPrice]) // return “stale” state intentionally
     }
+
     function updateMin (value) {
-        const newMin = value
-        setSelectedMinPrice(value)
+        setSelectedMinPrice(value)   // keep as string
     }
+
     function updateMax (value) {
-        const newMax = value
-        setSelectedMaxPrice(value)
+        setSelectedMaxPrice(value)   // keep as string
     }
+
     function handleChange() {
-        if(selectedMinPrice < selectedMaxPrice) {
+        if(+selectedMinPrice < +selectedMaxPrice) {
             setRangeError('')
         }
-        else if(selectedMinPrice >= selectedMaxPrice) {
+        else if(+selectedMinPrice >= +selectedMaxPrice) {
             setRangeError('Min value must be smaller than Max value')
         }
         else if(selectedMinPrice==='' || selectedMaxPrice==='') {
             setRangeError('Please fill both the values')
         }
     }
+
     useEffect(() => {
-    // run every time either box changes
-    if (selectedMinPrice === '' || selectedMaxPrice === '') {
-        setRangeError('Please fill both values');
-    } 
-    else if (+selectedMinPrice >= +selectedMaxPrice) {
-        setRangeError('Min value must be smaller than Max');
-    } 
-    else {
-        setRangeError('');                // perfect ➜ no warning
-    }
+        // run every time either box changes
+        if (selectedMinPrice === '' || selectedMaxPrice === '') {
+            setRangeError('Please fill both values');
+        } 
+        else if (+selectedMinPrice >= +selectedMaxPrice) {
+            setRangeError('Min value must be smaller than Max');
+        } 
+        else {
+            setRangeError('');                // perfect ➜ no warning
+        }
     }, [selectedMinPrice, selectedMaxPrice])
 
     //this the Min Rating for rating filter in sidebar
@@ -101,10 +104,11 @@ const Products = () => {
         return (
             <div id="full-products-page">
                 <div id="product-filters">
-                    <Sidebar filterProductsArray={filterProductsArray} setFilterProductsArray={setFilterProductsArray} 
+                    <Sidebar 
+                        filterProductsArray={filterProductsArray} 
+                        setFilterProductsArray={setFilterProductsArray} 
                         updateMin={updateMin} 
                         updateMax={updateMax} 
-                        // handlePriceFilter={handlePriceFilter}
                         selectedMinPrice={selectedMinPrice}
                         selectedMaxPrice={selectedMaxPrice}
                         rangeError={rangeError}
@@ -127,7 +131,9 @@ const Products = () => {
                                 <option value='rating_desc'>Rating : High → Low</option>
                             </select>
                         </div>
-                        <RenderProducts productInfo={productInfo} filterProductsArray={filterProductsArray} 
+                        <RenderProducts 
+                            productInfo={productInfo} 
+                            filterProductsArray={filterProductsArray} 
                             selectedMinPrice={selectedMinPrice} 
                             selectedMaxPrice={selectedMaxPrice}
                             rangeError={rangeError}
