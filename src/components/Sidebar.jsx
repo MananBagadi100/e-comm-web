@@ -51,11 +51,9 @@ const Sidebar = ({
                 ));
               }
             }
-            console.log(finalResponse)
         }
         fetchData()
     },[searchParams])
-    console.log("the filterProductsArray is ",filterProductsArray)
 
     return (
         <div id="main-content-area">
