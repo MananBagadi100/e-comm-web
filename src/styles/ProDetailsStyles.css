@@ -86,7 +86,7 @@
   width: 100%;
   height: auto;
   object-fit: contain;   /* never overflow; no cropping */
-  background-color: var(--product-bg-color);
+  background-color: var(--product-card-bg-color);
   border-radius: 12px;
 }
 

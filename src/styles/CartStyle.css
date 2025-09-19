@@ -41,7 +41,7 @@
 .cart-card {
   display: flex;
   align-items: center;
-  background: var(--product-bg-color, #fff); /* Card bg variable with fallback */
+  background: var(--product-card-bg-color, #fff); /* Card bg variable with fallback */
   border-radius: 14px;
   box-shadow: 0 2px 16px var(--card-shadow, rgba(80, 0, 0, 0.06));
   padding: 22px 30px;

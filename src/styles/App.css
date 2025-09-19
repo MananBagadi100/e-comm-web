@@ -4,20 +4,17 @@
     --nav-bg: #064232;
     --btn-bg: #568F87;
     --btn-txt: #FFF5F2;
-    --tab-filter-btn-active: yellow;  /*for all the filter buttons*/
     --primary-btn-hover-color: 1px solid blue;
-    --product-bg-color: #fcfcfd;  /* Each Product or Card bg */
+    --product-card-bg-color: #fcfcfd;  /* Each Product or Card bg */
     --card-border: #d2e7d3;
     --card-shadow: rgba(21,92,54,0.09);
     --card-shadow-hover: rgba(21,92,54,0.16);
     --card-img-bg: #e5f2ea;
-    --card-img-border: #e0ece4;
     --product-prices-color:rgb(69, 98, 25);
     --login-page-bg: #095440;
     --login-page-bg-secondnary:#8FBC8B;
     --loading-animation-color:black;
     --top-categories-bg:peachpuff;
-    --featured-products-bg:rgb(255, 213, 117);
     --cust-testimonials-bg:rgb(134, 134, 134);
 }
 html,body,:root {
@@ -41,7 +38,7 @@ html,body,:root {
 }
 .dark-theme {
     --bg-color: white;
-    --product-bg-color: purple;
+    --product-card-bg-color: purple;
 }
 html, body {
     width: 100vw;

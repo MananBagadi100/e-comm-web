@@ -100,7 +100,7 @@ a.boss-best:active {
     width: 100%;
     max-width: 100%;
     height: auto;
-    background-color: var(--featured-products-bg);
+    background-color: var(--top-categories-bg);   
     display: flex;
     flex-direction: column;
     padding: 12px 8px;

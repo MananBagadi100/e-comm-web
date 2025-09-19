@@ -7,7 +7,7 @@
 }
 
 .product-card {
-  background: var(--product-bg-color);
+  background: var(--product-card-bg-color);
   border-radius: 14px;
   border: 1.5px solid var(--card-border);
   box-shadow: 0 2px 10px var(--card-shadow);
@@ -30,7 +30,6 @@
   object-fit: cover;
   border-radius: 11px;
   margin-bottom: 14px;
-  border: 1px solid var(--card-img-border);
   background: var(--card-img-bg);     
 }
 
