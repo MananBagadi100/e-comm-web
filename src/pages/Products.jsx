@@ -8,9 +8,12 @@ import { ProductContext } from "../context/ProductContext";
 import RenderProducts from "../components/RenderProducts";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer'
+import Drawer from '@mui/material/Drawer'
+import MenuIcon from '@mui/icons-material/Menu';
 
 const Products = () => {
+    //this state stores the status of sidedrawer , that is open or close
+    const [sideDrawerStatus , setSideDrawerStatus] = useState(false)
     //this state array contains all the product categories which have been checked filter checkboxes
     const [filterProductsArray , setFilterProductsArray] = useState([]) 
     //state for storing all the products
@@ -22,6 +25,10 @@ const Products = () => {
     const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"]) //string
     const [rangeError , setRangeError] = useState('')
     const {sort , setSort} = useContext(ProductContext)
+    const detailsRef = useRef(null)
+    function toggleDrawer (open) {
+        setSideDrawerStatus(open)
+    }
 
     function calculateMinMaxAllProducts(products) {
         const productPrices = products.map((item) => item.price)
@@ -66,7 +73,7 @@ const Products = () => {
     }, [selectedMinPrice, selectedMaxPrice])
 
     //this the Min Rating for rating filter in sidebar
-    console.log("The min rating currently is ",productValue.minRating)
+    // console.log("The min rating currently is ",productValue.minRating)
     useEffect(() => {
         getAvailableProducts()
             .then(response => {
@@ -104,7 +111,7 @@ const Products = () => {
     else {
         return (
             <div id="full-products-page">
-                <div id="product-filters">
+                {/* <div id="product-filters">
                     <Sidebar 
                         filterProductsArray={filterProductsArray} 
                         setFilterProductsArray={setFilterProductsArray} 
@@ -115,32 +122,54 @@ const Products = () => {
                         rangeError={rangeError}
                         handleChange={handleChange}
                     />
-                </div>
-                <div id="product-details-part">
-                    <h3 className="product-headings">Available Products</h3>
-                    <div>
-                        <div className="product-filters-btn">
-                            <select 
-                                value={sort}
-                                onChange={(e) => {
-                                    setSort(e.target.value)
-                                }}>
-                                <option value=''>Relevance</option>
-                                <option value='price_asc'>Price : Low → High</option>
-                                <option value='price_desc'>Price : High → Low</option>
-                                <option value='rating_asc'>Rating : Low → High</option>
-                                <option value='rating_desc'>Rating : High → Low</option>
-                            </select>
-                        </div>
-                        <RenderProducts 
-                            productInfo={productInfo} 
-                            filterProductsArray={filterProductsArray} 
-                            selectedMinPrice={selectedMinPrice} 
-                            selectedMaxPrice={selectedMaxPrice}
-                            rangeError={rangeError}
-                        />
+                </div> */}
+                <div id="product-title-part">
+                    <div id="product-filters-btn-wrapper" ref={detailsRef}>
+                        <button id="product-filters-toggle-btn" onClick={() => toggleDrawer(true)}>
+                            <MenuIcon sx={{ color: 'var(--btn-txt)' }}/>
+                        </button>
                     </div>
+                    <h3 id="product-headings">Available Products</h3>
                 </div>
+                <div className="product-sorting-filters-btn">
+                    <select 
+                        value={sort}
+                        onChange={(e) => {
+                            setSort(e.target.value)
+                        }}>
+                        <option value=''>Relevance</option>
+                        <option value='price_asc'>Price : Low → High</option>
+                        <option value='price_desc'>Price : High → Low</option>
+                        <option value='rating_asc'>Rating : Low → High</option>
+                        <option value='rating_desc'>Rating : High → Low</option>
+                    </select>
+                </div>
+                    <div id="product-details">
+                        <Drawer
+                            variant='persistant'
+                            anchor='left'
+                            open={sideDrawerStatus}
+                            container={detailsRef.current}     // 👈 restricts it inside #product-details
+                            sx={{ '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' } }}
+                        >
+                            <Box sx={{ p: 2 }}>
+                                <button onClick={() => toggleDrawer(false)}>Close</button>
+                                Sidebar content here
+                            </Box>
+                            hi how are you 
+                        </Drawer>
+                        <div style={{ flex: 1 }}>
+                            <RenderProducts 
+                                productInfo={productInfo} 
+                                filterProductsArray={filterProductsArray} 
+                                selectedMinPrice={selectedMinPrice} 
+                                selectedMaxPrice={selectedMaxPrice}
+                                rangeError={rangeError}
+                            />
+                        </div>
+                        
+                </div>
+                
             </div>
         )
     }

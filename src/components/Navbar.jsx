@@ -5,17 +5,6 @@ import { LoginContext } from '../context/LoginContext'
 const Navbar = ()=> {
     const [menuOpen , setMenuOpen] =useState(false) //this is for dropdown menu state for mobile devices
     const toggleMenu = () => {setMenuOpen(!menuOpen)}   //function to open and close menu in mobile devices
-    // <nav className='navbar'>
-    //     {/* Hamburger icon only for mobile */}
-    //     <button className="nav-hamburger" onClick={toggleMenu}>☰</button>
-
-    //     <ul className={`nav-list ${menuOpen ? 'open' : ''}`}>
-    //         {/* ...nav items */}
-    //     </ul>
-    //     <ul className='nav-btn-list'>
-    //         {/* ...login/theme */}
-    //     </ul>
-    // </nav>
     const navItems = [
         {path: '/' , label:'Home'},
         {path: '/products' , label: 'Products'},
