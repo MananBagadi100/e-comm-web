@@ -9,7 +9,7 @@
 
 /* ---------- green card ---------- */
 .login-container{
-  background:var(--login-page-bg,#004033);
+  background:var(--nav-bg,#004033);
   color:var(--text-color,#fff);
   width:min(420px,90vw);
   padding:32px 28px 36px;    /* extra bottom removed */
@@ -27,6 +27,7 @@
   text-align:center;
   font-size:1.35rem;
   font-weight:700;
+  color: var(--btn-txt);
 }
 
 /* ---------- input rows ---------- */
@@ -41,6 +42,7 @@
   display:flex;
   align-items:center;
   gap:16px;                  /* label ↔ input */
+  color: var(--btn-txt);
 }
 
 .name-container label,
@@ -53,7 +55,7 @@
 .password-container input{
   flex:1 1 0;
   padding:8px 12px;
-  border:2px solid var(--login-page-bg,#004033);
+  border:2px solid var(--nav-bg,#004033);
   border-radius:6px;
   font-size:1rem;
 }
@@ -79,6 +81,7 @@
   text-align:center;
   font-size:.95rem;
   margin-top:6px;
+  color: var(--btn-txt);
 }
 .registration-link a{
   color:var(--btn-bg,#4f7f7a);

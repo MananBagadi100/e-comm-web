@@ -41,7 +41,7 @@
 #home-customer-testimonials-options {
   width: 100%;
   max-width: 100%;
-  background-color: var(--cust-testimonials-bg);
+  background-color: var(--top-categories-bg);
   display: flex;
   flex-direction: row;
   padding: 16px 8px;
@@ -155,7 +155,7 @@
   #home-customer-testimonials-options {
     width: 100%;
     max-width: 100%;
-    background-color: var(--cust-testimonials-bg);
+    background-color: var(--top-categories-bg);
     display: flex;
     flex-direction: column;
     padding: 16px 8px;
