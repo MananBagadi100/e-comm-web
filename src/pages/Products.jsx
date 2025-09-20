@@ -25,6 +25,7 @@ const Products = () => {
     const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"]) //string
     const [rangeError , setRangeError] = useState('')
     const {sort , setSort} = useContext(ProductContext)
+    const [filtersOpen, setFiltersOpen] = useState(false);
     const detailsRef = useRef(null)
     function toggleDrawer (open) {
         setSideDrawerStatus(open)
@@ -125,52 +126,43 @@ const Products = () => {
                 </div> */}
                 <div id="product-title-part">
                     <div id="product-filters-btn-wrapper" ref={detailsRef}>
-                        <button id="product-filters-toggle-btn" onClick={() => toggleDrawer(true)}>
+                        <button id="product-filters-toggle-btn" onClick={() => setFiltersOpen(!filtersOpen)}>
                             <MenuIcon sx={{ color: 'var(--btn-txt)' }}/>
                         </button>
                     </div>
                     <h3 id="product-headings">Available Products</h3>
                 </div>
-                <div className="product-sorting-filters-btn">
-                    <select 
-                        value={sort}
-                        onChange={(e) => {
-                            setSort(e.target.value)
-                        }}>
-                        <option value=''>Relevance</option>
-                        <option value='price_asc'>Price : Low → High</option>
-                        <option value='price_desc'>Price : High → Low</option>
-                        <option value='rating_asc'>Rating : Low → High</option>
-                        <option value='rating_desc'>Rating : High → Low</option>
-                    </select>
-                </div>
-                    <div id="product-details">
-                        <Drawer
-                            variant='persistant'
-                            anchor='left'
-                            open={sideDrawerStatus}
-                            container={detailsRef.current}     // 👈 restricts it inside #product-details
-                            sx={{ '& .MuiDrawer-paper': { width: 240, boxSizing: 'border-box' } }}
-                        >
-                            <Box sx={{ p: 2 }}>
-                                <button onClick={() => toggleDrawer(false)}>Close</button>
-                                Sidebar content here
-                            </Box>
-                            hi how are you 
-                        </Drawer>
-                        <div style={{ flex: 1 }}>
-                            <RenderProducts 
-                                productInfo={productInfo} 
-                                filterProductsArray={filterProductsArray} 
-                                selectedMinPrice={selectedMinPrice} 
-                                selectedMaxPrice={selectedMaxPrice}
-                                rangeError={rangeError}
-                            />
-                        </div>
-                        
-                </div>
-                
+                <div id="product-details" className={filtersOpen ? 'sidebar-open' : ''}>
+                    <div id="details-sidebar">
+                        {/* <div id="product-details-sidebar-header">
+                            <button id="product-sidebar-close-btn" onClick={() => setFiltersOpen(false)}>Close</button>
+                        </div> */}
+                        {/* <div id="product-filters"> */}
+                        <Sidebar 
+                            filterProductsArray={filterProductsArray} 
+                            setFilterProductsArray={setFilterProductsArray} 
+                            updateMin={updateMin} 
+                            updateMax={updateMax} 
+                            selectedMinPrice={selectedMinPrice}
+                            selectedMaxPrice={selectedMaxPrice}
+                            rangeError={rangeError}
+                            handleChange={handleChange}
+                        />
+                        {/* </div> */}
+                    </div>
+                    <div className="details-content" style={{ flex: 1 }}>
+                        <RenderProducts 
+                            productInfo={productInfo} 
+                            filterProductsArray={filterProductsArray} 
+                            selectedMinPrice={selectedMinPrice} 
+                            selectedMaxPrice={selectedMaxPrice}
+                            rangeError={rangeError}
+                        />
+                    </div>
+                    
             </div>
+            
+        </div>
         )
     }
     
