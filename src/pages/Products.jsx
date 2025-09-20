@@ -12,8 +12,6 @@ import Drawer from '@mui/material/Drawer'
 import MenuIcon from '@mui/icons-material/Menu';
 
 const Products = () => {
-    //this state stores the status of sidedrawer , that is open or close
-    const [sideDrawerStatus , setSideDrawerStatus] = useState(false)
     //this state array contains all the product categories which have been checked filter checkboxes
     const [filterProductsArray , setFilterProductsArray] = useState([]) 
     //state for storing all the products
@@ -25,11 +23,9 @@ const Products = () => {
     const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"]) //string
     const [rangeError , setRangeError] = useState('')
     const {sort , setSort} = useContext(ProductContext)
+    //state for keeping track of the sidebar , open or close
     const [filtersOpen, setFiltersOpen] = useState(false);
     const detailsRef = useRef(null)
-    function toggleDrawer (open) {
-        setSideDrawerStatus(open)
-    }
 
     function calculateMinMaxAllProducts(products) {
         const productPrices = products.map((item) => item.price)
@@ -108,22 +104,10 @@ const Products = () => {
                 />
             </Box>
         )
-     }
+    }
     else {
         return (
             <div id="full-products-page">
-                {/* <div id="product-filters">
-                    <Sidebar 
-                        filterProductsArray={filterProductsArray} 
-                        setFilterProductsArray={setFilterProductsArray} 
-                        updateMin={updateMin} 
-                        updateMax={updateMax} 
-                        selectedMinPrice={selectedMinPrice}
-                        selectedMaxPrice={selectedMaxPrice}
-                        rangeError={rangeError}
-                        handleChange={handleChange}
-                    />
-                </div> */}
                 <div id="product-title-part">
                     <div id="product-filters-btn-wrapper" ref={detailsRef}>
                         <button id="product-filters-toggle-btn" onClick={() => setFiltersOpen(!filtersOpen)}>
@@ -134,10 +118,6 @@ const Products = () => {
                 </div>
                 <div id="product-details" className={filtersOpen ? 'sidebar-open' : ''}>
                     <div id="details-sidebar">
-                        {/* <div id="product-details-sidebar-header">
-                            <button id="product-sidebar-close-btn" onClick={() => setFiltersOpen(false)}>Close</button>
-                        </div> */}
-                        {/* <div id="product-filters"> */}
                         <Sidebar 
                             filterProductsArray={filterProductsArray} 
                             setFilterProductsArray={setFilterProductsArray} 
@@ -148,7 +128,6 @@ const Products = () => {
                             rangeError={rangeError}
                             handleChange={handleChange}
                         />
-                        {/* </div> */}
                     </div>
                     <div className="details-content" style={{ flex: 1 }}>
                         <RenderProducts 
@@ -158,10 +137,8 @@ const Products = () => {
                             selectedMaxPrice={selectedMaxPrice}
                             rangeError={rangeError}
                         />
-                    </div>
-                    
+                    </div>    
             </div>
-            
         </div>
         )
     }
