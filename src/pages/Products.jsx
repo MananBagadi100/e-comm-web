@@ -8,6 +8,7 @@ import { ProductContext } from "../context/ProductContext";
 import RenderProducts from "../components/RenderProducts";
 import CircularProgress from '@mui/material/CircularProgress';
 import Box from '@mui/material/Box';
+import SwipeableDrawer from '@mui/material/SwipeableDrawer'
 
 const Products = () => {
     //this state array contains all the product categories which have been checked filter checkboxes
