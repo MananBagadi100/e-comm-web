@@ -8,14 +8,6 @@
   display: flex;
   flex-direction: column;
 }
-/* #product-filters {
-  top: 0px;
-  position: sticky;
-  flex: 0 0 240px;
-  overflow-y: auto;
-  align-self: flex-start;
-  height: 100vh;
-} */
 /* here we change*/
 #product-title-part {
   display: flex;
