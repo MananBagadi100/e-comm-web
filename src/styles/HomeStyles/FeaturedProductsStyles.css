@@ -29,7 +29,6 @@
 }
 .home-featured-product-card,
 .boss-best{
-    border: 1px solid black;
     height: 400px;
     display: flex;
     flex-direction: column;
@@ -37,6 +36,9 @@
     border-radius: 12px;
     flex:0 0 clamp(280px,30%,360px);
     min-width:280px;
+}
+.home-featured-product-card {
+  border: 1.5px solid black;
 }
 a.boss-best {
   display: block;

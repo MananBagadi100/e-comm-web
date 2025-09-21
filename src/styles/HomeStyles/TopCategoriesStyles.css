@@ -22,7 +22,7 @@
   align-items: center;
 }
 .home-top-category-card {
-  border: 1px solid black;
+  border: 1.5px solid black;
   height: 300px;
   display: flex;
   flex-direction: row;
@@ -31,7 +31,7 @@
   flex:0 0 clamp(280px,30%,360px);
   min-width:280px;
 }
-.a.Top-categories-link-wrapper {
+a.Top-categories-link-wrapper {
   text-decoration: none;
   color: inherit;
 }

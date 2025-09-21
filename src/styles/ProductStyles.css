@@ -56,7 +56,7 @@
   left: -240px;
   width: 240px;
   height: 100%;
-  background-color: aliceblue;
+  background-color: var(--sidebar-bg);
   box-shadow: 2px 0 6px rgba(0, 0, 0, 0.12);
   transition: left 0.3s ease;
   overflow: auto;
@@ -80,7 +80,7 @@
     left: -240px;         /* hidden by default */
     width: 240px;
     height: 100%;
-    background-color: aliceblue;
+    background-color: var(--sidebar-bg);
     box-shadow: 2px 0 6px rgba(0, 0, 0, 0.25);
     transition: left 0.3s ease;
     z-index: 999;         /* float above content */

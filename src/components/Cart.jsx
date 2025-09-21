@@ -23,7 +23,7 @@ const Cart = () => {
     else {
         return (
             <div className="cart-page-container">
-                <h2 className="cart-title">This is the cart page !</h2>
+                <h2 className="cart-title">Cart</h2>
                 <div className="cart-main-content">
                     <div className="cart-items-list">
                         {
