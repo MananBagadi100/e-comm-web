@@ -4,6 +4,7 @@ import { cartContext } from "../context/CartContext"    //portal name
 import { Link, useNavigate } from "react-router-dom"
 import { LoginContext } from "../context/LoginContext"
 import emptyCartImage2 from "../assets/emptyCart.png"
+import DeleteIcon from '@mui/icons-material/Delete'
 const Cart = () => {
     const navigate = useNavigate()
     const value=useContext(cartContext)
@@ -22,42 +23,41 @@ const Cart = () => {
     }
     else {
         return (
-            <div className="cart-page-container">
-                <h2 className="cart-title">Cart</h2>
-                <div className="cart-main-content">
-                    <div className="cart-items-list">
-                        {
-                            value.cart.map((cartItem) => (
-                                <div key={cartItem.id} className="cart-card">
-                                    <img className="cart-image" src={cartItem.image} alt="Image not found" />
-                                    <div className="cart-info">
-                                        <span className="cart-id">ID : {cartItem.id}</span>
-                                        <span className="cart-title">{cartItem.title}</span>
-                                        <span className="cart-price">Price : {cartItem.price}</span>
-                                        <span className="cart-qty">
-                                            Quantity : 
-                                            <button className="qty-btn" onClick={()=> {value.removeFromCart(cartItem.id)}}>-</button> 
-                                                {cartItem.quantity} 
-                                            <button className="qty-btn" onClick={()=> {value.addToCart(cartItem)}}>+</button>
-                                        </span>
+            <div className="cart-full-page-container">
+                <div className="cart-content-area">
+                    <div className="cart-main-title">Cart</div>
+                    <div className="cart-main-content">
+                        <div className="cart-items-list">
+                            {
+                                value.cart.map((cartItem) => (
+                                    <div key={cartItem.id} className="cart-card">
+                                        <img className="cart-image" src={cartItem.image} alt="Image not found" />
+                                        <div className="cart-info">
+                                            <span className="cart-id">ID : {cartItem.id}</span>
+                                            <span className="cart-title">{cartItem.title}</span>
+                                            <span className="cart-price">Price : {cartItem.price}</span>
+                                            <span className="cart-qty">
+                                                Quantity : 
+                                                <button className="qty-btn" onClick={()=> {value.removeFromCart(cartItem.id)}}>-</button> 
+                                                    {cartItem.quantity} 
+                                                <button className="qty-btn" onClick={()=> {value.addToCart(cartItem)}}>+</button>
+                                            </span>
+                                        </div>
+                                        <div className="product-removal-btn">
+                                            <button onClick={() =>{value.deleteFromCart(cartItem.id)}}><DeleteIcon sx={{fontSize: 18 }}/></button>
+                                        </div>
                                     </div>
-                                    <div className="product-removal-btn">
-                                        <button onClick={() =>{value.deleteFromCart(cartItem.id)}}>Remove 🗑️</button>
-                                    </div>
-                                </div>
-                            )) 
-                        }
+                                )) 
+                            }
+                        </div>
+                        <div className="cart-total-wrapper">
+                            <div id="cart-total-value">Total : {value.calculateTotal(value.cart)}</div>
+                        </div>
+                        <div className="checkout-wrapper">
+                            <button id="cart-checkout-btn" onClick={handleCheckout}>Checkout</button>
+                        </div>
                     </div>
-                    <div className="cart-total-wrapper">
-                        <div id="cart-total">Total : {value.calculateTotal(value.cart)}</div>
-                    </div>
-                    <div className="checkout-wrapper">
-                        <button id="checkout-btn" onClick={handleCheckout}>Checkout</button>
-                    </div>
-                    
-
                 </div>
-                
             </div>
         )
     }
