@@ -4,7 +4,8 @@
     --nav-bg: #0E2954;
     --btn-bg: #4998e8;
     --btn-txt: #ffffff;
-    --sidebar-bg: #btn-bg;
+    --btn-hover-bg: #387ec4;
+    --sidebar-bg: #a6cef7;
     --primary-btn-hover-color: 1px solid blue;
     --product-card-bg-color: #e3f0ff;  /* Each Product or Card bg */
     --card-border: #010101;
@@ -40,6 +41,7 @@ html,body,:root {
     --nav-bg: #001f3f;
     --btn-bg: #003f5c;
     --btn-txt: #fdfeff;
+    --btn-hover-bg: #022f44;
     --primary-btn-hover-color: 1px solid blue;
     --product-card-bg-color: #005f7f;  /* Each Product or Card bg */
     --card-border: #0f0b29;
