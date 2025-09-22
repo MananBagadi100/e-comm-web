@@ -98,4 +98,10 @@
   .password-container{
     gap:10px;                /* shrink gap on phones */
   }
+  .login-container {
+    padding: 8px 12px;
+  }
+  .heading-container {
+    margin: 8px 0;
+  }
 }
