@@ -131,12 +131,21 @@
   background-color: var(--btn-hover-bg);
 }
 @media (max-width: 600px) {
-    .cart-page-container {
+    .cart-full-page-container {
       display: flex;
       flex-direction: column;
       padding: 8px 4px;
       box-sizing: border-box;
       justify-content: center;
+    }
+    /* remove the desktop constraint */
+    /* let them shrink to mobile */
+    .cart-content-area,
+    .cart-main-content,
+    .cart-items-list,
+    .cart-card ,
+    .cart-total-wrapper{
+      min-width: unset;   
     }
     .cart-content-area {
       box-sizing: border-box;
