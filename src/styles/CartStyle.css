@@ -152,6 +152,7 @@
     .cart-content-area {
       box-sizing: border-box;
       width: 100%;
+      height: auto;
     }
     .cart-main-title {
       display: flex;
@@ -168,7 +169,7 @@
       flex-direction: column;
       width: 100%;
       box-sizing: border-box;
-      height: 100vh;
+      height: 100%;
     }
     .cart-items-list {
       display: flex;

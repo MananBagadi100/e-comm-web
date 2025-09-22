@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { getProductDetails } from "../services/GetService";
 import { useContext, useEffect, useState } from "react";
 import '../styles/ProDetailsStyles.css'
@@ -7,8 +7,13 @@ const ProductDetails = () => {
     const value=useContext(cartContext)
     const [ product_quantity, setProductQuantity ] = useState(1)
     const [ product_details ,setProductDetails]= useState(null)
+    const navigate = useNavigate()
     const params = useParams()
     const prod_id = params.product_id
+    function handleBuyNowBtn (item) {
+        value.addToCart(item)
+        navigate('/cart')
+    }
     useEffect (() => {
         const fetchData = async() => {
             try {
@@ -61,7 +66,7 @@ const ProductDetails = () => {
                                     <button className="quantity-btn" onClick={() => {setProductQuantity(qty => qty+1)}}>+</button>
                                 </div>
                                 <button className="order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>Add to cart</button>
-                                <button className="order-btn">Buy now</button>
+                                <button className="order-btn" onClick={() => handleBuyNowBtn(product_details)}>Buy now</button>
                             </div>       
                         </div>
                     </div>
