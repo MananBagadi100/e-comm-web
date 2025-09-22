@@ -32,50 +32,50 @@ const ProductDetails = () => {
                     <div className="breadcrum-inner">Home &gt; Products &gt; {product_details.tags[0]} </div>
                 </div>
                 <div className="product-wrapper">
-                    <div className="product-image">
+                    <div className="product-details-image">
                         <img src={product_details.images[0]} alt="Image not found" />
                     </div> 
                     <div className="product-content-wrapper">
                         <div className="product-content-details">
-                            <div id="prod_id">Id : {product_details.id}</div>
-                            <div id="prod_title">{product_details.title}</div>
-                            <div id="prod_category">Category : {product_details.category}</div>
-                            <div id="prod_price">Price : ${product_details.price}</div>
-                            <div id="prod_price_contd">Inclusive of all taxes</div>
-                            <div id="prod_rating">
+                            <div id="prod-details-id">Id : {product_details.id}</div>
+                            <div id="prod-details-title">{product_details.title}</div>
+                            <div id="prod-details-category">Category : {product_details.category}</div>
+                            <div id="prod-details-price">Price : ${product_details.price}</div>
+                            <div id="prod-details-price-contd">Inclusive of all taxes</div>
+                            <div id="prod-details-rating">
                                 Ratings : 
                                 <span> {product_details.rating} ⭐️</span>
                             </div>
-                            <div id="prod_warranty">
+                            <div id="prod-details-warranty">
                                 Warranty Information : 
                                 <span> {product_details.warrantyInformation}</span>
                             </div>
-                            <div id="prod_shipInfo">Shipping Information : {product_details.shippingInformation}</div>
-                            <div id="prod_status">Availability Status : {product_details.availabilityStatus}</div>
-                            <div id="prod_desc">Description : {product_details.description}</div>
-                            <div id="prod_returnPolicy"> {product_details.returnPolicy}</div>
+                            <div id="prod-details-shipInfo">Shipping Information : {product_details.shippingInformation}</div>
+                            <div id="prod-details-status">Availability Status : {product_details.availabilityStatus}</div>
+                            <div id="prod-details-desc">Description : {product_details.description}</div>
+                            <div id="prod-details-returnPolicy"> {product_details.returnPolicy}</div>
                             <div className="product-page-btn">
                                 <div className="quantity-selector">
                                     <button className="quantity-btn" onClick={() => {setProductQuantity(qty => Math.max(1,qty-1))}}>-</button>
                                         {product_quantity}
                                     <button className="quantity-btn" onClick={() => {setProductQuantity(qty => qty+1)}}>+</button>
                                 </div>
-                                <button className="order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>add to cart</button>
-                                <button className="order-btn">buy now</button>
+                                <button className="order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>Add to cart</button>
+                                <button className="order-btn">Buy now</button>
                             </div>       
                         </div>
                     </div>
                 </div>
-                <div className="extraInfo">
-                    <div id="review-heading">Reviews </div>
-                    <div className="all-reviews">
+                <div className="prod-details-extraInfo">
+                    <div id="prod-details-review-heading">Reviews </div>
+                    <div className="prod-details-all-reviews">
                         {
                             product_details.reviews.map((eachReview) => (
-                                <div key={`${eachReview.reviewerName}-${eachReview.rating}-${eachReview.date}`} className="review">
-                                    <div className="reviewer">{eachReview.reviewerName}</div>
-                                    <div className="rating">Rating : {eachReview.rating} ⭐️</div>
-                                    <div className="comment">{eachReview.comment}</div>
-                                    <div className="date">{new Date(eachReview.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
+                                <div className="prod-details-review" key={`${eachReview.reviewerName}-${eachReview.rating}-${eachReview.date}`}>
+                                    <div className="prod-details-reviewer">{eachReview.reviewerName}</div>
+                                    <div className="prod-details-rating">Rating : {eachReview.rating} ⭐️</div>
+                                    <div className="prod-details-comment">{eachReview.comment}</div>
+                                    <div className="prod-details-date">{new Date(eachReview.date).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</div>
                                 </div>
                             ))
                         }

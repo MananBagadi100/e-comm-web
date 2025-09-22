@@ -1,195 +1,141 @@
-.product-shell {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-.full-product-details-page {
-    margin: 5px 10px;
-    --wrapper-max:1000px;
-    --gap:24px
-}
-/* Title already full width */
-.product-breadcrum { 
-    /* margin-bottom: 16px;  */
-    max-width: var(--wrapper-max);
-    margin: 2px auto 16px;
-    align-items:flex-start;
-}
-.breadcrum-inner {
-  /* Inner container: handles the centering and max-width */
-  /* margin-inline: auto; */
-  padding: 12px 24px;
-
-}
-.product-breadcrumb,
-.product-wrapper,
-.extraInfo {
+.full-product--details-page {
   width: 100%;
-  max-width: var(--wrapper-max);
-  margin: 5px auto 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-
-.product-breadcrumb .inner,
-.product-wrapper .inner,
-.extraInfo .inner {
-  padding: 12px 24px;   /* the “purple” space */
-  box-sizing: border-box;
+.product-breadcrum {
+  display: flex;
+  width: 100%;
+  height: 30px;
 }
-
-
-/* Row under the title */
 .product-wrapper {
-  display: flex;
-  gap: var(--gap);
-  /* grow until the cap, then stop and center */
   width: 100%;
-  max-width: var(--wrapper-max);
-  margin-inline: auto;
-  box-sizing: border-box;
-  align-items: stretch;
-}
-.extraInfo {
   display: flex;
-  width: 100%;
-  max-width: var(--wrapper-max);
-  margin: 5px auto 10px;
-  box-sizing: border-box;
   flex-direction: column;
-  padding: 0px;
-  align-items: flex-start;
-}
-
-/* Two equal columns that can shrink but won't exceed half of the cap */
-.product-image,
-.product-content-wrapper {
-  flex: 1 1 0;          /* 50/50 split */
-  min-width: 320px;         /* prevent overflow from long text */
-  box-sizing: border-box;
-  padding: 15px;
-  margin: 5px;
-}
-
-/* IMAGE column: keep media inside the box and stop growing after the cap */
-.product-image {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* optional height cap; remove if not needed */
-  max-height: 60vh;
-  max-width: 50vh;
-  padding: 15px;
-  margin: 5px;
-}
-
-.product-image img {
-  max-width: 100%;
-  max-height: 100%;
-  width: 100%;
+  padding: 12px 8px;
   height: auto;
-  object-fit: contain;   /* never overflow; no cropping */
-  background-color: var(--product-card-bg-color);
-  border-radius: 12px;
+  box-sizing: border-box;
 }
+.product-details-image {
+  width: 100%;
+  height: 350px;
+  padding: 4px;
+  box-sizing: border-box;
 
-/* DETAILS column: scroll instead of overflowing if content is long */
+}
+.product-details-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: 16px;
+  background-color: var(--card-img-bg);
+  box-sizing: border-box;
+}
 .product-content-wrapper {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  box-sizing: border-box;
+  padding: 16px 8px;
 }
 .product-content-details {
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-.quantity-btn {
-  border-radius: 5px;
-  margin-left: 2px;
-  margin-right: 2px;
-  border-radius: 50%;
-  padding: 2px 7px;
-  color: var(--btn-txt);
-  background-color: var(--btn-bg); 
-}
-.order-btn {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
-  padding: 5px 8px;
+  box-sizing: border-box;
+}
+#prod-details-id {
+  color: gray;
+}
+#prod-details-title {
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+}
+#prod-details-category {
+  margin-top: 4px;
+}
+#prod-details-price {
+  color: var(--product-prices-color);
+  font-size: 18px;
+  margin-top: 4px;
+}
+#prod-details-price-contd {
+  font-size: 14px;
+  line-height: 8px;
+}
+#prod-details-rating {
+  font-weight: bold;
+  margin-top: 4px;
+}
+#prod-details-warranty {
+  margin-top: 4px;  
+}
+#prod-details-shipInfo {
+  margin-top: 4px;
+}
+#prod-details-status {
+  color: rgb(162, 0, 0);
+  margin-top: 4px;
+}
+#prod-details-desc {
+  margin-top: 4px;
+}
+#prod-details-returnPolicy {
+  margin-top: 4px;
+}
+#prod-details-returnPolicy {
+  color: rgb(162, 0, 0);
+  margin-top: 4px;
+}
+.product-page-btn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+}
+.quantity-selector {
+  height: 30px;
+}
+.quantity-btn{
+  margin: 4px;
   background-color: var(--btn-bg);
   color: var(--btn-txt);
-  margin: 5px;
-  cursor: pointer;
+  border-radius: 4px;
+  padding: 4px 8px;
 }
-.order-btn button {
-  transition: background 0.2s ease , transform 0.1s ease;
+.order-btn {
+  width: 70%;
+  color: var(--btn-txt);
+  background-color: var(--btn-bg);
+  padding: 8px 0;
+  border-radius: 16px;
 }
-.order-btn button:hover {
-  transform: translateY(-1px);
-}
-#prod_id {
-    color: rgb(174, 174, 174);
-}
-#prod_title {
-    font-weight: bold;
-    font-size: 28px;
-}
-#prod_category {
-    font-size: 18px;
-}
-#prod_price {
-    font-size: 20px;
-    color: var(--btn-bg);
-    margin: 5px 0px 0px;
-}
-#prod_price_contd {
-    font-size: 14px;
-    margin-bottom: 5px;
-}
-#prod_rating span{
-    font-weight: bold;
-}
-
-#prod_warranty span{
-    color: var(--btn-bg);
-    font-weight: 500;
-}
-#prod_status {
-    color: rgb(134, 13, 13);
-}
-#prod_returnPolicy {
-  margin: 5px 0px;
-  font-weight: bold;
-}
-#review-heading {
-  font-weight: bold;
-  font-size: larger;
-  margin-left: 25px;
-  padding: 5px 5px;
-}
-.all-reviews {
+.prod-details-extraInfo {
+  width: 100%;
+  padding: 12px 8px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  margin-left: 25px;
-  padding: 5px 5px;
+  box-sizing: border-box;
 }
-.reviewer {
-  font-size: large;
+#prod-details-review-heading {
+  display: flex;
+  font-size: 18px;
   font-weight: bold;
+  padding: 16px 8px;
+  box-sizing: border-box;
 }
-.date {
-  font-size: 14px;
+.prod-details-all-reviews {
+  width: 100%;
+  padding: 16px 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
-.review {
-  margin: 12px 0px 12px;
-  border-bottom: 1px solid #ddd;
-}
-.review:last-child {
-  border-bottom: none;
-}
-
-/* Responsive: stack on small screens */
-@media (max-width: 900px) {
-  .product-wrapper { flex-direction: column; }
+.prod-details-review {
+  border: 1px solid black;
 }
