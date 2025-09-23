@@ -32,7 +32,7 @@ const ProductDetails = () => {
             {
                 !product_details ? (<p>Loading ...</p>) :
             (
-            <>
+            <div className="product-details-content-area">
                 <div className="product-breadcrum">
                     <div className="breadcrum-inner">Home &gt; Products &gt; {product_details.tags[0]} </div>
                 </div>
@@ -65,8 +65,10 @@ const ProductDetails = () => {
                                         {product_quantity}
                                     <button className="quantity-btn" onClick={() => {setProductQuantity(qty => qty+1)}}>+</button>
                                 </div>
-                                <button className="order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>Add to cart</button>
-                                <button className="order-btn" onClick={() => handleBuyNowBtn(product_details)}>Buy now</button>
+                                <div className="product-details-order-btn-wrapper">
+                                    <button className="product-details-order-btn" onClick={() => {value.addManyProductsToCart( product_details ,product_quantity)}}>Add to cart</button>
+                                    <button className="product-details-order-btn" onClick={() => handleBuyNowBtn(product_details)}>Buy now</button>
+                                </div>
                             </div>       
                         </div>
                     </div>
@@ -86,7 +88,7 @@ const ProductDetails = () => {
                         }
                     </div>
                 </div>
-            </>
+            </div>
             )}
         </div>
 
