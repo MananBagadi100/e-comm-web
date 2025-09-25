@@ -31,7 +31,7 @@ const Checkout = () => {
         return (
             <div className="full-page-container">
                     <div className="all-info-container">
-                        <div className="checkout-main-heading">Order details</div>
+                        <div className="checkout-main-heading">Order Summary</div>
                         <div className="checkout-item-list">
                             {
                                 cartValue.cart.map((prod) => (
@@ -61,8 +61,8 @@ const Checkout = () => {
                                     <div id="info-box-title-area">Other Details</div>
                                     <div id="info-box-details-area">
                                         <form id="info-box-form">
-                                            <p>Enter your address : </p>
-                                            <label>
+                                            <div id="info-box-address-label-wrapper">
+                                                <label id="info-box-address-label">Enter your Address :</label>
                                                 <textarea
                                                     value={address}
                                                     placeholder="Enter your address"
@@ -71,40 +71,43 @@ const Checkout = () => {
                                                         setAddress(e.target.value)
                                                     }}
                                                 />
-                                            </label><br />
+                                            </div>
+                                            <br />
                                             <label>Enter your payment option :<br />
                                                 <input
                                                     type="radio"
                                                     name="paymentMethod"
                                                     value="cash"
                                                 /> Cash
-                                            </label>
+                                            </label><br />
                                             <label>
                                                 <input
                                                     type="radio"
                                                     name="paymentMethod"
                                                     value="Credit/Debit Card"
                                                 /> Credit/Debit Card
-                                            </label>
+                                            </label><br />
                                             <label>
                                                 <input
                                                     type="radio"
                                                     name="paymentMethod"
                                                     value="Netbanking"
                                                 /> Netbanking
-                                            </label>
+                                            </label><br />
                                             <label>
                                                 <input
                                                     type="radio"
                                                     name="paymentMethod"
                                                     value="UPI"
                                                 /> UPI
-                                            </label>
+                                            </label><br />
                                         </form>
+                                        <div id="info-box-place-order-btn-wrapper">
+                                            <button id="info-box-place-order-btn" onClick={()=> {setOrderStatus(true)}}>Place Order</button>
+                                        </div>
+
                                     </div>
-                                    <div id="info-box-btn-wrapper">
-                                        <button id="info-box-btn" onClick={()=> {setOrderStatus(true)}}>Place Order</button>
-                                    </div>
+                                    
                                         
                                 </div>
                                 
