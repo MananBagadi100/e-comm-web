@@ -6,12 +6,12 @@
     align-items: center;
     flex-direction: column;
 }
-#order-placed-1 {
+#order-placed-heading {
     font-size: 24px;
     font-weight: bold;
 }
 
-#order-placed-2 {
+#order-placed-subHeading {
     font-weight: bold;
     font-size: 18px;
 }

@@ -20,8 +20,8 @@ const Checkout = () => {
     if(orderStatus) {
         return (
             <div id="order-placed-wrapper">
-                <div id="order-placed-1">Order placed !</div><br />
-                <div id="order-placed-2">Thank You </div>
+                <div id="order-placed-heading">Order placed !</div><br />
+                <div id="order-placed-subHeading">Thank You </div>
                 <img  id="order-placed-image" src={tick_mark} alt="Image not found"/>
                 <div>{navigateToHome()}</div>
             </div>
