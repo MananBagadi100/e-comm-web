@@ -1,10 +1,9 @@
-import '../styles/RenderProductsStyles.css'
 import { useContext, useEffect, useRef, useState } from "react";
 import { getAllTheCategoryItems } from '../services/GetService';
 import AllProducts from './AllProducts';
 import FilteredProducts from './FilteredProducts';
 //this file just brings all the different components here for rendering , nothing else !
-const RenderProducts = ({productInfo , filterProductsArray , selectedMinPrice , selectedMaxPrice , rangeError }) => {
+const RenderProducts = ({productInfo , filterProductsArray , selectedMinPrice , selectedMaxPrice , rangeError , searchText }) => {
     const [categoryProducts , setCategoryProducts] = useState([])
     useEffect(() => {
         if(filterProductsArray.length===0) {
@@ -21,22 +20,37 @@ const RenderProducts = ({productInfo , filterProductsArray , selectedMinPrice , 
         .then(setCategoryProducts)  
         .catch(error => console.log("fetch failed ", error))
     },[filterProductsArray])
-    if(filterProductsArray.length === 0) {  //then categoryProducts are empty
-        return (
-            <AllProducts productInfo={productInfo} 
-                selectedMinPrice={selectedMinPrice} selectedMaxPrice={selectedMaxPrice}
-                rangeError={rangeError}
-            />
-        )
-    }
-    else {
-        return (
-            <FilteredProducts categoryProducts={categoryProducts}  
-                selectedMinPrice={selectedMinPrice} selectedMaxPrice={selectedMaxPrice}
-                rangeError={rangeError}
-            />
-        )
-    }
+    const [searchInput, setSearchInput] = useState('');
+    return (
+        <>
+            <div style={{width:'60%',margin:'4px auto',maxWidth:'1050px'}}>
+                <input 
+                    type="text" 
+                    placeholder="Search products..." 
+                    value={searchInput} 
+                    onChange={(e) => setSearchInput(e.target.value)} 
+                    style={{marginBottom: '10px', padding: '5px', width: '100%'}}
+                />
+            </div>
+            {filterProductsArray.length === 0 ? (
+                <AllProducts 
+                    productInfo={productInfo} 
+                    selectedMinPrice={selectedMinPrice} 
+                    selectedMaxPrice={selectedMaxPrice}
+                    rangeError={rangeError}
+                    searchText={searchInput}
+                />
+            ) : (
+                <FilteredProducts 
+                    categoryProducts={categoryProducts}  
+                    selectedMinPrice={selectedMinPrice} 
+                    selectedMaxPrice={selectedMaxPrice}
+                    rangeError={rangeError}
+                    searchText={searchInput}
+                />
+            )}
+        </>
+    )
 }
 export default RenderProducts
 //If filterProductsArray changes-> categoryProducts changes->Child re renders 

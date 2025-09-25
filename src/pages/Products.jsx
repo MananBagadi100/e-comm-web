@@ -26,6 +26,8 @@ const Products = () => {
     //state for keeping track of the sidebar , open or close
     const [filtersOpen, setFiltersOpen] = useState(false);
     const detailsRef = useRef(null)
+    // new state for search text
+    const [searchText, setSearchText] = useState('')
 
     function calculateMinMaxAllProducts(products) {
         const productPrices = products.map((item) => item.price)
@@ -115,6 +117,13 @@ const Products = () => {
                         </button>
                     </div>
                     <h3 id="product-headings">Available Products</h3>
+                    {/* <input 
+                        type="text" 
+                        placeholder="Search products..." 
+                        value={searchText} 
+                        onChange={(e) => setSearchText(e.target.value)} 
+                        id="product-search-input"
+                    /> */}
                 </div>
                 <div id="product-details" className={filtersOpen ? 'sidebar-open' : ''}>
                     <div id="details-sidebar">
@@ -136,6 +145,7 @@ const Products = () => {
                             selectedMinPrice={selectedMinPrice} 
                             selectedMaxPrice={selectedMaxPrice}
                             rangeError={rangeError}
+                            searchText={searchText}
                         />
                     </div>    
             </div>

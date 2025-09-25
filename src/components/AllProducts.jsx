@@ -3,12 +3,12 @@ import '../styles/AllProductsStyles.css'
 import { cartContext } from '../context/CartContext'
 import { Link } from 'react-router-dom'
 import { ProductContext } from '../context/ProductContext'
-const AllProducts = ({productInfo , selectedMinPrice , selectedMaxPrice , rangeError }) => {
+const AllProducts = ({productInfo , selectedMinPrice , selectedMaxPrice , rangeError, searchText }) => {
     const cartHandler=useContext(cartContext)
     const {minRating , SortProducts} = useContext(ProductContext)
     //const productValue = useContext(ProductContext)
     const visibleProducts = productInfo.products.filter ((item) => (
-        minRating === null || item.rating >= minRating
+        (minRating === null || item.rating >= minRating) && item.title.toLowerCase().includes(searchText.toLowerCase())
     ))
     const visibleProductsFinal = rangeError !== '' ?
         visibleProducts :   //no filtering

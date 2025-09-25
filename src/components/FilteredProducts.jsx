@@ -3,14 +3,14 @@ import { cartContext } from "../context/CartContext"
 import { useContext, useEffect } from "react"
 import '../styles/AllProductsStyles.css'
 import { ProductContext } from "../context/ProductContext"
-const FilteredProducts = ({categoryProducts , selectedMinPrice ,selectedMaxPrice ,rangeError}) => {
+const FilteredProducts = ({categoryProducts , selectedMinPrice ,selectedMaxPrice ,rangeError, searchText}) => {
     const cartHandler = useContext(cartContext)
     const {minRating , SortProducts} = useContext(ProductContext)
     console.log("the category products is ",categoryProducts)
     //visibleProducts just contains all the products based on the condition
     const visibleProducts = categoryProducts.map((item) => (
         item.data.products.filter((prod) => (
-            minRating === null || prod.rating >= minRating
+            (minRating === null || prod.rating >= minRating) && prod.title.toLowerCase().includes(searchText.toLowerCase())
         ))
     ))
     //visible products is an array of 'array of products'
