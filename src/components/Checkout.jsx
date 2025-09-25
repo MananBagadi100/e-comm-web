@@ -31,32 +31,34 @@ const Checkout = () => {
         return (
             <div className="full-page-container">
                     <div className="all-info-container">
-                        <h3>Order details</h3>
-                        <div className="item-list">
+                        <div className="checkout-main-heading">Order details</div>
+                        <div className="checkout-item-list">
                             {
                                 cartValue.cart.map((prod) => (
-                                    <div className="eachProductCard" key={prod.id}>
-                                        <img id="prod-image" src={prod.image} alt="Image not found" />
-                                        <div id="prod-details">
-                                            <div id="prod-title">{prod.title}</div>
-                                            <div id="prod-price">Price: {prod.price}</div>
-                                        <div id="prod-quantity">Quantity : {prod.quantity}</div>
+                                    <div className="checkout-eachProductCard" key={prod.id}>
+                                        <div className="checkout-product-info">
+                                            <div id="checkout-product-image-wrapper">
+                                                <img id="checkout-product-image" src={prod.image} alt="Image not found" />
+                                            </div>
+                                            <div id="checkout-product-details">
+                                                <div id="checkout-product-title">{prod.title}</div>
+                                                <div id="checkout-product-price">Price: {prod.price}</div>
+                                                <div id="checkout-product-quantity">Quantity : {prod.quantity}</div>
+                                            </div>
                                         </div>
-                                        <div id="prod-subTotal-wrapper">
-                                            <div id="prod-subTotal">SubTotal : {calculateSubTotal(prod)}</div>
-                                        </div>
+                                        <div id="checkout-product-subTotal">SubTotal : {calculateSubTotal(prod)}</div>
                                     </div>
 
                                 ))
                             }
                         </div>
-                        <div id="cart-total-wrapper">
-                            <div id="cart-total">Total : {cartValue.calculateTotal(cartValue.cart)}</div>
+                        <div id="checkout-total-wrapper">
+                            <div id="checkout-total">Total : {cartValue.calculateTotal(cartValue.cart)}</div>
                         </div>
                         <div id="info-box-wrapper">
                             <div id="info-box">
                                 <div id="info-box-content-area">
-                                    <div id="info-box-title-area">Title</div>
+                                    <div id="info-box-title-area">Other Details</div>
                                     <div id="info-box-details-area">
                                         <form id="info-box-form">
                                             <p>Enter your address : </p>
@@ -100,7 +102,10 @@ const Checkout = () => {
                                             </label>
                                         </form>
                                     </div>
-                                    <button id="info-box-btn" onClick={()=> {setOrderStatus(true)}}>Place Order</button>
+                                    <div id="info-box-btn-wrapper">
+                                        <button id="info-box-btn" onClick={()=> {setOrderStatus(true)}}>Place Order</button>
+                                    </div>
+                                        
                                 </div>
                                 
                             </div>
