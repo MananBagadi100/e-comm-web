@@ -1,0 +1,107 @@
+/* ---------- wrapper: centers the card ---------- */
+.login-container-wrapper{
+  /* subtract navbar height if you store it as a CSS var */
+  /* min-height:calc(100vh - var(--nav-height,0px)); */
+  display:flex;
+  /* align-items:center; */
+  justify-content:center;
+}
+
+/* ---------- green card ---------- */
+.login-container{
+  background:var(--nav-bg,#004033);
+  color:var(--text-color,#fff);
+  width:min(420px,90vw);
+  padding:32px 28px 36px;    /* extra bottom removed */
+  border-radius:20px;
+  box-shadow:0 8px 18px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+  gap:26px;
+  margin-top: 70px;
+}
+
+/* ---------- heading ---------- */
+.heading-container{
+  margin:0;
+  text-align:center;
+  font-size:1.35rem;
+  font-weight:700;
+  color: var(--btn-txt);
+}
+
+/* ---------- input rows ---------- */
+.details-container{
+  display:flex;
+  flex-direction:column;
+  gap:18px;                  /* space between Name / Password / button */
+}
+
+.name-container,
+.password-container{
+  display:flex;
+  align-items:center;
+  gap:16px;                  /* label ↔ input */
+  color: var(--btn-txt);
+}
+
+.name-container label,
+.password-container label{
+  white-space:nowrap;
+  font-weight:600;
+}
+
+.name-container input,
+.password-container input{
+  flex:1 1 0;
+  padding:8px 12px;
+  border:2px solid var(--nav-bg,#004033);
+  border-radius:6px;
+  font-size:1rem;
+}
+
+/* ---------- submit button ---------- */
+.submit-btn{
+  width:100%;
+  background:var(--btn-bg,#4f7f7a);
+  color:var(--btn-txt,#fff);
+  padding:10px 0;
+  border:none;
+  border-radius:24px;
+  font-size:1rem;
+  cursor:pointer;
+  transition:background .2s;
+}
+.submit-btn:hover{
+  background:var(--btn-bg-hover,#3c6360);
+}
+
+/* ---------- “New user?” link ---------- */
+.registration-link{
+  text-align:center;
+  font-size:.95rem;
+  margin-top:6px;
+  color: var(--btn-txt);
+}
+.registration-link a{
+  color:var(--btn-bg,#4f7f7a);
+  font-weight:600;
+  text-decoration:none;
+}
+.registration-link a:hover{
+  text-decoration:underline;
+}
+
+/* ---------- tiny screens ---------- */
+@media(max-width:430px){
+  .name-container,
+  .password-container{
+    gap:10px;                /* shrink gap on phones */
+  }
+  .login-container {
+    padding: 8px 12px;
+  }
+  .heading-container {
+    margin: 8px 0;
+  }
+}

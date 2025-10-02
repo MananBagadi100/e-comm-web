@@ -1,0 +1,61 @@
+:root {
+    --bg-color: #ffffff;
+    --text-color: black;
+    --nav-bg: #0E2954;
+    --btn-bg: #4998e8;
+    --btn-txt: #ffffff;
+    --btn-hover-bg: #387ec4;
+    --sidebar-bg: #a6cef7;
+    --primary-btn-hover-color: 1px solid blue;
+    --product-card-bg-color: #e3f0ff;  /* Each Product or Card bg */
+    --card-border: #010101;
+    --card-shadow: rgba(21,92,54,0.09);
+    --card-shadow-hover: rgba(21,92,54,0.16);
+    --card-img-bg: #cae4ff;
+    --product-prices-color:rgb(32, 96, 136);
+    --loading-animation-color:black;
+    --top-categories-bg: #fefaf2;
+}
+html,body,:root {
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--bg-color);
+}
+.all-pages-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100vh;
+}
+.page-contents {
+    flex: 1 0 auto;
+    width: 100%;
+    
+}
+.page-contents h1,.page-contents h2,.page-contents h3 { 
+    margin-top: 0px;            /*so that big headings dont eat space on the top*/
+}
+.dark-theme {
+    --bg-color: #005566;
+    --text-color: #222831;
+    --nav-bg: #001f3f;
+    --btn-bg: #003f5c;
+    --btn-txt: #fdfeff;
+    --btn-hover-bg: #022f44;
+    --primary-btn-hover-color: 1px solid blue;
+    --product-card-bg-color: #005f7f;  /* Each Product or Card bg */
+    --card-border: #0f0b29;
+    --card-shadow: rgba(21,92,54,0.09);
+    --card-shadow-hover: rgba(21,92,54,0.16);
+    --card-img-bg: #c1e8ff;
+    --product-prices-color:rgb(176, 201, 255);
+    --loading-animation-color:rgb(0, 29, 108);
+    --top-categories-bg: #07cef6;
+}
+html, body {
+    width: 100vw;
+    max-width: 100vw;
+    height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
+}
