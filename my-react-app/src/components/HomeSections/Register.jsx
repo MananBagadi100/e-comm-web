@@ -5,17 +5,17 @@ const Register = () => {
         register,
         handleSubmit,
         watch,
+        clearErrors,
         setError,   //for custom errors from server
         formState: { errors,isSubmitting,},
     } = useForm({ criteriaMode : 'all'})
     const onSubmit = (data) => {
+        console.log(`Password is ${data.password} and confirm password is ${data.confirmPassword}`)
         if(data.password !== data.confirmPassword) {    //setting our own custom errors
-            setError("confirmPassword",{
-                type:"manual",
-                message:"Password and Confirm Password do not match"
-            })
+            setError("noMatch",{message:"Password and Confirm Password do not match"})
             return
         }
+        clearErrors("noMatch")
         console.log('The registration form data is ',data)
     }
     return (
@@ -98,7 +98,8 @@ const Register = () => {
                                     })}
                                     placeholder="Confirm Password"
                                 />
-                                {errors.confirmPassword?.message && (<div className='field-errors'>{errors.confirmPassword.message}</div>)}
+                                {errors.confirmPassword?.types?.required && (<div className='field-errors'>{errors.confirmPassword.types.required}</div>)}
+                                {errors.noMatch && (<div className='field-errors'>{errors.noMatch.message}</div>)}
                             </div>
                             <div className="registration-submit-btn-wrapper">
                                 <input type='submit' 
