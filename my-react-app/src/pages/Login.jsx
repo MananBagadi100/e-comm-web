@@ -27,60 +27,61 @@ const Login= () => {
         return (
             <>
             {isSubmitting && <div>Loading .. </div>}
-                <div className='login-container-wrapper'>
-                    <div className='login-container'>
-                        <div className='login-heading-container'>Login</div>
-                        <form className='login-details-container' onSubmit={handleSubmit(onSubmit)}>
-                            <div className='login-input-container-wrapper'>
-                                <div className="login-input-container">
-                                    <div className='login-field-input-icons'>
-                                        <AccountCircleIcon sx={{fontSize:36}}/>
+                <div className='login-full-container'>
+                    <div className="login-content-area">
+                        <div className='login-dialog-box-container'>
+                            <div className='login-heading-container'>Login</div>
+                            <form className='login-details-container' onSubmit={handleSubmit(onSubmit)}>
+                                <div className='login-input-container-wrapper'>
+                                    <div className="login-input-container">
+                                        <div className='login-field-input-icons'>
+                                            <AccountCircleIcon sx={{fontSize:36}}/>
+                                        </div>
+                                        <input type='text'
+                                            className='login-input-fields' 
+                                            {...register("username",
+                                                {required:true,minLength:{value:5,message:"Min length should be 5"},
+                                                maxLength:{value:35,message:"Max length should not exceed 35"}})}
+                                            placeholder='Enter your username'>
+                                        </input>
                                     </div>
-                                    <input type='text'
-                                        className='login-input-fields' 
-                                        {...register("username",
-                                            {required:true,minLength:{value:5,message:"Min length should be 5"},
-                                            maxLength:{value:35,message:"Max length should not exceed 35"}})}
-                                        placeholder='Enter your username'>
+                                    {errors.username && <div className='login-input-field-errors'>{errors.username.message}</div>}
+                                </div>
+                                <div className='login-input-container-wrapper'>
+                                    <div className="login-input-container">
+                                        <div className='login-field-input-icons'>
+                                            <KeyIcon sx={{fontSize:36}}/>
+                                        </div>
+                                        <input type='password'
+                                            className='login-input-fields' 
+                                            {...register("password",
+                                                {required:true,minLength:{value:5,message:"Password min length should be 5"},
+                                                maxLength:{value:35,message:"Password max length should not exceed 35"},
+                                                pattern: {value:/^[A-Za-z0-9@]+$/,message:"No special charecters except @"}})}
+                                            placeholder='Enter your password'>
+                                        </input>
+                                    </div>
+                                    {errors.password?.types?.minLength && (
+                                    <div className="login-input-field-errors">Password min length should be 5</div>)}
+                                    {errors.password?.types?.maxLength && (
+                                    <div className="login-input-field-errors">Password max length should not exceed 35</div>)}
+                                    {errors.password?.types?.pattern && (
+                                    <div className="login-input-field-errors">No special characters except @</div>)}
+                                </div>
+                                <div className="login-submit-btn-wrapper">
+                                    <input 
+                                        className='login-submit-btn' 
+                                        type='submit'
+                                        disabled={isSubmitting} 
+                                        value="Submit"
+                                    >
+                                    {errors.myform && <div className="login-input-field-errors">{errors.myform.message}</div>}
                                     </input>
                                 </div>
-                                {errors.username && <div className='login-input-field-errors'>{errors.username.message}</div>}
-                            </div>
-                            <div className='login-input-container-wrapper'>
-                                <div className="login-input-container">
-                                    <div className='login-field-input-icons'>
-                                        <KeyIcon sx={{fontSize:36}}/>
-                                    </div>
-                                    <input type='password'
-                                        className='login-input-fields' 
-                                        {...register("password",
-                                            {required:true,minLength:{value:5,message:"Password min length should be 5"},
-                                            maxLength:{value:35,message:"Password max length should not exceed 35"},
-                                            pattern: {value:/^[A-Za-z0-9@]+$/,message:"No special charecters except @"}})}
-                                        placeholder='Enter your password'>
-                                    </input>
-                                </div>
-                                {errors.password?.types?.minLength && (
-                                <div className="login-input-field-errors">Password min length should be 5</div>)}
-                                {errors.password?.types?.maxLength && (
-                                <div className="login-input-field-errors">Password max length should not exceed 35</div>)}
-                                {errors.password?.types?.pattern && (
-                                <div className="login-input-field-errors">No special characters except @</div>)}
-                            </div>
-                            <div className="login-submit-btn-wrapper">
-                                <input 
-                                    className='submit-btn' 
-                                    type='submit'
-                                    disabled={isSubmitting} 
-                                    value="Submit"
-                                >
-                                {errors.myform && <div className="login-input-field-errors">{errors.myform.message}</div>}
-                                </input>
-                            </div>
-                            <p className='registration-link'>New User? <a href='/register'>Register Now !</a></p>
-                        </form>
-                        
-                    </div>
+                                <div className='registration-link'>New User ? <a href='/register'>Register Now !</a></div>
+                            </form>
+                        </div>
+                    </div>    
                 </div>
             </>
         )
