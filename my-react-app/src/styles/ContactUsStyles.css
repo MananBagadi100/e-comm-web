@@ -1,4 +1,4 @@
-.contact-us-full-container {
+/* .contact-us-full-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -6,7 +6,6 @@
     justify-content: center;
     align-items: center;
 }
-/* If user has not logged In */
 #contact-us-message-wrapper {
     width: 500px;
     height: 250px;
@@ -35,9 +34,8 @@ a#contact-us-login-redirect-btn {
 #contact-us-login-redirect-btn:hover {
     border: var(--primary-btn-hover-color);
 }
-/* If user has logged In */
 #contact-us-dialog-box {
-    height: 350px;
+    height: 325px;
     width: 450px;
     display: flex;
     flex-direction: column;
@@ -53,7 +51,7 @@ a#contact-us-login-redirect-btn {
     align-items: center;
     text-align: center;
     box-sizing: border-box;
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: bold;
     background-color: var(--nav-bg);
     color: var(--btn-txt);
@@ -66,7 +64,7 @@ a#contact-us-login-redirect-btn {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    background-color: var(--btn-bg);
+    background-color: var(--form-body);
 }
 #contact-us-issue-dropdown-wrapper,
 #contact-us-message-area-wrapper {
@@ -85,6 +83,8 @@ a#contact-us-login-redirect-btn {
 #contact-us-issue-dropdown-label {
     width: 30%;
     justify-content: flex-end;
+    font-size: 18px;
+    font-weight: bold;
 }
 #contact-us-issue-dropdown-menu {
     width: 70%;
@@ -94,6 +94,8 @@ a#contact-us-login-redirect-btn {
     display: flex;
     box-sizing: border-box;
     justify-content: flex-end;
+    font-weight: bold;
+    font-size: 18px;
 }
 #contact-us-message-area {
     width: 70%;
@@ -102,21 +104,23 @@ a#contact-us-login-redirect-btn {
     object-fit: contain;
 }
 #contact-us-message-area textarea {
-    width: 70%;
-    height: 60px;
+    width: 80%;
+    height: 120px;
 }
 #contact-us-submit-btn {
     border-radius: 20px;
-    padding: 8px 24px;
+    padding: 8px 40px;
     color: var(--btn-txt);
     background-color: var(--btn-bg);
-    border: 2px solid white;
     margin-top: 12px;
+}
+#contact-us-submit-btn:hover {
+    background-color: var(--btn-hover-bg);
 }
 
 @media (max-width:600px) {
     #contact-us-dialog-box {
-        height: 350px;
+        height: 325px;
         width: 350px;
         display: flex;
         flex-direction: column;
@@ -142,10 +146,136 @@ a#contact-us-login-redirect-btn {
         padding: 4px 8px;
         margin-top: 12px;
     }
+    #contact-us-issue-dropdown-label {
+        font-size: 16px;
+    }
+    #contact-us-message-label {
+        font-size: 16px;
+    }
     #contact-us-message-area textarea {
         width: 200px;
     }
-    
+} */
+.contact-full-container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.contact-logIn-message-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.contact-logIn-message {
+    font-size: 18px;
+    font-weight: bold;
+}
+.contact-logIn-redirect-btn {
+    text-decoration: none;
+    color: var(--btn-txt);
+    background-color: var(--btn-bg);
+    border-radius: 16px;
+    padding: 8px 32px;
+}
+.contact-content-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 12px 8px;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.contact-dialog-box {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    box-sizing: border-box;
+}
+.contact-dialog-box-title {
+    display: flex;
+    width: 100%;
+    height: 40px;
+    background-color: var(--nav-bg);
+    color: var(--btn-txt);
+    font-size: 18px;
+    font-weight: bold;
+    border-radius: 16px 16px 0 0 ;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+.contact-dialog-box-details-area {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 12px 8px;
+    background-color: var(--form-body);
+    border-radius: 0 0 16px 16px;
+    box-sizing: border-box;
+}
+.contact-us-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    box-sizing: border-box;
+}
+.contact-form-issue-dropdown {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.contact-form-issue-dropdown label {
+    font-size: 18px;
+}
+.contact-form-issue-dropdown select {
+    height: 30px;
+}
+.contact-form-issue-describe {
+    display: flex;
+    width: 100%;
+    height: 90px;
+    justify-content: center;
+}
+.contact-form-issue-describe textarea {
+    display: flex;
+    width: 90%;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.contact-form-submit-btn-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+.contact-form-submit-btn {
+    width: 40%;
+    background-color: var(--btn-bg);
+    color: var(--btn-txt);
+    border-radius: 16px;
+    padding: 8px 32px;
+}
+@media (min-width:650px) {
+    .contact-dialog-box {
+        width: 450px;
+    }
+    .contact-dialog-box-title {
+        height: 60px;
+    }
+    .contact-us-form {
+        gap: 16px;
+    }
+    .contact-form-submit-btn:hover {
+        background-color: var(--btn-hover-bg);
 
-
+    }
 }

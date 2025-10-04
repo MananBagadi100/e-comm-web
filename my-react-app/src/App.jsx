@@ -14,7 +14,7 @@ import ProductDetails from './components/ProductDetails.jsx'
 import Checkout from './components/Checkout.jsx'
 import Fallback from './pages/Fallback.jsx'
 import Footer from './components/Footer.jsx'
-import Register from './components/HomeSections/Register.jsx'
+import Register from './components/Register.jsx'
 
 function App() {
   

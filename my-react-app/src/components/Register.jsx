@@ -1,4 +1,4 @@
-import '../../styles/RegisterStyles.css'
+import '../styles/RegisterStyles.css'
 import { useForm } from 'react-hook-form'
 const Register = () => {
     const {
@@ -22,7 +22,7 @@ const Register = () => {
         <>
         {isSubmitting && (<div>Loading ... </div>)}
             <div className="register-full-page-container">
-                <div className="register-main-heading-container">Register Now !</div>
+                <div className="register-main-heading-container">Registration Page</div>
                 <div className="register-content-area">
                     <div className="registration-form-area">
                         <div className="registration-form-heading">Registration Form</div>

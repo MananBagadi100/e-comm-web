@@ -80,3 +80,24 @@
 .field-errors {
     color: red;
 }
+@media (min-width: 650px) {
+    .register-full-page-container {
+        align-items: center ;
+    }
+    .register-main-heading-container {
+        font-size: 24px;
+    }
+    .register-content-area {
+        width: 500px;
+    }   
+    .registration-form-heading {
+        font-size: 20px;
+    }
+    .registration-submit-btn {
+        padding: 8px 40px;
+        font-size: 15px;
+    }
+    .registration-submit-btn:hover {
+        background-color: var(--btn-hover-bg);
+    }
+}
