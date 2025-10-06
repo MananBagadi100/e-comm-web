@@ -5,22 +5,19 @@ import { LoginContext } from '../context/LoginContext'
 import { useForm } from 'react-hook-form'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import KeyIcon from '@mui/icons-material/Key';
+import axios from 'axios'
 //storeLoginState is a global function to change the login state 
 const Login= () => {
-    const [userName,setUserName] =useState('')
-    const [password,setPassword] =useState('')
     const value = useContext(LoginContext)
-    const location = useLocation()
-    const navigate = useNavigate()
     const {
         register,
         handleSubmit,
-        watch,
-        setError,   //for custom errors from server
         formState: { errors,isSubmitting,},
     } = useForm({ criteriaMode : 'all'})
     const onSubmit = async(data) => {
         console.log('The name is ',data)
+        const answer = await axios.post('http://localhost:3000/login',data)
+        console.log("Server response ",answer.data)
         value.storeLoginState(true) //for updating the login state but remember only after response from server
     }
     if(value.loginState === false ) {

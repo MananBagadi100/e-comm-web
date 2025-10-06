@@ -83,7 +83,6 @@
   width: 50%;
   background-color: var(--btn-bg);
   color: var(--btn-txt);
-  /* border: 2px solid black; */
   border-radius: 20px;
   padding: 8px 0;
 }
@@ -111,6 +110,9 @@
   }
   .login-submit-btn-wrapper input:hover {
     background-color: var(--btn-hover-bg);
+  }
+  .login-submit-btn {
+    font-size: 15px;
   }
   .login-submit-btn:hover {
     background-color: var(--btn-hover-bg);

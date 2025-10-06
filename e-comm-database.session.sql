@@ -1,0 +1,22 @@
+CREATE TABLE users (
+    user_id INT PRIMARY KEY,
+    username VARCHAR(35),
+    email VARCHAR(35),
+    contactNo INT,
+    password VARCHAR(35)
+);
+
+DESCRIBE users;
+
+SELECT * FROM users;
+
+ALTER TABLE users MODIFY user_id INT AUTO_INCREMENT;
+
+ALTER TABLE users MODIFY contactNo VARCHAR(15);
+
+ALTER TABLE users MODIFY password VARCHAR(100);
+
+
+ALTER TABLE users
+  ADD COLUMN created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP;
+

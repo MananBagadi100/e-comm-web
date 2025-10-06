@@ -1,3 +1,4 @@
+import axios from 'axios'
 import '../styles/RegisterStyles.css'
 import { useForm } from 'react-hook-form'
 const Register = () => {
@@ -9,14 +10,15 @@ const Register = () => {
         setError,   //for custom errors from server
         formState: { errors,isSubmitting,},
     } = useForm({ criteriaMode : 'all'})
-    const onSubmit = (data) => {
-        console.log(`Password is ${data.password} and confirm password is ${data.confirmPassword}`)
+    const onSubmit = async(data) => {
         if(data.password !== data.confirmPassword) {    //setting our own custom errors
             setError("noMatch",{message:"Password and Confirm Password do not match"})
             return
         }
         clearErrors("noMatch")
         console.log('The registration form data is ',data)
+        const ans = await axios.post('http://localhost:3000/register',data)
+        console.log(ans.data)
     }
     return (
         <>
@@ -83,6 +85,7 @@ const Register = () => {
                                         maxLength:{value:35,message:"Max length of password is 35"},
                                         pattern:{value:/^[A-Za-z0-9@*$#]+$/,message:"Only letters, numbers , @,*,$,# are allowed"}
                                     })}
+                                    type='password'
                                     placeholder="Enter your Password"
                                 />
                                 {errors.password?.types?.required && (<div className='field-errors'>{errors.password.types.required}</div>)}
@@ -96,6 +99,7 @@ const Register = () => {
                                     className='register-input-field'
                                     {...register("confirmPassword",{required:{value:true,message:"Confirm Password is required"}
                                     })}
+                                    type='password'
                                     placeholder="Confirm Password"
                                 />
                                 {errors.confirmPassword?.types?.required && (<div className='field-errors'>{errors.confirmPassword.types.required}</div>)}
