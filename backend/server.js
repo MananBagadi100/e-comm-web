@@ -20,20 +20,18 @@ const cookieParser = require('cookie-parser')
 app.use(cookieParser())
 //Middleware to allow frontend requests
 app.use(cors(corsOptions))
-//Middleware to parse json format
+//Middleware to read and parse json format
 app.use(express.json())
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
+//all public routes come here
 const eCommRoutes = require('./Routes/e-commRoutes.js')
-
-app.use('/',eCommRoutes.router)
+app.use('/api',eCommRoutes.router)  
 
 //all protected routes come below
-app.use('/auth',verifyToken, (req,res,next) => {
-    res.json({msg : "Token correct and verified. Access Granted !",isLoggedIn:true})
-})
-
+const protectedRoutes = require('./Routes/protectedRoutes.js')
+app.use('/api/auth',protectedRoutes.router)
 
 app.listen(process.env.PORT, () => {
     console.log(`Server running on http://localhost: ${process.env.PORT}`)

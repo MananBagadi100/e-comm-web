@@ -21,7 +21,7 @@ const Login= () => {
     const onSubmit = async (data) => {
         setServerError('')
         console.log('The name is ',data)
-        const answer = await axios.post('http://localhost:3000/login',data,{withCredentials:true})
+        const answer = await axios.post('http://localhost:3000/api/login',data,{withCredentials:true})
         console.log("Server response ",answer.data)
         const loginStatus = answer.data.isLoggedIn
         if(loginStatus) { 

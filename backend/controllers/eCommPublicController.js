@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken')
-/*demo use only*/ const secretKey = process.env.JWT_SECRET
+const secretKey = process.env.JWT_SECRET
 const bcrypt = require('bcrypt')
 const Operations = require('../models/eCommModels.js')
 
@@ -51,7 +51,7 @@ async function loginUser (req,res,next) {
             res.json({msg : "User does not exist"})
         }
     }
-    catch (error) {
+    catch (error) {     //just for handling errors (if any)
         console.log('the error is ', error)
     }
 }

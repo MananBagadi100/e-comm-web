@@ -3,6 +3,7 @@ import { LoginContext } from "../context/LoginContext"
 import { useForm } from 'react-hook-form'
 import '../styles/ContactUsStyles.css'
 import { Link } from "react-router-dom"
+import axios from "axios";
 const ContactUs= () => {
     const {loginState} = useContext(LoginContext)
     const {
@@ -13,47 +14,54 @@ const ContactUs= () => {
         setError,   //for custom errors from server
         formState: { errors,isSubmitting,},
     } = useForm({ criteriaMode : 'all'})
-    const onSubmit = (data) => {
+    const onSubmit = async (data) => {
         console.log(data)
+        const answer = await axios.post('http://localhost:3000/api/auth/contactForm',data,{withCredentials:true})
+        console.log('the answer from server is ',answer.data)
+
     }
     if(loginState) {
         return (
-            <div className="contact-full-container">
-                <div className="contact-content-area">
-                    <div className="contact-dialog-box">
-                        <div className="contact-dialog-box-title">
-                            Contact Us
+            <>
+                <div className="contact-full-container">
+                    <div className="contact-content-area">
+                        <div className="contact-dialog-box">
+                            <div className="contact-dialog-box-title">
+                                Contact Us
+                            </div>
+                            <div className="contact-dialog-box-details-area">
+                                <form className="contact-us-form" onSubmit={handleSubmit(onSubmit)}>
+                                    <div className="contact-form-issue-dropdown">
+                                        <label >Select your issue :</label>
+                                        <select {...register("issueType")}>
+                                            <option value="">Select Issue</option>
+                                            <option value="productIssue">Product Issue</option>
+                                            <option value="delivaryIssue">Delivary Issue</option>
+                                            <option value="accountLoginIssue">Account Login Problems</option>
+                                            <option value="others">Others</option>
+                                        </select>
+                                    </div>
+                                    <div className="contact-form-issue-describe">
+                                        <textarea 
+                                            {...register("issueMessage",{required:true,maxLength:{value:1000,message:"Max message length is 1000 charecters."}})}
+                                            placeholder="Explain your issue ..."
+                                        />
+                                    </div>
+                                    {errors.issueMessage && <div>{errors.issueMessage.message}</div>}
+                                    <div className="contact-form-submit-btn-wrapper">
+                                        <input 
+                                            type="submit" 
+                                            value="Submit"
+                                            className="contact-form-submit-btn"
+                                            disabled={isSubmitting}
+                                        />
+                                    </div>    
+                                </form>
+                            </div>
                         </div>
-                        <div className="contact-dialog-box-details-area">
-                            <form className="contact-us-form" onSubmit={handleSubmit(onSubmit)}>
-                                <div className="contact-form-issue-dropdown">
-                                    <label >Select your issue :</label>
-                                    <select {...register("issueType")}>
-                                        <option value="">Select Issue</option>
-                                        <option value="productIssue">Product Issue</option>
-                                        <option value="delivaryIssue">Delivary Issue</option>
-                                        <option value="accountLoginIssue">Account Login Problems</option>
-                                        <option value="others">Others</option>
-                                    </select>
-                                </div>
-                                <div className="contact-form-issue-describe">
-                                    <textarea 
-                                        {...register("issueMessage")}
-                                        placeholder="Explain your issue ..."
-                                    />
-                                </div>
-                                <div className="contact-form-submit-btn-wrapper">
-                                    <input 
-                                        type="submit" 
-                                        value="Submit"
-                                        className="contact-form-submit-btn"
-                                    />
-                                </div>    
-                            </form>
-                        </div>
-                    </div>
-                </div>  
-            </div>
+                    </div>  
+                </div>
+            </>
         )
     }
     else {

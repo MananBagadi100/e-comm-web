@@ -24,7 +24,7 @@ const Register = () => {
         }
         clearErrors("noMatch")
         console.log('The registration form data is ',data)
-        const ans = await axios.post('http://localhost:3000/register',data,{withCredentials:true})
+        const ans = await axios.post('http://localhost:3000/api/register',data,{withCredentials:true})
         console.log(ans.data)
         const LoginStatus = ans.data.isLoggedIn
         if (LoginStatus) {
