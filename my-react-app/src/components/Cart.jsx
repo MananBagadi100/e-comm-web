@@ -5,13 +5,23 @@ import { Link, useNavigate } from "react-router-dom"
 import { LoginContext } from "../context/LoginContext"
 import emptyCartImage2 from "../assets/emptyCart.png"
 import DeleteIcon from '@mui/icons-material/Delete'
+import axios from "axios"
 const Cart = () => {
     const navigate = useNavigate()
     const value=useContext(cartContext)
+    const {loginState, setLoginState} = useContext(LoginContext)
     const loginValue = useContext(LoginContext)
-    console.log(value)
-    const handleCheckout = () => {
-        loginValue.loginState ? navigate('/checkout') : navigate('/login?redirect=/cart')
+    const handleCheckout = async() => {
+        const answer = await axios.get('http://localhost:3000/auth',{withCredentials:true})
+        console.log('answer in cart is ',answer)
+        const userLoginStatus = answer.data.isLoggedIn
+        if(userLoginStatus) {
+            setLoginState(true)     //user is logged in already
+        }
+        // const loginStatus = answer.data.isLoggedIn
+        // loginValue.storeLoginState(loginStatus)
+
+        loginState ? navigate('/checkout') : navigate('/login?redirect=/cart')
     }
     if(value.cart.length===0) {
         return (

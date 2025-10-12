@@ -66,6 +66,11 @@
     height: 25px;
     border-radius: 4px;
 }
+.userCredentials-error {
+    display: flex;
+    color: red;
+    justify-content: center;
+}
 .registration-submit-btn-wrapper {
     display: flex;
     width: 100%;

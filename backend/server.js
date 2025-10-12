@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const {verifyToken} = require('./Middleware/verifyToken.js')
 const whiteList = ['http://localhost:5173'] //enter allowed url's
 let corsOptions = {
     origin: function(origin,callback) {
@@ -11,33 +12,27 @@ let corsOptions = {
         else {
             callback(new Error('Not allowed by CORS'))
         }
-    }
+    },
+    credentials:true
 }
+//Middleware to parse and read cookie data
+const cookieParser = require('cookie-parser')
+app.use(cookieParser())
+//Middleware to allow frontend requests
 app.use(cors(corsOptions))
-
+//Middleware to parse json format
 app.use(express.json())
-// app.get('/',(req,res,next) => {
-//     res.json({msg: "Hi"})
-// })
 
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
-// app.get('/students' , async(req, res) => {
-//     try{
-//         const [rows] = await pool.query("SELECT id, name, class, stream, DATE_FORMAT(created_at, '%Y-%m-%d %H:%i:%s') AS created_at FROM students")
-//         res.json(rows)
-//     }
-//     catch(error) {
-//         console.log('Error ',error)
-//         res.status(500).json({error: 'Failed to fetch students'})
-//     }
-// })
-//here
-const StudentRoutes = require('./Routes/studentRoutes.js')
-app.use('/studentsDatabase', StudentRoutes.router)
-
 const eCommRoutes = require('./Routes/e-commRoutes.js')
+
 app.use('/',eCommRoutes.router)
+
+//all protected routes come below
+app.use('/auth',verifyToken, (req,res,next) => {
+    res.json({msg : "Token correct and verified. Access Granted !",isLoggedIn:true})
+})
 
 
 app.listen(process.env.PORT, () => {

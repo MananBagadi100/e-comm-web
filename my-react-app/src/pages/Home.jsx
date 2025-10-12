@@ -1,13 +1,10 @@
-import { Link, useLocation, useNavigate } from "react-router-dom"
+import { Link } from "react-router-dom"
 import '../styles/HomeStyles.css'
 import { useEffect, useState } from "react"
 import { getFeaturedProducts } from "../services/GetService"
 import FeaturedProducts from "../components/HomeSections/FeaturedProducts.jsx"
 import TopCategories from "../components/HomeSections/TopCategories.jsx"
 import heroImage from "../assets/heroImage.png"
-import SunglassesCat from '../assets/Sunglasses_demo.jpg'
-import CircularProgress from '@mui/material/CircularProgress';
-import Box from '@mui/material/Box';
 import ProfileImg1 from '../assets/ProfileImg1.png'
 import ProfileImg2 from '../assets/ProfileImg2.jpg'
 import ProfileImg3 from '../assets/ProfileImg3.jpg'
@@ -27,7 +24,6 @@ const Home= () => {
         })
         .catch(error => console.log("The error is ",error)) 
     },[])
-    console.log("the featuredProducts state is : ", featuredProducts)
 
     return (
         <div id="home-full-container">

@@ -8,19 +8,35 @@ import KeyIcon from '@mui/icons-material/Key';
 import axios from 'axios'
 //storeLoginState is a global function to change the login state 
 const Login= () => {
-    const value = useContext(LoginContext)
+    const [ serverError , setServerError] = useState('')
+    const navigate = useNavigate()
+    const {loginState,setLoginState} = useContext(LoginContext)
     const {
         register,
         handleSubmit,
+        setError,
+        clearErrors,
         formState: { errors,isSubmitting,},
     } = useForm({ criteriaMode : 'all'})
-    const onSubmit = async(data) => {
+    const onSubmit = async (data) => {
+        setServerError('')
         console.log('The name is ',data)
-        const answer = await axios.post('http://localhost:3000/login',data)
+        const answer = await axios.post('http://localhost:3000/login',data,{withCredentials:true})
         console.log("Server response ",answer.data)
-        value.storeLoginState(true) //for updating the login state but remember only after response from server
+        const loginStatus = answer.data.isLoggedIn
+        if(loginStatus) { 
+            setLoginState(true)
+            navigate('/')
+        }
+        else {
+            setServerError(`${answer.data.msg}`)
+        }
     }
-    if(value.loginState === false ) {
+    async function handleLogout () {
+        const answer = await axios.post('http://localhost:3000/logout',{},{withCredentials:true})
+        setLoginState(answer.data.isLoggedIn)
+    }
+    if(loginState === false ) {
         return (
             <>
             {isSubmitting && <div>Loading .. </div>}
@@ -65,17 +81,17 @@ const Login= () => {
                                     {errors.password?.types?.pattern && (
                                     <div className="login-input-field-errors">No special characters except @</div>)}
                                 </div>
+                                <div className="wrongCredentials-error">{serverError}</div>
                                 <div className="login-submit-btn-wrapper">
                                     <input 
                                         className='login-submit-btn' 
                                         type='submit'
                                         disabled={isSubmitting} 
                                         value="Submit"
-                                    >
-                                    {errors.myform && <div className="login-input-field-errors">{errors.myform.message}</div>}
-                                    </input>
+                                    />                   
                                 </div>
                                 <div className='registration-link'>New User ? <a href='/register'>Register Now !</a></div>
+                                
                             </form>
                         </div>
                     </div>    
@@ -87,7 +103,9 @@ const Login= () => {
         return (
             <div>
                 <div>Hey you are already logged in !</div>
-                <button id='logoutBtn' onClick={()=> {value.storeLoginState(false)}}>Logout</button>
+                {/* <button id='logoutBtn' onClick={()=> {value.storeLoginState(false)}}>Logout</button> */}
+                <button id='logoutBtn' onClick={handleLogout}>Logout</button>
+
             </div>
         )
     }

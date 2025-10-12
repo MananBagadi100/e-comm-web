@@ -1,7 +1,13 @@
 import axios from 'axios'
 import '../styles/RegisterStyles.css'
 import { useForm } from 'react-hook-form'
+import { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { LoginContext } from '../context/LoginContext'
 const Register = () => {
+    const [serverError , setServerError] = useState('')
+    const navigate = useNavigate()
+    const {loginState , setLoginState} = useContext(LoginContext)
     const {
         register,
         handleSubmit,
@@ -11,14 +17,24 @@ const Register = () => {
         formState: { errors,isSubmitting,},
     } = useForm({ criteriaMode : 'all'})
     const onSubmit = async(data) => {
+        setServerError('')
         if(data.password !== data.confirmPassword) {    //setting our own custom errors
             setError("noMatch",{message:"Password and Confirm Password do not match"})
             return
         }
         clearErrors("noMatch")
         console.log('The registration form data is ',data)
-        const ans = await axios.post('http://localhost:3000/register',data)
+        const ans = await axios.post('http://localhost:3000/register',data,{withCredentials:true})
         console.log(ans.data)
+        const LoginStatus = ans.data.isLoggedIn
+        if (LoginStatus) {
+            navigate('/')
+            setLoginState(true)
+        }
+        else {
+            setServerError(`${ans.data.msg}`)
+        }
+        return
     }
     return (
         <>
@@ -105,6 +121,7 @@ const Register = () => {
                                 {errors.confirmPassword?.types?.required && (<div className='field-errors'>{errors.confirmPassword.types.required}</div>)}
                                 {errors.noMatch && (<div className='field-errors'>{errors.noMatch.message}</div>)}
                             </div>
+                            <div className="userCredentials-error">{serverError}</div>
                             <div className="registration-submit-btn-wrapper">
                                 <input type='submit' 
                                     value='Submit' 

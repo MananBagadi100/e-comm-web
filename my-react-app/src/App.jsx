@@ -15,9 +15,15 @@ import Checkout from './components/Checkout.jsx'
 import Fallback from './pages/Fallback.jsx'
 import Footer from './components/Footer.jsx'
 import Register from './components/Register.jsx'
+import { useEffect } from 'react'
+import axios from 'axios'
 
 function App() {
-  
+  // useEffect(() => {
+  //   const checkLoggedStatus = async() => {
+  //     await axios.get('http://localhost:3000/authenticate')
+  //   }
+  // },[])
 	
 	
   return (

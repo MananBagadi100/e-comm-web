@@ -1,6 +1,7 @@
 import { createContext,useContext,useEffect,useState } from "react"
 export const cartContext = createContext()
 export const CartProvider = ({children}) => {
+    //putting cart in local storage so that it does not disapper after every reload
     const [cart,setCart] = useState(() => {
         try {
             const saved = localStorage.getItem("cart")

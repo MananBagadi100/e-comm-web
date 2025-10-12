@@ -70,6 +70,11 @@
   box-sizing: border-box;
   border-radius: 4px;
 }
+.wrongCredentials-error {
+  display: flex;
+  color: red;
+  justify-content: center;
+}
 .login-submit-btn-wrapper {
   display: flex;
   width: 100%;
