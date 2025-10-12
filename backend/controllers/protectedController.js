@@ -13,10 +13,14 @@ async function saveContactMessage (req,res,next) {
     }
     const addAnswer = await protectedOperations.addNewQuery(queryMessage)
     if (addAnswer.affectedRows === 1) {
-        res.json({msg : "Query successfully received !"})
+        res.status(200).json({msg : "Query successfully submitted !"})
     }
     else {
-        res.json({msg : "Error query not received. Please try again !"})
+        res.status(500).json({msg : "Error: Some error occured. Please try again !"})
     }
 }
-module.exports = {LoginRegisterCallback,saveContactMessage}
+async function placeOrder (req,res,next) {
+    console.log('here',req.user)
+    res.json({msg : "Ok"})
+}
+module.exports = {LoginRegisterCallback,saveContactMessage,placeOrder}

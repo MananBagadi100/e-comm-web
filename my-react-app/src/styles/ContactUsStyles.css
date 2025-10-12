@@ -1,167 +1,10 @@
-/* .contact-us-full-container {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-}
-#contact-us-message-wrapper {
-    width: 500px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-#contact-us-message {
-    width: auto;
-    height: auto;
-    margin: 12px 0px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    display: flex;
-}
-#contact-us-login-redirect-btn {
-    padding: 8px 12px;
-    border-radius: 20px;
-    background-color: var(--btn-bg);
-}
-a#contact-us-login-redirect-btn {
-    text-decoration: none;
-    color: var(--btn-txt);
-}
-#contact-us-login-redirect-btn:hover {
-    border: var(--primary-btn-hover-color);
-}
-#contact-us-dialog-box {
-    height: 325px;
-    width: 450px;
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    border-radius: 24px;
-    overflow: hidden;
-}
-#contact-us-dialog-box-title {
-    width: 100%;
-    height: 20%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    box-sizing: border-box;
-    font-size: 20px;
-    font-weight: bold;
-    background-color: var(--nav-bg);
-    color: var(--btn-txt);
-}
-#contact-us-dialog-box-content-area {
-    width: 100%;
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    background-color: var(--form-body);
-}
-#contact-us-issue-dropdown-wrapper,
-#contact-us-message-area-wrapper {
-    width: 90%;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: row;
-    padding: 8px 0px;
-}
-#contact-us-issue-dropdown-label,
-#contact-us-issue-dropdown-menu {
-    display: flex;
-    box-sizing: border-box;
-    align-items: center;
-}
-#contact-us-issue-dropdown-label {
-    width: 30%;
-    justify-content: flex-end;
-    font-size: 18px;
-    font-weight: bold;
-}
-#contact-us-issue-dropdown-menu {
-    width: 70%;
-}
-#contact-us-message-label {
-    width: 30%;
-    display: flex;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    font-weight: bold;
-    font-size: 18px;
-}
-#contact-us-message-area {
-    width: 70%;
-    display: flex;
-    box-sizing: border-box;
-    object-fit: contain;
-}
-#contact-us-message-area textarea {
-    width: 80%;
-    height: 120px;
-}
-#contact-us-submit-btn {
-    border-radius: 20px;
-    padding: 8px 40px;
-    color: var(--btn-txt);
-    background-color: var(--btn-bg);
-    margin-top: 12px;
-}
-#contact-us-submit-btn:hover {
-    background-color: var(--btn-hover-bg);
-}
-
-@media (max-width:600px) {
-    #contact-us-dialog-box {
-        height: 325px;
-        width: 350px;
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        border-radius: 24px;
-        overflow: hidden;
-    }
-    #contact-us-message-wrapper {
-        width: 100%;
-        height: 250px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-    }
-    #contact-us-message {
-        margin: 8px auto;
-        font-size: 1.2rem;
-        font-weight: bold;
-        display: flex;
-    }
-    #contact-us-login-redirect-btn {
-        padding: 4px 8px;
-        margin-top: 12px;
-    }
-    #contact-us-issue-dropdown-label {
-        font-size: 16px;
-    }
-    #contact-us-message-label {
-        font-size: 16px;
-    }
-    #contact-us-message-area textarea {
-        width: 200px;
-    }
-} */
 .contact-full-container {
     display: flex;
     width: 100%;
     height: 100%;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 .contact-logIn-message-wrapper {
     display: flex;
@@ -180,6 +23,18 @@ a#contact-us-login-redirect-btn {
     background-color: var(--btn-bg);
     border-radius: 16px;
     padding: 8px 32px;
+}
+.contact-query-submitted-msg {
+    color: green;
+    font-weight: bold;
+    font-size: 24px;
+    margin: 0 0 12px;
+}
+.contact-another-query-submit-btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-txt);
+    border-radius: 16px;
+    padding: 8px 24px;
 }
 .contact-content-area {
     display: flex;
@@ -264,6 +119,11 @@ a#contact-us-login-redirect-btn {
     border-radius: 16px;
     padding: 8px 32px;
 }
+.contact-us-server-message {
+    display: flex;
+    color: red;
+    justify-content: center;
+}
 @media (min-width:650px) {
     .contact-dialog-box {
         width: 450px;
@@ -277,5 +137,8 @@ a#contact-us-login-redirect-btn {
     .contact-form-submit-btn:hover {
         background-color: var(--btn-hover-bg);
 
+    }
+    .contact-another-query-submit-btn:hover {
+        background-color: var(--btn-hover-bg);
     }
 }

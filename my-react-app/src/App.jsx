@@ -17,13 +17,26 @@ import Footer from './components/Footer.jsx'
 import Register from './components/Register.jsx'
 import { useEffect } from 'react'
 import axios from 'axios'
+import { useContext } from 'react'
+import { LoginContext } from './context/LoginContext.jsx'
 
 function App() {
-  // useEffect(() => {
-  //   const checkLoggedStatus = async() => {
-  //     await axios.get('http://localhost:3000/authenticate')
-  //   }
-  // },[])
+  const {setLoginState} = useContext(LoginContext)
+  const backendRouteURL = import.meta.env.VITE_BACKEND_ROUTE;
+  useEffect(() => {
+    const checkAuth = async () => {
+      const answer = await axios.post(`${backendRouteURL}/api/auth/verify`,{},{withCredentials:true})
+      try {
+        if(answer.data.isLoggedIn) {  //if true
+          setLoginState(true)
+        }
+      }
+      catch (error) {
+        console.log("Some error occured",error)
+      } 
+    }
+    checkAuth()
+  },[])
 	
 	
   return (

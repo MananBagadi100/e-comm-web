@@ -33,7 +33,7 @@ const Login= () => {
         }
     }
     async function handleLogout () {
-        const answer = await axios.post('http://localhost:3000/logout',{},{withCredentials:true})
+        const answer = await axios.post('http://localhost:3000/api/logout',{},{withCredentials:true})
         setLoginState(answer.data.isLoggedIn)
     }
     if(loginState === false ) {

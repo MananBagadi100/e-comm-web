@@ -23,31 +23,38 @@ const FilteredProducts = ({categoryProducts , selectedMinPrice ,selectedMaxPrice
         ))
         console.log("the flat visibleProductsFinal is ", visibleProductsFinal.flat())
     const sortedVisibleProductsFinal = SortProducts(visibleProductsFinal.flat())
-    return (
-        <div className="product-grid">
-            {    
-                sortedVisibleProductsFinal && sortedVisibleProductsFinal.map((item) => (
-                    <Link key={item.id} to={`/products/${item.id}`} className="product-card-wrapper">
-                        <div key={item.id} className="product-card">
-                            <img src={item.images[0]} alt="Image not given" />
-                                <div className="product-id">ID : {item.id}</div>
-                                <div className="product-title">{item.title}</div>
-                                <div className="product-price">Price : {item.price}</div>
-                                <div className="product-rating">Rating : {item.rating}</div>
-                                <div className="product-brand">Brand : {item.brand}</div>
-                                <button 
-                                    className="cart-btn" 
-                                    onClick={(e)=>{
-                                        e.preventDefault()
-                                        e.stopPropagation()
-                                        cartHandler.addToCart(item)
-                                        }}>Add to cart
-                                </button>
-                        </div>
-                    </Link>
-                ))
-            }  
-        </div>
-    )
+    
+    
+    if(sortedVisibleProductsFinal) {
+        return (
+            <div className="product-grid">
+                {    
+                    sortedVisibleProductsFinal && sortedVisibleProductsFinal.map((item) => (
+                        <Link key={item.id} to={`/products/${item.id}`} className="product-card-wrapper">
+                            <div key={item.id} className="product-card">
+                                <img src={item.images[0]} alt="Image not given" />
+                                    <div className="product-id">ID : {item.id}</div>
+                                    <div className="product-title">{item.title}</div>
+                                    <div className="product-price">Price : {item.price}</div>
+                                    <div className="product-rating">Rating : {item.rating}</div>
+                                    <div className="product-brand">Brand : {item.brand}</div>
+                                    <button 
+                                        className="cart-btn" 
+                                        onClick={(e)=>{
+                                            e.preventDefault()
+                                            e.stopPropagation()
+                                            cartHandler.addToCart(item)
+                                            }}>Add to cart
+                                    </button>
+                            </div>
+                        </Link>
+                    ))
+                }  
+            </div>
+        )
+    }
+    else {
+        <div>No Products!</div>
+    }
 }
 export default FilteredProducts

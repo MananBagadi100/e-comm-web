@@ -4,5 +4,10 @@ const {verifyToken} = require('../Middleware/verifyToken.js')
 const protectedRoutes = require('../controllers/ProtectedController.js')
 router.post('/',verifyToken,protectedRoutes.LoginRegisterCallback)
 router.post('/contactForm',verifyToken,protectedRoutes.saveContactMessage)
+router.post('/checkout',protectedRoutes.placeOrder)
+ //so that user need not login after every reload
+router.post('/verify',verifyToken,(req,res,next) => {  
+    res.json({isLoggedIn:true,user:req.user})
+})
 
 module.exports = {router}

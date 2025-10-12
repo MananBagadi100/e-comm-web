@@ -22,7 +22,7 @@ const Products = () => {
     const [selectedMaxPrice , setSelectedMaxPrice] = useState(["1"])    //higher value of price filter (string)
     const [defaultPriceRangeValue , setDefaultPriceRangeValue] = useState(["0","1"]) //string
     const [rangeError , setRangeError] = useState('')
-    const {sort , setSort} = useContext(ProductContext)
+    // const {sort , setSort} = useContext(ProductContext)
     //state for keeping track of the sidebar , open or close
     const [filtersOpen, setFiltersOpen] = useState(false);
     const detailsRef = useRef(null)

@@ -148,7 +148,7 @@
 #info-box-details-area {
     height: 80%;
     display: flex;
-    background-color: var(--btn-bg);
+    background-color: var(--form-body);
     padding: 8px 12px 16px;
     box-sizing: border-box;
     flex-direction: column;
@@ -170,13 +170,13 @@
     height: 100%;
     display: flex;
 }
-#info-box-address-label-wrapper textarea {
+/* #info-box-address-label-wrapper textarea {
     display: flex;
     height: 100%;
     flex: 1 1 auto;
     overflow-y: scroll;
     box-sizing: border-box;
-}
+} */
 #info-box-place-order-btn-wrapper {
     display: flex;
     justify-content: center;
@@ -185,8 +185,12 @@
     background-color: var(--btn-bg);
     color: var(--btn-txt);
     border-radius: 20px;
-    border: 1px solid white;
     padding: 8px 28px;
+    border: none;
+}
+.error-msg {
+    color: red;
+    font-size: 15px;
 }
 
 @media (min-width:650px) {
@@ -264,7 +268,6 @@
         height: 60px;
     }
     #info-box-place-order-btn {
-        border: 1.5px solid white;
         padding: 8px 20px;
     }
     #info-box-place-order-btn:hover {
