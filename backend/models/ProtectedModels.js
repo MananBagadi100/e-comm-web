@@ -4,10 +4,24 @@ async function getUserDetails (data) {
     return queryAnswer[0]
 }
 
-async function addNewQuery (data) {
-    console.log('the query message is ',data)
+async function addNewCustomerQuery (data) {
+    const {user_id,username,email,contactNo,issueType,issueMessage} = data
     const [queryAnswer] = await netPool.pool.query(`INSERT INTO userQueries(user_id,username,email,contactNo,issueType,issueMessage) VALUES (?,?,?,?,?,?)`,
-        [data.user_id,data.username,data.email,data.contactNo,data.issueType,data.issueMessage])
+        [user_id,username,email,contactNo,issueType,issueMessage])
     return queryAnswer
 }
-module.exports = {getUserDetails,addNewQuery}
+
+async function createNewOrder (data) {
+    const [queryAnswer] = await netPool.pool.query(`INSERT INTO orders(user_id,address,payment_method,total_amount) VALUES (?,?,?,?)`,
+        [data.user_id,data.userAddress,data.paymentMethod,data.total])
+    return queryAnswer
+}
+
+async function createNewOrderItems (data) {
+    const {order_id,prod_id,prod_title,prod_price,prod_quantity,prod_image_url} = data
+    const [queryAnswer] = await netPool.pool.query(`INSERT INTO order_items(order_id,product_id,title,price,quantity,image) VALUES (?,?,?,?,?,?)`,
+        [order_id,prod_id,prod_title,prod_price,prod_quantity,prod_image_url])
+    return queryAnswer
+    
+}
+module.exports = {getUserDetails,addNewCustomerQuery,createNewOrder,createNewOrderItems}
