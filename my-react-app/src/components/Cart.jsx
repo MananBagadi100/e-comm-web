@@ -11,13 +11,14 @@ const Cart = () => {
     const value=useContext(cartContext)
     const {loginState, setLoginState} = useContext(LoginContext)
     const handleCheckout = async() => {
-        const answer = await axios.post('http://localhost:3000/api/auth',{withCredentials:true})
-        console.log('answer in cart is ',answer)
-        // const userLoginStatus = answer.data.isLoggedIn
-        // if(userLoginStatus) {
-        //     setLoginState(true)     //user is logged in already
-        // }
-        loginState ? navigate('/checkout') : navigate('/login?redirect=/cart')
+        try {
+            const answer = await axios.post('http://localhost:3000/api/auth',{withCredentials:true})
+            console.log('answer in cart is ',answer)
+            loginState ? navigate('/checkout') : navigate('/login?redirect=/cart')
+        }
+        catch (error) {
+            console.log("Something wrong in axios cart api request")
+        }
     }
     if(value.cart.length===0) {
         return (

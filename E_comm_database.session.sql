@@ -23,3 +23,36 @@ SELECT * FROM userQueries;
 
 TRUNCATE userQueries;
 
+CREATE TABLE orders (
+  order_id INT PRIMARY KEY AUTO_INCREMENT,
+  user_id INT,
+  address VARCHAR(255),
+  payment_method VARCHAR(50),
+  total_amount DECIMAL(10,2),
+  placed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  status ENUM('Pending','Shipped','Delivered','Cancelled') DEFAULT 'Pending',
+  FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE order_items (
+  item_id INT PRIMARY KEY AUTO_INCREMENT,
+  order_id INT,
+  product_id INT,
+  title VARCHAR(255),
+  price DECIMAL(10,2),
+  quantity INT,
+  image TEXT,
+  FOREIGN KEY (order_id) REFERENCES orders(order_id)
+);
+
+DESCRIBE orders;
+DESCRIBE order_items;
+
+SELECT * FROM orders;
+
+SELECT * FROM order_items;
+
+TRUNCATE orders;
+
+DROP TABLE order_items;
+DROP TABLE orders;

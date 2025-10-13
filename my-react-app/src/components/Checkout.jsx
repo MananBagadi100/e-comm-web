@@ -11,6 +11,7 @@ const Checkout = () => {
     const cartValue = useContext(cartContext)
     const backendRouteURL = import.meta.env.VITE_BACKEND_ROUTE
     const navigate = useNavigate()
+    const cartTotal = cartValue.calculateTotal(cartValue.cart)
     const calculateSubTotal = (prod) => {
         return ((prod.price * prod.quantity).toFixed(2))
     }
@@ -28,7 +29,17 @@ const Checkout = () => {
     } = useForm({ criteriaMode : 'all'})
     const onSubmit = async (data) => {
         console.log(data)
-        const answer = await axios.post(`${backendRouteURL}/api/auth/checkout`,data,{withCredentials:true})
+        const cartArray =JSON.parse(localStorage.getItem("cart"))
+        console.log(cartArray)
+        const payload = {
+            cartItems : cartArray,
+            ...data,
+            total : cartTotal
+        }
+        console.log('the total is ',cartValue.calculateTotal(cartValue.cart))
+        
+        const answer = await axios.post(`${backendRouteURL}/api/auth/checkout`,payload,{withCredentials:true})
+        console.log('the answer is ',answer)
     }
     if(orderStatus) {
         return (
