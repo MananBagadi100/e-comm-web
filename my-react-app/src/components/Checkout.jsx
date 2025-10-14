@@ -36,10 +36,15 @@ const Checkout = () => {
             ...data,
             total : cartTotal
         }
-        console.log('the total is ',cartValue.calculateTotal(cartValue.cart))
-        
         const answer = await axios.post(`${backendRouteURL}/api/auth/checkout`,payload,{withCredentials:true})
         console.log('the answer is ',answer)
+        if(answer.status === 200) {
+            setOrderStatus(true)
+            setTimeout(() => {
+                navigate('/')
+                setOrderStatus(false)
+            },3000)
+        }
     }
     if(orderStatus) {
         return (
@@ -130,7 +135,9 @@ const Checkout = () => {
                                         </label><br />
                                         {errors.paymentMethod && <div className="error-msg">{errors.paymentMethod.message}</div>}
                                         <div id="info-box-place-order-btn-wrapper">
-                                            <button id="info-box-place-order-btn" type="submit" disabled={isSubmitting}>
+                                            <button id="info-box-place-order-btn" 
+                                                type="submit" disabled={isSubmitting} 
+                                            >
                                             Place Order
                                             </button>
                                         </div>

@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import '../styles/CartStyle.css'
 import { cartContext } from "../context/CartContext"    //portal name
-import { Link, useNavigate } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import { LoginContext } from "../context/LoginContext"
 import emptyCartImage2 from "../assets/emptyCart.png"
 import DeleteIcon from '@mui/icons-material/Delete'
@@ -23,9 +23,9 @@ const Cart = () => {
     }
     if(value.cart.length===0) {
         return (
-            <div id="cart-empty-wrapper">
-                <div id="cart-empty-text">Hey cart is empty!</div>
-                <img id="cart-empty-image" src={emptyCartImage2} alt="Image not found"/>
+            <div className="cart-empty-wrapper">
+                <div className="cart-empty-text">Hey cart is empty!</div>
+                <img className="cart-empty-image" src={emptyCartImage2} alt="Image not found"/>
             </div>
         )
     }
