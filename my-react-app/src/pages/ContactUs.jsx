@@ -9,6 +9,7 @@ const ContactUs= () => {
     const [serverMessage , setServerMessage] = useState('')
     const [queryStatus , setQueryStatus] = useState(false)  //to find weather the user has send the query or not , this prevents multiple queries and database overloading 
     const {loginState} = useContext(LoginContext)
+    const backendRouteURL = import.meta.env.VITE_BACKEND_ROUTE
     const {
         register,
         handleSubmit,
@@ -21,7 +22,7 @@ const ContactUs= () => {
         setServerMessage('')
         console.log(data)
         try {
-            const answer = await axios.post('http://localhost:3000/api/auth/contactForm',data,{withCredentials:true})
+            const answer = await axios.post(`${backendRouteURL}/api/auth/contactForm`,data,{withCredentials:true})
             console.log('the answer from server is ',answer.data)
             if(answer.status === 200) {
                 setServerMessage(`${answer.data.msg}`)

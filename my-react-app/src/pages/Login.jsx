@@ -11,6 +11,7 @@ const Login= () => {
     const [ serverError , setServerError] = useState('')
     const navigate = useNavigate()
     const {loginState,setLoginState} = useContext(LoginContext)
+    const backendRouteURL = import.meta.env.VITE_BACKEND_ROUTE
     const {
         register,
         handleSubmit,
@@ -21,7 +22,7 @@ const Login= () => {
     const onSubmit = async (data) => {
         setServerError('')
         console.log('The name is ',data)
-        const answer = await axios.post('http://localhost:3000/api/login',data,{withCredentials:true})
+        const answer = await axios.post(`${backendRouteURL}/api/login`,data,{withCredentials:true})
         console.log("Server response ",answer.data)
         const loginStatus = answer.data.isLoggedIn
         if(loginStatus) { 
@@ -33,7 +34,7 @@ const Login= () => {
         }
     }
     async function handleLogout () {
-        const answer = await axios.post('http://localhost:3000/api/logout',{},{withCredentials:true})
+        const answer = await axios.post(`${backendRouteURL}/api/logout`,{},{withCredentials:true})
         setLoginState(answer.data.isLoggedIn)
     }
     if(loginState === false ) {

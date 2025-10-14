@@ -10,11 +10,12 @@ const Cart = () => {
     const navigate = useNavigate()
     const value=useContext(cartContext)
     const {loginState, setLoginState} = useContext(LoginContext)
+    const backendRouteURL = import.meta.env.VITE_BACKEND_ROUTE
     const handleCheckout = async() => {
         try {
-            const answer = await axios.post('http://localhost:3000/api/auth',{withCredentials:true})
+            const answer = await axios.post(`${backendRouteURL}/api/auth`,{},{withCredentials:true})
             console.log('answer in cart is ',answer)
-            loginState ? navigate('/checkout') : navigate('/login?redirect=/cart')
+            loginState ? navigate('/checkout') : navigate('/login')
         }
         catch (error) {
             console.log("Something wrong in axios cart api request")

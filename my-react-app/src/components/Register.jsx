@@ -8,6 +8,7 @@ const Register = () => {
     const [serverError , setServerError] = useState('')
     const navigate = useNavigate()
     const {loginState , setLoginState} = useContext(LoginContext)
+    const backendRouteURL = import.meta.env.VITE_BACKEND_ROUTE
     const {
         register,
         handleSubmit,
@@ -24,7 +25,7 @@ const Register = () => {
         }
         clearErrors("noMatch")
         console.log('The registration form data is ',data)
-        const ans = await axios.post('http://localhost:3000/api/register',data,{withCredentials:true})
+        const ans = await axios.post(`${backendRouteURL}/api/register`,data,{withCredentials:true})
         console.log(ans.data)
         const LoginStatus = ans.data.isLoggedIn
         if (LoginStatus) {
