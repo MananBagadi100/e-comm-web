@@ -110,37 +110,37 @@ image	            TEXT	        Image URL
 🌐 Deployment Details
 
 Backend (Render)
-	1.	Push backend code to GitHub.
-	2.	Go to Render, click New Web Service.
-	3.	Link repo and set build/start commands:
+	1. Push backend code to GitHub.
+	2. Go to Render, click New Web Service.
+	3. Link repo and set build/start commands:
 
-Build Command: npm install
-Start Command: npm start
-
-
-	4.	Add environment variables:
-
-PORT=5000
-DB_HOST=xxxx
-DB_USER=xxxx
-DB_PASSWORD=xxxx
-DB_NAME=xxxx
-JWT_SECRET=xxxx
-FRONTEND_URL=http://localhost:5173
+    Build Command: npm install
+    Start Command: npm start
 
 
-	5.	Deploy and copy your backend URL.
+	4. Add environment variables:
 
-Frontend (Vercel)
-	1.	Push frontend to GitHub.
-	2.	Go to Vercel → New Project → Import frontend repo.
-	3.	Add environment variable:
+    PORT=5000
+    DB_HOST=xxxx
+    DB_USER=xxxx
+    DB_PASSWORD=xxxx
+    DB_NAME=xxxx
+    JWT_SECRET=xxxx
+    FRONTEND_URL=http://localhost:5173
 
-VITE_API_URL=https://your-backend.onrender.com
+
+	5. Deploy and copy your backend URL.
+
+    Frontend (Vercel)
+        1.	Push frontend to GitHub.
+        2.	Go to Vercel → New Project → Import frontend repo.
+        3.	Add environment variable:
+
+    VITE_API_URL=https://your-backend.onrender.com
 
 
 	4.	Deploy. It’ll give you a live domain like:
-https://myecommerce-frontend.vercel.app
+    https://myecommerce-frontend.vercel.app
 
 ⸻
 
