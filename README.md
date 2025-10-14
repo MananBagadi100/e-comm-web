@@ -155,6 +155,11 @@ VITE_API_URL=https://your-backend.onrender.com
 
 ---
 
-## 📖 About Us
-
-Welcome to our E-Commerce Store — your one-stop destination for high-quality products and a seamless online shopping experience.
+🧩 Author
+👨‍💻 Manan Bagadi
+Full Stack Developer | Machine Learning Enthusiast
+📧 mananbagadi100@gmail.com
+🌐 https://www.linkedin.com/in/manan-bagadi-8599b0225/
+ 
+✅ Status
+All core features complete. Project ready for deployment and demonstration for internship or job applications.
