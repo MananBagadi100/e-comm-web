@@ -69,7 +69,7 @@ const Home= () => {
                 </div>
                 <div id="home-contact-section">
                     <div id="contact-section-wrapper">Any Questions ? Contact us at 
-                        <Link> example@gmail.com</Link>
+                        <Link to='/contact-us'> example@gmail.com</Link>
                     </div>
                 </div>
             </div>

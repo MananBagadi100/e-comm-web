@@ -20,7 +20,8 @@
   justify-content: center;
   align-items: center;
   font-weight: bold;
-  font-size: 1.7rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
 }
 .cart-main-content {
   display: flex;
@@ -114,6 +115,7 @@
 #cart-total-value {
   font-weight: bold;
   font-size: 18px;
+  color: var(--text-color);
 }
 .checkout-wrapper {
   display: flex;

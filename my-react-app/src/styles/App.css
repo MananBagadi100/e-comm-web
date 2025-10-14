@@ -37,21 +37,22 @@ html,body,:root {
     margin-top: 0px;            /*so that big headings dont eat space on the top*/
 }
 .dark-theme {
-    --bg-color: #005566;
-    --text-color: #222831;
-    --nav-bg: #001f3f;
-    --btn-bg: #003f5c;
-    --btn-txt: #fdfeff;
-    --btn-hover-bg: #022f44;
-    --primary-btn-hover-color: 1px solid blue;
-    --product-card-bg-color: #005f7f;  /* Each Product or Card bg */
+    /* --bg-color: rgb(159, 159, 159); */
+    --bg-color: rgb(0, 14, 46);
+    --text-color: rgb(214, 213, 213);
+    --nav-bg: rgb(32, 62, 134);
+    --btn-bg: rgb(57, 124, 196);
+    --btn-txt: #edeeee;
+    --btn-hover-bg: #033e5a;
+    --primary-btn-hover-color: 1px solid rgb(68, 68, 231);
+    --product-card-bg-color: #a7c8dc;  /* Each Product or Card bg */
     --card-border: #0f0b29;
     --card-shadow: rgba(21,92,54,0.09);
     --card-shadow-hover: rgba(21,92,54,0.16);
-    --card-img-bg: #c1e8ff;
-    --product-prices-color:rgb(176, 201, 255);
-    --loading-animation-color:rgb(0, 29, 108);
-    --top-categories-bg: #07cef6;
+    --card-img-bg: #8bbbd6;
+    --product-prices-color:rgb(43, 43, 43);
+    --loading-animation-color: rgb(222, 222, 222);
+    --top-categories-bg: rgb(79, 96, 135);
 }
 html, body {
     width: 100vw;

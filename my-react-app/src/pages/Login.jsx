@@ -102,11 +102,9 @@ const Login= () => {
     }
     else {
         return (
-            <div>
-                <div>Hey you are already logged in !</div>
-                {/* <button id='logoutBtn' onClick={()=> {value.storeLoginState(false)}}>Logout</button> */}
-                <button id='logoutBtn' onClick={handleLogout}>Logout</button>
-
+            <div className='loggedIn-full-container'>
+                <div className='logoutBtnText'>Hey you are already logged in !</div>
+                <button className='logoutBtn' onClick={handleLogout}>Logout</button>
             </div>
         )
     }

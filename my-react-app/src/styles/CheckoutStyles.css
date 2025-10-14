@@ -41,6 +41,7 @@
     align-items: center;
     font-size: 20px;
     font-weight: bold;
+    color: var(--text-color);
 }
 .checkout-item-list {
     width: 100%;
@@ -113,6 +114,7 @@
 #checkout-total {
     font-weight: bold;
     font-size: 18px;
+    color: var(--text-color);
 }
 #info-box-wrapper {
     width: 100%;
