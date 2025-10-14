@@ -155,11 +155,18 @@ VITE_API_URL=https://your-backend.onrender.com
 
 ---
 
-🧩 Author
-👨‍💻 Manan Bagadi
+## 🧩 Author
+
+**👨‍💻 Manan Bagadi**
+
 Full Stack Developer | Machine Learning Enthusiast
+
 📧 mananbagadi100@gmail.com
-🌐 https://www.linkedin.com/in/manan-bagadi-8599b0225/
- 
-✅ Status
+
+🌐 [linkedin.com/in/manan-bagadi-8599b0225](https://www.linkedin.com/in/manan-bagadi-8599b0225/)
+
+---
+
+## ✅ Status
+
 All core features complete. Project ready for deployment and demonstration for internship or job applications.
